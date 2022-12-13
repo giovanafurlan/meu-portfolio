@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://portfolio-giovana-furlan.netlify.app
+
+# Sitemaps
+Sitemap: https://portfolio-giovana-furlan.netlify.app/sitemap.xml

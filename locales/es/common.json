@@ -1,0 +1,40 @@
+{
+  "language-name": "Inglês",
+
+  "__comment__": "Botões",
+    "botaoCor": "Alternar",
+    "menu": "Idioma",
+
+  "__comment1__": "Menu",
+    "home": "Hogar",
+    "conhecimentos": "Conocimiento",
+    "experiencias": "Experiencias",
+    "projetos": "Proyectos",
+    "contato": "Contacto",
+
+  "__comment2__": "Dashboard",
+    "dia": "Buenos días",
+    "tarde": "Buenas tardes",
+    "noite": "Buenas noches",
+    "meChamo":  "mi nombre es",
+    "programadora": "Programador",
+    "introducao": "Me gradué de la @FIAP en Análisis y Desarrollo de Sistemas. Actualmente trabajo como pasante de programación en @Webpeak, que es una de las principales herramientas SEO del mercado. Apasionado por la tecnología, quiero ser protagonista de proyectos revolucionarios para mi futuro.",
+    "introducao2": "Ven y conoce más sobre mí en mi portafolio",
+
+  "__comment3__": "Contato",
+    "nome": "Nombre",
+    "remetente": "Remitente",
+    "destinatario": "Destinatario",
+    "suaMensagem": "Tu Mensaje",
+    "seuEmail": "Tu Correo Electrónico",
+    "enviar": "Enviar",
+
+    "__comment4__": "Ferramentas",
+    "ferramentas": "Herramientas",
+      "__comment4.1__": "Encurtador URL",
+      "encurtadorURL": "Acortador de URL",
+      "coleURL": "Pega la URL que quieras acortar",
+      "envia": "Envia",
+      "carregando": "Cargando",
+      "exEncurtadorURL": "Ejemplo - http://www.ejemplo.com.br"
+}

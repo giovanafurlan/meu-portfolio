@@ -1,0 +1,40 @@
+{
+  "language-name": "Portuguese",
+
+  "__comment__": "Botões",
+    "botaoCor": "Alternation",
+    "menu": "Language",
+
+  "__comment1__": "Menu",
+    "home": "Home",
+    "conhecimentos": "Skills",
+    "experiencias": "Experiences",
+    "projetos": "Projects",
+    "contato": "Contact",
+
+  "__comment2__": "Dashboard",
+    "dia": "Good morning",
+    "tarde": "Good afternoon",
+    "noite": "Good night",
+    "meChamo":  "my name is",
+    "programadora": "Programmer",
+    "introducao": "I am graduated at @FIAP in Systems Analysis and Development. I currently work as an intern in programming at @Webpeak, which is one of the main SEO tools on the market. Passionate about technology, I want to be a protagonist for my future of revolutionary projects. ",
+    "introducao2": "Come know more about me in my portfolio",
+
+  "__comment3__": "Contato",
+    "nome": "Name",
+    "remetente": "Sender",
+    "destinatario": "Recipient",
+    "suaMensagem": "Your Message",
+    "seuEmail": "Your Email",
+    "enviar": "Send",
+
+  "__comment4__": "Ferramentas",
+  "ferramentas": "Tools",
+    "__comment4.1__": "Encurtador URL",
+    "encurtadorURL": "URL shortener",
+    "coleURL": "Paste the URL you want to shorten",
+    "envia": "Send",
+    "carregando": "Loading",
+    "exEncurtadorURL": "Example - http://www.example.com.br"
+}

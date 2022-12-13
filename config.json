@@ -1,0 +1,13 @@
+{
+  "base_url": "https://portfolio-giovana-furlan.netlify.app",
+  "site_title": "Giovana Furlan",
+  "site_description": "Portifolio Giovana Furlan",
+  "site_keywords": [
+    {
+      "keyword": "Portifolio"
+    }
+  ],
+  "posts_per_page": 5000,
+  "twitter_account": "@my-account",
+  "github_account": "giovanafurlan"
+}
