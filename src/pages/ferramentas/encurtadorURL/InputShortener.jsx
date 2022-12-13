@@ -28,7 +28,7 @@ export default function InputShortener({ setInputValue }) {
     <div className="inputContainer">
       <Flex
         flexDir={'column'}
-        gap='4'>
+        gap='6'>
         <Heading
           as={'h1'}
           fontSize={{

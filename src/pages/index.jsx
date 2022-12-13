@@ -76,6 +76,7 @@ export default function Home() {
             </Text>
           </Flex>
           <Button
+            title='Conhecimentos'
             onClick={() => router.push('/conhecimentos')}
             bg='black'
             fontSize='14px'

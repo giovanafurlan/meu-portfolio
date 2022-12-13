@@ -80,7 +80,10 @@ export default function SideBar({ children }) {
         p="4">
         <Container
           maxW={'5xl'}
-          py='4'>
+          py={{
+            lg: '4',
+            sm: '20'
+          }}>
           {children}
         </Container>
       </Box>
@@ -224,7 +227,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
         w='56'
         bg={color}>
         <Flex
-          justifyContent={'center'}>
+          justifyContent={'center'}
+          display={{
+            lg: 'flex',
+            sm: 'none'
+          }}>
           <DarkLight />
           <Language />
         </Flex>
@@ -330,7 +337,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
   const border = (useColorModeValue('gray.200', 'gray.700'));
 
   return (
-    <Flex
+    <Box
       pos='fixed'
       w='full'
       zIndex={'1'}
@@ -347,7 +354,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth="1px"
       borderBottomColor={border}
-      justifyContent="flex-start"
+      justifyContent="space-between"
       {...rest}>
       <IconButton
         variant="outline"
@@ -356,13 +363,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
         icon={<FiMenu />}
       />
       <Flex
-        justifyContent={'space-between'}
-        w='full'>
-        <Image
-          ml='4'
-          src={'/images/logo.webp'}
-          alt='Logo Webpeak' />
+        gap='15px'
+        justifyContent={'end'}>
+        <DarkLight/>
+        <Language/>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
