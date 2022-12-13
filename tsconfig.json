@@ -25,7 +25,7 @@
     "**/*.tsx",
     "components/Menu.jsx",
     "pages/index.jsx"
-, "src/components/DarkLight.jsx", "src/components/Menu.jsx"  ],
+, "src/components/DarkLight.jsx", "src/components/Menu.jsx", "src/pages/blog/[post].jsx", "src/pages/blog/tags/[[...slug]].jsx"  ],
   "exclude": [
     "node_modules"
   ]

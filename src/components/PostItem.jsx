@@ -8,21 +8,27 @@ import {
 import Date from "./Date";
 import Link from "next/link";
 import { parseISO } from "date-fns";
-import i18nConfig from '../../i18n.json';
 import useTranslation from 'next-translate/useTranslation';
 
 export default function PostItem({ post }) {
 
-  const { locales, defaultLocale } = i18nConfig;
   const { t, lang } = useTranslation('common');
+
+  const locales = [
+    {
+      lang: "pt-br",
+      band: "/images/bandeira-brasil.webp",
+      name: "Português"
+    }
+  ];
 
   return (
     <>
-      {locales.map(lng => {
-        if (lng === lang) return null;
+      {locales.map(locale => {
+        if (locale === lang) return null;
         return (
           <Link
-            key={lng}
+            key={locale}
             href={"/blog/" + post.slug}
             locale={post.language}>
             <a>

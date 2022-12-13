@@ -1,6 +1,5 @@
 import {
   Flex,
-  useColorModeValue,
   Grid,
   GridItem,
   Button,
@@ -18,7 +17,6 @@ export default function PostList({
   tags }) {
 
   const { t } = useTranslation("common");
-  const bg = useColorModeValue('bgClear', 'bgDark');
 
   const imagePerRow = 3;
 
@@ -57,7 +55,7 @@ export default function PostList({
             gap='10'>
             <Grid
               templateColumns={{
-                lg: 'repeat(3, 1fr)',
+                lg: 'repeat(3zz, 1fr)',
                 sm: 'repeat(1, 1fr)'
               }}
               gap={8}>

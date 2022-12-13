@@ -1,11 +1,9 @@
-import { GetStaticProps, GetStaticPaths } from "next";
-import { fetchPostContent } from "../../lib/blog";
 import matter from "gray-matter";
+import { fetchPostContent } from "../../lib/blog";
 import fs from "fs";
 import yaml from "js-yaml";
 import { parseISO } from 'date-fns';
-import dynamic from 'next/dynamic';
-const PostLayout = dynamic(() => import("../../components/PostLayout"));
+import PostLayout from "../../components/PostLayout";
 
 const slugToPostContent = (postContents => {
   let hash = {}
@@ -36,7 +34,7 @@ export default function Post({
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = async () => {
   const paths = fetchPostContent().map(it => "/blog/" + it.slug);
 
   return {
@@ -45,11 +43,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params.post as string;
+export const getStaticProps = async ({ params }) => {
+  const slug = params.post;
   const source = fs.readFileSync(slugToPostContent[slug].fullPath, "utf8");
   const { content, data } = matter(source, {
-    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
+    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA })}
   });
 
   const fileContent = matter(fs.readFileSync(`./content/blog/${slug}.mdx`, 'utf8'));
@@ -65,5 +63,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       tags: data.tags,
       markdown
     },
-  };
-};
+  }
+}

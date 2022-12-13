@@ -1,12 +1,11 @@
-import dynamic from 'next/dynamic';
-const BasicMeta = dynamic(() => import("../../components/meta/BasicMeta"));
-const OpenGraphMeta = dynamic(() => import("../../components/meta/OpenGraphMeta"));
-const TwitterCardMeta = dynamic(() => import("../../components/meta/TwitterCardMeta"));
-const PostList = dynamic(() => import("../../components/PostList"));
-import useTranslation from "next-translate/useTranslation";
+import BasicMeta from "../../components/meta/BasicMeta";
+import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
+import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
+import PostList from "../../components/PostList";
 import config from "../../lib/config";
 import { listPostContent } from "../../lib/blog";
 import { listTags } from "../../lib/tags";
+import useTranslation from "next-translate/useTranslation";
 
 export default function Posts({ blog, tags }) {
   const { t } = useTranslation("common");
@@ -32,5 +31,5 @@ export const getStaticProps = async () => {
       blog,
       tags
     },
-  };
-};
+  }
+}
