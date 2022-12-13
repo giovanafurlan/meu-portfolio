@@ -19,7 +19,7 @@ Acesse meu site em [portfolio-giovana-furlan.vercel.app](https://portfolio-giova
 
 Lighthouse
 
-![Lighthouse](https://flic.kr/p/2o5Hnde)
+![Lighthouse](https://live.staticflickr.com/65535/52561878369_c097d9f10d_c.jpg)
 
 ## Tecnologias
 `nextjs`: Estrutura, backend
