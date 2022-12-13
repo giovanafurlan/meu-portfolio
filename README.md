@@ -1,22 +1,19 @@
 # Nome do projeto
 Portfólio Giovana Furlan
 
-## Demo link:
+## Link
 Acesse meu site em [portfolio-giovana-furlan.vercel.app](https://portfolio-giovana-furlan.vercel.app/)
 
 ## Table of Content:
 
-- [About The App](#about-the-app)
+- [Sobre o App](#sobre-o-app)
 - [Screenshots](#screenshots)
-- [Technologies](#technologies)
+- [Tecnologias](#tecnologias)
 - [Setup](#setup)
-- [Approach](#approach)
 - [Status](#status)
-- [Credits](#credits)
-- [License](#license)
 
-## About The App
-[Name of project] is an app that ...
+## Sobre o App
+[Meu portfólio] foi criado para ser um currículo dinâmico que além de listar meus dados, experiências e conhecimentos, ser uma base onde coloco em prática tudo o que já aprendi na área da programação
 
 ## Screenshots
 
@@ -24,25 +21,23 @@ Acesse meu site em [portfolio-giovana-furlan.vercel.app](https://portfolio-giova
 
 Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
 
-## Technologies
-I used `html`, `css`, ...
+## Tecnologias
+`nextjs`: Estrutura, backend
+
+`chakraUI`: Frontend
+
+`netlifyCMS`: Blog
+
+`i18n`: Idiomas
+
+`vercel`: Hospedagem
 
 ## Setup
-- download or clone the repository
-- run `npm install`
-- ...
-
-## Approach
-I adopted the `BEM` naming style for my css class names and ...
+- download ou clone o repositório
+- rode `npm install`
+- rode `npm run dev`
 
 ## Status
-[name of project] is still in progress. `Version 2` will be out soon.
+[Meu portfólio] se encontra em constante construção.
 
-## Credits
-List of contriubutors:
-- [John Doe](johndoe.com)
-- [Beginners guide to BEM](link-goes-here.com)
-
-## License
-
-MIT license @ [author](author.com)
+"A beleza de ser um eterno aprendiz" - Gonzaguinha
