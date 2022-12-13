@@ -17,9 +17,9 @@ Acesse meu site em [portfolio-giovana-furlan.vercel.app](https://portfolio-giova
 
 ## Screenshots
 
-`![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
+Lighthouse
 
-Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
+![Lighthouse](https://flic.kr/p/2o5Hnde)
 
 ## Tecnologias
 `nextjs`: Estrutura, backend
