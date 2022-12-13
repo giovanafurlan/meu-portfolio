@@ -17,6 +17,7 @@ export default function DarkLight() {
         <Menu
             placement='top-start'>
             <MenuButton
+                title='DarkLight'
                 transition='all 0.2s'
                 fontSize={'lg'}
                 background={'none'}

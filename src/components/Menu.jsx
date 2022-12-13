@@ -90,7 +90,6 @@ export default function SideBar({ children }) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
-  const logos = useColorModeValue('/images/logo.webp', '/images/logo.webp');
   const bg = (useColorModeValue('white', 'gray.900'));
   const border = (useColorModeValue('gray.200', 'gray.700'));
 
@@ -145,7 +144,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         my='4'
         justifyContent="space-between">
         <Image
-          src={logos}
+          src={'/images/logo.webp'}
           alt='Logo'
           ml='4' />
         <CloseButton
@@ -233,12 +232,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
           justifyContent={'center'}>
           <NavMedia
             icone={FiGithub}
+            label='Github'
             url={'https://github.com/giovanafurlan'} />
           <NavMedia
             icone={FiYoutube}
+            label='Youtube'
             url={'https://www.linkedin.com/in/giovana-furlan/'} />
           <NavMedia
             icone={FiLinkedin}
+            label='Linkedin'
             url={'https://www.linkedin.com/in/giovana-furlan/'} />
         </Flex>
       </Flex>
@@ -250,7 +252,8 @@ const SocialMedia = ({ icon, ...rest }) => {
   const color = useColorModeValue('black', 'white');
 
   return (
-    <Flex justifyContent={'center'}
+    <Flex
+      justifyContent={'center'}
       cursor="pointer"
       color={color}
       {...rest}>
@@ -265,10 +268,11 @@ const SocialMedia = ({ icon, ...rest }) => {
   )
 }
 
-const NavMedia = ({ url, icone }) => {
+const NavMedia = ({ url, label, icone }) => {
 
   return (
     <Link
+    aria-label={label}
       href={url}
       target={'_blank'}
       _hover={{ textDecor: 'none' }}
@@ -323,7 +327,6 @@ const NavItem = ({ link, icon, children, ...rest }) => {
 }
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const logos = useColorModeValue('/images/webpeak-preto.webp', '/images/webpeak-branco.webp');
   const border = (useColorModeValue('gray.200', 'gray.700'));
 
   return (
@@ -357,9 +360,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
         w='full'>
         <Image
           ml='4'
-          src={logos}
+          src={'/images/logo.webp'}
           alt='Logo Webpeak' />
-        <DarkLight />
       </Flex>
     </Flex>
   );

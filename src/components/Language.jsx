@@ -45,7 +45,8 @@ export default function Language() {
             mb='6'>
             <MenuButton
                 p='0'
-                borderRadius={'lg'}>
+                borderRadius={'lg'}
+                title='Idioma'>
                 <Flex
                     align="center"
                     p="2"
