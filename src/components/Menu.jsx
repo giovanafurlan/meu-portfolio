@@ -18,6 +18,10 @@ import {
   AccordionPanel,
   Text,
   Container,
+  Tag,
+  Avatar,
+  TagLabel,
+  TagRightIcon,
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -33,6 +37,7 @@ import {
   FiYoutube,
   FiLinkedin
 } from 'react-icons/fi';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import DarkLight from './DarkLight';
 import Language from './Language';
 import useTranslation from 'next-translate/useTranslation';
@@ -214,7 +219,33 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-
+      <Link
+        aria-label={'Code'}
+        href={'https://github.com/giovanafurlan/meu-portfolio'}
+        target={'_blank'}
+        _hover={{ textDecor: 'none' }}
+        _focus={{
+          outline: 'none'
+        }}>
+        <Flex
+          mt='10'
+          align={'center'}
+          gap='2'
+          mx="4"
+          pr='10'>
+          <Tag
+            size='lg'
+            colorScheme={''}
+            borderRadius='full'>
+            <TagLabel
+              fontSize={'sm'}>
+              Code
+            </TagLabel>
+            <TagRightIcon
+              as={ExternalLinkIcon} />
+          </Tag>
+        </Flex>
+      </Link>
       <Flex
         pos='fixed'
         flexDir={'column'}
@@ -279,7 +310,7 @@ const NavMedia = ({ url, label, icone }) => {
 
   return (
     <Link
-    aria-label={label}
+      aria-label={label}
       href={url}
       target={'_blank'}
       _hover={{ textDecor: 'none' }}
@@ -313,6 +344,7 @@ const NavItem = ({ link, icon, children, ...rest }) => {
           bg: 'gray.200',
           color: 'black',
         }}
+        maxW='56'
         {...rest}>
         {icon && (
           <Icon
@@ -365,8 +397,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
       <Flex
         gap='15px'
         justifyContent={'end'}>
-        <DarkLight/>
-        <Language/>
+        <DarkLight />
+        <Language />
       </Flex>
     </Box>
   );

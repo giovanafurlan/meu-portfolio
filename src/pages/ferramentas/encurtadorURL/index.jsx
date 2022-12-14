@@ -13,14 +13,8 @@ export default function EncurtadorURL() {
 
   return (
     <Menu>
-      <Container
-        maxW={'5xl'}
-        py='4'>
-        <div className="container">
-          <InputShortener setInputValue={setInputValue} />
-          <LinkResult inputValue={inputValue} />
-        </div>
-      </Container>
+      <InputShortener setInputValue={setInputValue} />
+      <LinkResult inputValue={inputValue} />
     </Menu>
   );
 }

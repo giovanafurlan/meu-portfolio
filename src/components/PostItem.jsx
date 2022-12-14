@@ -33,7 +33,14 @@ export default function PostItem({ post }) {
             locale={post.language}>
             <a>
               <Box
-                maxW={'60'}>
+                maxW={{
+                  lg: '60',
+                  sm: 'auto'
+                }}
+                minH='400px'
+                p='2'
+                borderRadius='lg'                    
+                boxShadow='0px 4px 15px rgba(0, 0, 0, 0.3)'>
                 <Image
                   src={post.image}
                   alt={post.title}

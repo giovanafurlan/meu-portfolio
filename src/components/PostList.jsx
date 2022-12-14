@@ -55,7 +55,7 @@ export default function PostList({
             gap='10'>
             <Grid
               templateColumns={{
-                lg: 'repeat(3zz, 1fr)',
+                lg: 'repeat(3, 1fr)',
                 sm: 'repeat(1, 1fr)'
               }}
               gap={8}>

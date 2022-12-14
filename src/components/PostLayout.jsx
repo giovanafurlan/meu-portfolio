@@ -22,8 +22,14 @@ const Format = style.div`
 p {
   font-size: 18px;
 }
-li{
+
+li {
   font-size: 18px;
+  text-align: start !important;
+}
+
+ul {
+  margin-left: 20%;
 }
 
 a {
@@ -73,8 +79,25 @@ h4 {
   line-height: 1.938rem;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.flex a img {
+  margin-right: 10px;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.grid img{
+  width: 100px;
+}
+
 img {
-  width: 50%;
   border: 0;
   max-width: 100%;
   vertical-align: middle;
@@ -84,7 +107,7 @@ img {
   border-radius: 9px;
 }
 
-.img-pequena{
+.img-pequena {
   width: 30%;
 }
 
@@ -115,14 +138,14 @@ blockquote {
 
 @media(min-width: 320px) and (max-width: 1000px) {
   * {
-      margin: 0 auto;
+    margin: 0 auto;
   }
 
   img {
-      width: auto;
+    width: auto;
   }
 
-  .img-pequena{
+  .img-pequena {
     width: 80%;
   }
 }

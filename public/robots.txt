@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://portfolio-giovana-furlan.netlify.app
+Host: https://portfolio-giovana-furlan.vercel.app
 
 # Sitemaps
-Sitemap: https://portfolio-giovana-furlan.netlify.app/sitemap.xml
+Sitemap: https://portfolio-giovana-furlan.vercel.app/sitemap.xml
