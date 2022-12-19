@@ -6,7 +6,6 @@ import {
   Flex,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   useDisclosure,
@@ -41,6 +40,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 import DarkLight from './DarkLight';
 import Language from './Language';
 import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 
 export default function SideBar({ children }) {
 
@@ -219,44 +219,43 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <Link
-        aria-label={'Code'}
-        href={'https://github.com/giovanafurlan/meu-portfolio'}
-        target={'_blank'}
-        _hover={{ textDecor: 'none' }}
-        _focus={{
-          outline: 'none'
-        }}>
-        <Flex
-          mt='10'
-          align={'center'}
-          gap='2'
-          mx="4"
-          pr='10'>
-          <Tag
-            size='lg'
-            colorScheme={''}
-            borderRadius='full'>
-            <TagLabel
-              fontSize={'sm'}>
-              Code
-            </TagLabel>
-            <TagRightIcon
-              as={ExternalLinkIcon} />
-          </Tag>
-        </Flex>
-      </Link>
       <Flex
         pos='fixed'
         flexDir={'column'}
         gap='4'
         align={'center'}
         bottom={{
-          lg: '4',
+          lg: '0',
           sm: '20'
         }}
         w='56'
+        py='4'
         bg={color}>
+        <Link
+          aria-label={'Code'}
+          href={'https://github.com/giovanafurlan/meu-portfolio'}
+          target={'_blank'}
+          _hover={{ textDecor: 'none' }}
+          _focus={{
+            outline: 'none'
+          }}>
+          <Flex
+            align={'center'}
+            gap='2'
+            pr='4'>
+            <Tag
+              size='lg'
+              colorScheme={''}
+              borderRadius='full'>
+              <TagLabel
+                fontSize={'sm'}>
+                Code
+              </TagLabel>
+              <TagRightIcon
+                as={ExternalLinkIcon} />
+            </Tag>
+          </Flex>
+        </Link>
         <Flex
           justifyContent={'center'}
           display={{

@@ -1,5 +1,5 @@
 # Nome do projeto
-Portfólio Giovana Furlan
+Portfolio Giovana Furlan
 
 ## Link
 Acesse meu site em [portfolio-giovana-furlan.vercel.app](https://portfolio-giovana-furlan.vercel.app/)

@@ -46,9 +46,9 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <Global styles={GlobalStyles} />
       <Head>
-        <meta name="description" content="Portfólio Giovana Nelo Furlan - Frontend Developer " />
+        <meta name="description" content="Portfolio Giovana Nelo Furlan - Frontend Developer " />
         <meta name='viewport' content='minimum-scale=1, maximum-scale=5, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
-        <title>Portfólio Giovana Nelo Furlan</title>
+        <title>Portfolio Giovana Nelo Furlan</title>
       </Head>
       <Component {...pageProps} />
     </ChakraProvider>
