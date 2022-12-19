@@ -167,7 +167,7 @@ export default function Conhecimentos() {
           {t('conhecimentos')}
         </Heading>
         <Text>
-          Possuo um foco maior no Frontend, utilizando Nextjs, React, Chakra UI, Bootstrap, Netlify CMS e Backend em Nodejs.
+          {t('introConhecimentos')}
         </Text>
         <Flex
           flexDir={'column'}
@@ -253,7 +253,7 @@ export default function Conhecimentos() {
           <Text
             fontSize={'2xl'}
             fontWeight='bold'>
-            Certificados
+            {t('certificados')}
           </Text>
           <Grid
             templateColumns={{

@@ -21,7 +21,24 @@
     "introducao": "I am graduated at @FIAP in Systems Analysis and Development. I currently work as an intern in programming at @Webpeak, which is one of the main SEO tools on the market. Passionate about technology, I want to be a protagonist for my future of revolutionary projects. ",
     "introducao2": "Come know more about me in my portfolio",
 
-  "__comment3__": "Contato",
+    "__comment3__": "Conhecimentos",
+    "introConhecimentos": "I have a greater focus on Frontend, using Nextjs, React, Chakra UI, Bootstrap, Netlify CMS and Backend in Nodejs",
+    "certificados": "Certificates",
+
+  "__comment4__": "Experiências",
+    "introExperiencias": "Currently I work with programming at Webpeak, which is one of the main SEO tools on the market",
+    "inicio": "Start",
+    "termino": "End",
+    "atualmente": "Currently",
+    "analista": "Service Analyst",
+    "introExperiencia1": "B2B Relationship | Working directly on the Customer Experience with the platform / Customer Support",
+    "estagiaria": "Internship in programming",
+    "introExperiencia2": "Assist in system configuration and parameterization",
+
+  "__comment5__": "Projetos",
+    "introProjetos": "Access my projects in Github repositories",
+
+  "__comment6__": "Contato",
     "nome": "Name",
     "remetente": "Sender",
     "destinatario": "Recipient",
@@ -29,12 +46,12 @@
     "seuEmail": "Your Email",
     "enviar": "Send",
 
-  "__comment4__": "Ferramentas",
+  "__comment7__": "Ferramentas",
   "ferramentas": "Tools",
     "__comment4.1__": "Encurtador URL",
     "encurtadorURL": "URL shortener",
     "coleURL": "Paste the URL you want to shorten",
     "envia": "Send",
-    "carregando": "Loading",
+    "carregando": "Loading...",
     "exEncurtadorURL": "Example - http://www.example.com.br"
 }

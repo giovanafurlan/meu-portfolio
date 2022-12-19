@@ -207,7 +207,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel
-            pb={'24'}>
+            pb={'80'}>
             {linkItemsTools.map((link) => (
               <NavItem
                 key={link.name}

@@ -21,7 +21,24 @@
     "introducao": "Eu sou graduada na @FIAP em Análise e Desenvolvimento de Sistemas. Trabalho atualmente como estagiária em programação na empresa @Webpeak que é uma das principais ferramentas de SEO do mercado. Apaixonada por tecnologia, quero para meu futuro ser protagonista de projetos revolucionários. ",
     "introducao2": "Venha saber mais sobre mim no meu portfólio",
 
-  "__comment3__": "Contato",
+  "__comment3__": "Conhecimentos",
+    "introConhecimentos": "Possuo um foco maior no Frontend, utilizando Nextjs, React, Chakra UI, Bootstrap, Netlify CMS e Backend em Nodejs",
+    "certificados": "Certificados",
+
+  "__comment4__": "Experiências",
+    "introExperiencias": "Atualmente trabalho com programação, na empresa Webpeak que é uma das principais ferramentas de SEO do mercado",
+    "inicio": "Início",
+    "termino": "Término",
+    "atualmente": "Atualmente",
+    "analista": "Analista de atendimento",
+    "introExperiencia1": "Relacionamento B2B | Atuar diretamente na Experiência do Cliente com a plataforma / Customer Support",
+    "estagiaria": "Estágiaria em programação",
+    "introExperiencia2": "Auxiliar na configuração e parametrização de sistemas",
+
+  "__comment5__": "Projetos",
+    "introProjetos": "Acesse meus projetos em repositórios do Github",
+
+  "__comment6__": "Contato",
     "nome": "Nome",
     "remetente": "Remetente",
     "destinatario": "Destinatário",
@@ -29,12 +46,12 @@
     "seuEmail": "Seu Email",
     "enviar": "Enviar",
 
-    "__comment4__": "Ferramentas",
+    "__comment7__": "Ferramentas",
     "ferramentas": "Ferramentas",
       "__comment4.1__": "Encurtador URL",
       "encurtadorURL": "Encurtador URL",
       "coleURL": "Cole a URL que deseja encurtar",
       "envia": "Envia",
-      "carregando": "Carregando",
+      "carregando": "Carregando...",
       "exEncurtadorURL": "Exemplo - http://www.exemplo.com.br"
 }

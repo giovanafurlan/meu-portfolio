@@ -100,7 +100,7 @@ export default function Projetos() {
           {t('projetos')}
         </Heading>
         <Text>
-          Acesse meus projetos em repositórios do Github
+          {t('introProjetos')}
         </Text>
         <StyleSwiper>
           <Swiper
