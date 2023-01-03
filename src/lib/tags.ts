@@ -1,4 +1,4 @@
-import tags from "../../meta/tags.yml";
+import tags from "../../meta/tags.json";
 
 export type TagContent = {
   readonly slug: string;

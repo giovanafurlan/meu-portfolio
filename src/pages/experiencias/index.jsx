@@ -12,33 +12,33 @@ import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 const Menu = dynamic(() => import("../../components/Menu"));
 
-const experienciaSuporte = [
-  {
-    cor: 'red.400',
-    empresa: 'Tradesquash',
-    imagem: 'https://media.licdn.com/dms/image/C4D0BAQEOBUxgbtPSAQ/company-logo_200_200/0/1561975551199?e=1675900800&v=beta&t=7wLVF9QO-2rDYHpCJGgVOSHqz2dT99RPvi36s7D6HU0',
-    cargo: t('analista'),
-    funcao: t('introExperiencia1'),
-    dtInicio: '03/2021',
-    dtTermino: '12/2021'
-  }
-]
-
-const experienciaProgramacao = [
-  {
-    cor: 'purple.400',
-    empresa: 'Webpeak',
-    imagem: 'https://global-uploads.webflow.com/5e94a806d55af47725f53001/5ee15e37d52645173ea0d613_favicon-256.png',
-    cargo: t('estagiaria'),
-    funcao: t('introExperiencia2'),
-    dtInicio: '01/2022',
-    dtTermino: t('atualmente')
-  }
-]
-
 export default function Experiencias() {
 
   const { t } = useTranslation("common");
+
+  const experienciaSuporte = [
+    {
+      cor: 'red.400',
+      empresa: 'Tradesquash',
+      imagem: 'https://media.licdn.com/dms/image/C4D0BAQEOBUxgbtPSAQ/company-logo_200_200/0/1561975551199?e=1675900800&v=beta&t=7wLVF9QO-2rDYHpCJGgVOSHqz2dT99RPvi36s7D6HU0',
+      cargo: t('analista'),
+      funcao: t('introExperiencia1'),
+      dtInicio: '03/2021',
+      dtTermino: '12/2021'
+    }
+  ]
+  
+  const experienciaProgramacao = [
+    {
+      cor: 'purple.400',
+      empresa: 'Webpeak',
+      imagem: 'https://global-uploads.webflow.com/5e94a806d55af47725f53001/5ee15e37d52645173ea0d613_favicon-256.png',
+      cargo: t('estagiaria'),
+      funcao: t('introExperiencia2'),
+      dtInicio: '01/2022',
+      dtTermino: t('atualmente')
+    }
+  ]
 
   return (
     <Menu>
@@ -96,13 +96,15 @@ export default function Experiencias() {
 }
 
 const Card = ({
-  cor,
   empresa,
   imagem,
   cargo,
   funcao,
   dtInicio,
   dtTermino }) => {
+
+  const { t } = useTranslation("common");
+
   return (
     <Box
       maxW={'350px'}
