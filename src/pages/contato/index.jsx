@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import {
-  Alert,
-  AlertIcon,
   Button,
   Flex,
   FormControl,
@@ -12,17 +10,18 @@ import {
   Text,
   Textarea,
   useColorModeValue,
+  useToast,
   VStack,
 } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/router';
 import { send } from 'emailjs-com';
 import dynamic from 'next/dynamic';
 const Menu = dynamic(() => import("../../components/Menu"));
 
 export default function Contato() {
 
-  const router = useRouter();
+  const toast = useToast();
+
   const { t } = useTranslation("common");
 
   const [toSend, setToSend] = useState({
@@ -50,17 +49,11 @@ export default function Contato() {
 
   const handleChange = (e) => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
-  };
-
-  function alertar() {
-    const alert = document.getElementById('alert');
-    alert.style.display = 'inline-flex';
   }
 
   const bg = useColorModeValue('white', 'gray.800');
   const bg2 = useColorModeValue('black', 'white');
   const color = useColorModeValue('white', 'black');
-  const color2 = useColorModeValue('black', 'white');
   const hover = useColorModeValue('gray.600', 'gray.300');
 
   return (
@@ -79,19 +72,8 @@ export default function Contato() {
       </Heading>
       <Text
         mb='6'>
-        Entre em contato para maiores trocas
+        {t('entreContato')}
       </Text>
-      <Alert
-        status='success'
-        display={'none'}
-        id='alert'>
-        <AlertIcon />
-        <Text
-          color={color2}>
-          Mensagem enviada! Obrigada
-        </Text>
-      </Alert>
-      <br />
       <Flex
         gap='8'
         align={'center'}
@@ -112,7 +94,8 @@ export default function Contato() {
               lg: 'lg',
               sm: 'auto'
             }}>
-            <FormControl>
+            <FormControl
+              isRequired>
               <FormLabel>
                 {t('nome')}
               </FormLabel>
@@ -141,7 +124,8 @@ export default function Contato() {
                 required
               />
             </FormControl>
-            <FormControl>
+            <FormControl
+              isRequired>
               <FormLabel>{t('suaMensagem')}</FormLabel>
               <Textarea
                 type='text'
@@ -155,8 +139,11 @@ export default function Contato() {
                 required
               />
             </FormControl>
-            <FormControl>
-              <FormLabel>{t('seuEmail')}</FormLabel>
+            <FormControl
+              isRequired>
+              <FormLabel>
+                {t('seuEmail')}
+              </FormLabel>
               <Input
                 type='text'
                 name='reply_to'
@@ -170,7 +157,15 @@ export default function Contato() {
               />
             </FormControl>
             <Button
-              onClick={alertar}
+              onClick={() =>
+                toast({
+                  title: t('mensagem'),
+                  status: 'success',
+                  duration: 9000,
+                  position: 'top',
+                  isClosable: true,
+                })
+              }
               type='submit'
               fontSize='14px'
               color={color}

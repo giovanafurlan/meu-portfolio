@@ -39,12 +39,14 @@
     "introProjetos": "Acesse meus projetos em repositórios do Github",
 
   "__comment6__": "Contato",
+    "entreContato": "Entre em contato para maiores trocas",
     "nome": "Nome",
     "remetente": "Remetente",
     "destinatario": "Destinatário",
     "suaMensagem": "Sua Mensagem",
     "seuEmail": "Seu Email",
     "enviar": "Enviar",
+    "mensagem": "Mensagem enviada! Obrigada",
 
     "__comment7__": "Ferramentas",
     "ferramentas": "Ferramentas",
