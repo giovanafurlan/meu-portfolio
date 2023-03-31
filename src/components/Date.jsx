@@ -7,7 +7,8 @@ export default function Date({ date }) {
     <time dateTime={formatISO(date)}>
       <Text
         as={'span'}
-        color='gray'>
+        color='gray'
+        fontSize={'xs'}>
         {format(date, "d LLLL, yyyy")}
       </Text>
     </time>

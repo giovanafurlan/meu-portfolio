@@ -5,6 +5,7 @@ import {
   Heading,
   Link,
   Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -159,7 +160,8 @@ function CardRepo(
         borderColor='white'
         p='4'
         h='300px'
-        bg='#c4c4c4'>
+        boxShadow={'2xl'}
+        bg={useColorModeValue('white', 'gray.800')}>
         <Flex
           align={'center'}
           gap='2'

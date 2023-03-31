@@ -36,11 +36,12 @@ import {
   FiYoutube,
   FiLinkedin
 } from 'react-icons/fi';
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import DarkLight from './DarkLight';
 import Language from './Language';
-import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
+import ProtectedRoute from './ProtectedRoute';
 
 export default function SideBar({ children }) {
 
@@ -89,7 +90,9 @@ export default function SideBar({ children }) {
             lg: '4',
             sm: '20'
           }}>
+            <ProtectedRoute>
           {children}
+          </ProtectedRoute>
         </Container>
       </Box>
     </Box>
@@ -183,7 +186,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
               bg: 'gray.200',
               color: 'black',
             }}
-            w='min-content'
+            w='52'
             mx="4"
             mt='2'
             pr='10'>
@@ -231,31 +234,34 @@ const SidebarContent = ({ onClose, ...rest }) => {
         w='56'
         py='4'
         bg={color}>
-        <Link
-          aria-label={'Code'}
-          href={'https://github.com/giovanafurlan/meu-portfolio'}
-          target={'_blank'}
-          _hover={{ textDecor: 'none' }}
-          _focus={{
-            outline: 'none'
-          }}>
-          <Flex
-            align={'center'}
-            gap='2'
-            pr='4'>
-            <Tag
-              size='lg'
-              colorScheme={''}
-              borderRadius='full'>
-              <TagLabel
-                fontSize={'sm'}>
+
+        <Flex
+          align={'center'}
+          gap='2'
+          pr='4'>
+          <Tag
+            size='lg'
+            colorScheme={''}
+            borderRadius='full'
+            cursor='pointer'>
+            <TagLabel
+              fontSize={'sm'}>
+              <Link
+                aria-label={'Code'}
+                href={'https://github.com/giovanafurlan/meu-portfolio'}
+                target='_blank'
+                _hover={{ textDecor: 'none' }}
+                _focus={{
+                  outline: 'none'
+                }}>
                 Code
-              </TagLabel>
-              <TagRightIcon
-                as={ExternalLinkIcon} />
-            </Tag>
-          </Flex>
-        </Link>
+              </Link>
+            </TagLabel>
+            <TagRightIcon
+              as={ExternalLinkIcon} />
+          </Tag>
+        </Flex>
+
         <Flex
           justifyContent={'center'}
           display={{

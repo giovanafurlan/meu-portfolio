@@ -1,8 +1,14 @@
 {
-  "locales": ["pt-br", "en", "es"],
-  "defaultLocale": "pt-br",
+  "locales": [
+    "en",
+    "pt-br",
+    "es"
+  ],
+  "defaultLocale": "en",
   "localeDetection": false,
   "pages": {
-    "*": ["common"]
+    "*": [
+      "common"
+    ]
   }
 }

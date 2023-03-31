@@ -105,8 +105,8 @@ export default function Contato() {
                 placeholder='Nome'
                 value={toSend.from_name}
                 onChange={handleChange}
-                bg={bg}
-                borderColor='black'
+                boxShadow={'lg'}
+                bg={useColorModeValue('white', 'gray.800')}
                 borderRadius={'lg'} />
             </FormControl>
             <FormControl
@@ -118,8 +118,8 @@ export default function Contato() {
                 placeholder={t('destinatario')}
                 value={toSend.to_name}
                 onChange={handleChange}
-                bg={bg}
-                borderColor='black'
+                boxShadow={'lg'}
+                bg={useColorModeValue('white', 'gray.800')}
                 borderRadius={'lg'}
                 required
               />
@@ -133,8 +133,8 @@ export default function Contato() {
                 placeholder={t('suaMensagem')}
                 value={toSend.message}
                 onChange={handleChange}
-                bg={bg}
-                borderColor='black'
+                boxShadow={'lg'}
+                bg={useColorModeValue('white', 'gray.800')}
                 borderRadius={'lg'}
                 required
               />
@@ -150,8 +150,8 @@ export default function Contato() {
                 placeholder={t('seuEmail')}
                 value={toSend.reply_to}
                 onChange={handleChange}
-                bg={bg}
-                borderColor='black'
+                boxShadow={'lg'}
+                bg={useColorModeValue('white', 'gray.800')}
                 borderRadius={'lg'}
                 required
               />

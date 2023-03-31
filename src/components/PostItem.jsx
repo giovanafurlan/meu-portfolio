@@ -3,7 +3,9 @@ import {
   Heading,
   Text,
   Stack,
-  Image
+  Image,
+  useColorModeValue,
+  Flex
 } from '@chakra-ui/react';
 import Date from "./Date";
 import Link from "next/link";
@@ -33,34 +35,38 @@ export default function PostItem({ post }) {
             locale={post.language}>
             <a>
               <Box
-                maxW={{
-                  lg: '60',
+                monW={{
+                  lg: '80',
                   sm: 'auto'
                 }}
-                minH='400px'
+                minH='350px'
                 p='2'
+                bg={useColorModeValue('white', 'gray.800')}
                 borderRadius='lg'                    
                 boxShadow='0px 4px 15px rgba(0, 0, 0, 0.3)'>
                 <Image
                   src={post.image}
                   alt={post.title}
                   borderRadius='9px'
+                  w='60'
                   loading='lazy' />
-                <Stack
-                  py='4'
+                <Flex
+                flexDir={'column'}
+                gap='1'
+                mt='2'
                   textAlign={'initial'}>
                   <Heading
                     as='h3'
                     fontWeight='normal'
-                    fontSize={'lg'}>
+                    fontSize={'md'}>
                     {post.title}
                   </Heading>
                   <Text
-                    fontSize={'sm'}>
+                    fontSize={'xs'}>
                     {post.intro}
                   </Text>
                   <Date date={parseISO(post.date)} />
-                </Stack>
+                </Flex>
               </Box>
             </a>
           </Link>

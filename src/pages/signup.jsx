@@ -1,4 +1,4 @@
-import {
+import React, {
   useEffect,
   useState
 } from "react";
@@ -15,7 +15,9 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Text
+  Text,
+  useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import {
   BsFillEyeFill,
@@ -29,45 +31,36 @@ import {
 } from "react-hook-form";
 import {
   getAuth,
-  onAuthStateChanged
+  sendEmailVerification
 } from "firebase/auth";
 import {
   signInWithPopup,
   GoogleAuthProvider
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { setCookie } from "cookies-next";
 import { useAuth } from "../context/AuthContext";
+import { setCookie } from "cookies-next";
 
-const LoginPage = () => {
+const SignupPage = () => {
+  const bg = useColorModeValue("white", "gray.900");
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("none");
-  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [emailVerified, setEmailVerified] = useState();
+  const [password, setPassword] = useState();
+  const [error, setError] = useState("none");
+  const [errorMessage, setErrorMessage] = useState();
+  const [errorPassword, setErrorPassword] = useState("none");
+  const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState();
 
-  const { logIn } = useAuth();
+  const { signUp } = useAuth();
   const router = useRouter();
+  const toast = useToast()
 
   const methods = useForm({ mode: "onBlur" });
 
   const auth = getAuth();
 
-  useEffect(() => {
-    if (emailVerified === true) {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setCookie("uid", user.uid);
-          router.push("/geradorTitle");
-        } else {
-          router.push("/");
-        }
-      });
-    } else {
-      router.push("/");
-    }
-  }, [auth]);
+  const [user, setUser] = useAuthState(auth);
 
   const {
     register,
@@ -78,41 +71,51 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     console.log(data);
     setIsLoading(true);
+
+    // if (password !== confirmPassword) {
+    //   setErrorPassword("flex");
+    //   setIsLoading(false);
+    // } else {
+    //   setErrorPassword("none");
+    //   setIsLoading(true);
     try {
-      await logIn(data.email, data.password);
-      router.push("/geradorTitle");
-      setError("none");
+      setCookie('name', name);
+      await signUp(data.email, data.password)
+        .then(
+          async (cred) => await sendEmailVerification(cred.user), setIsLoading(false),
+          toast({
+            title: 'Account created.',
+            description: "We send a email verification, check you mail box",
+            status: 'success',
+            position: 'top',
+            duration: 12000,
+            isClosable: true,
+          }), setTimeout(router.push("/"), 3000)
+        )
     } catch (error) {
       console.log(error.message);
       setIsLoading(false);
       setError("flex");
       setErrorMessage(error.message);
     }
+    // }
   }
-
-  const [user, setUser] = useAuthState(auth);
 
   const googleAuth = new GoogleAuthProvider();
 
   const logInGoogle = async () => {
     setIsLoading(true);
+    setErrorPassword("none");
     try {
       await signInWithPopup(auth, googleAuth);
-      router.push("/geradorTitle");
-      setError("none");
+      // router.push("/geradorTitle");
     } catch (error) {
       console.log(error.message);
       setIsLoading(false);
       setError("flex");
       setErrorMessage(error.message);
     }
-  }
-
-  useEffect(() => {
-    console.log(user);
-    setEmailVerified(user?.emailVerified);
-    setCookie("emailVerified", user?.emailVerified);
-  }, [user])
+  };
 
   return (
     <Container
@@ -120,7 +123,7 @@ const LoginPage = () => {
       <Heading
         mb="4"
         textAlign={"center"}>
-        Log In
+        Sign Up
       </Heading>
       <FormProvider {...methods}>
         <form
@@ -137,6 +140,20 @@ const LoginPage = () => {
             gap="6">
             <FormControl>
               <FormLabel
+                htmlFor="name">
+                Name
+              </FormLabel>
+              <Input
+                id='name'
+                type="name"
+                borderRadius={"10px"}
+                bg={bg}
+                autoComplete='on'
+                value={name}
+                onChange={(e) => setName(e.target.value)} />
+            </FormControl>
+            <FormControl>
+              <FormLabel
                 htmlFor="email">
                 Email
               </FormLabel>
@@ -144,13 +161,23 @@ const LoginPage = () => {
                 id='email'
                 type="email"
                 borderRadius={"10px"}
-                {...register("email", { required: "Email is required" })} />
+                bg={bg}
+                autoComplete='on'
+                {...register("email", { required: "Email is required" })}
+              />
               {errors.email
                 &&
-                <Text color="red">
+                <Text>
                   {errors.email.message}
                 </Text>}
             </FormControl>
+            <Box
+              display={errorPassword}
+              justifyContent="center"
+              color="red.400"
+              mb="-4">
+              Senhas não correspondem
+            </Box>
             <FormControl>
               <FormLabel
                 htmlFor="password">
@@ -158,13 +185,16 @@ const LoginPage = () => {
               </FormLabel>
               <InputGroup>
                 <Input
-                  id="password"
+                  id='password'
                   type={showPassword ? "text" : "password"}
                   borderRadius={"10px"}
+                  bg={bg}
+                  autoComplete='on'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   {...register("password", {
                     required: "Password is required",
-                  })}
-                />
+                  })} />
                 <InputRightElement>
                   <Button
                     aria-label="Mostrar/Esconder"
@@ -190,21 +220,48 @@ const LoginPage = () => {
                   </FormErrorMessage>
                 )}
             </FormControl>
-            <Button
-              onClick={() => router.push('/resetPassword')}
-              bg='none'
-              p='0'
-              mt='-5'
-              justifyContent={'end'}
-              _hover={{
-                bg: 'none',
-                color: 'secondary'
-              }}
-              fontSize='14'>
-              <Text>
-                Esqueci minha senha
-              </Text>
-            </Button>
+            {/* <FormControl>
+              <FormLabel
+                htmlFor="confirmPassword">
+                Confirm Password
+              </FormLabel>
+              <InputGroup>
+                <Input
+                  id='confirmPassword'
+                  type={showPassword ? "text" : "password"}
+                  borderRadius={"10px"}
+                  bg={bg}
+                  autoComplete='on'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  {...register("password_confirm", {
+                    required: "Verify your password",
+                  })} />
+                <InputRightElement>
+                  <Button
+                    aria-label="Mostrar/Esconder"
+                    fontSize={"16"}
+                    bg="none"
+                    p="0"
+                    color="#5B1AB2"
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }>
+                    {showPassword
+                      ?
+                      <BsFillEyeSlashFill />
+                      :
+                      <BsFillEyeFill />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              {errors.password_confirm
+                && (
+                  <FormErrorMessage>
+                    {errors.password_confirm.message}
+                  </FormErrorMessage>
+                )}
+            </FormControl> */}
             <Button
               type="submit"
               variant={"button"}
@@ -255,4 +312,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

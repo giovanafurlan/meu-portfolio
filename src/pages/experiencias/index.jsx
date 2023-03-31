@@ -20,7 +20,7 @@ export default function Experiencias() {
     {
       cor: 'red.400',
       empresa: 'Tradesquash',
-      imagem: 'https://media.licdn.com/dms/image/C4D0BAQEOBUxgbtPSAQ/company-logo_200_200/0/1561975551199?e=1675900800&v=beta&t=7wLVF9QO-2rDYHpCJGgVOSHqz2dT99RPvi36s7D6HU0',
+      imagem: '/images/tradesquash.jpeg',
       cargo: t('analista'),
       funcao: t('introExperiencia1'),
       dtInicio: '03/2021',
@@ -32,7 +32,7 @@ export default function Experiencias() {
     {
       cor: 'purple.400',
       empresa: 'Webpeak',
-      imagem: 'https://global-uploads.webflow.com/5e94a806d55af47725f53001/5ee15e37d52645173ea0d613_favicon-256.png',
+      imagem: '/images/webpeak.png',
       cargo: t('estagiaria'),
       funcao: t('introExperiencia2'),
       dtInicio: '01/2022',
