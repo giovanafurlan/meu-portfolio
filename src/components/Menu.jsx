@@ -107,7 +107,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   const { t } = useTranslation("common");
 
   const linkItems = [
-    { name: 'Home', icon: FiHome, link: '/' },
+    { name: 'Home', icon: FiHome, link: '/home' },
     { name: t('conhecimentos'), icon: FiFolder, link: '/conhecimentos' },
     { name: t('experiencias'), icon: FiArchive, link: '/experiencias' },
     { name: t('projetos'), icon: FiGrid, link: '/projetos' },
@@ -346,7 +346,7 @@ const NavItem = ({ link, icon, children, ...rest }) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'gray.200',
+          bg: 'secondary',
           color: 'black',
         }}
         maxW='56'

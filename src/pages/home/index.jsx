@@ -6,7 +6,7 @@ import {
     Heading,
     Button,
   } from '@chakra-ui/react';
-  import Menu from '../components/Menu';
+  import Menu from '../../components/Menu';
   import { useRouter } from 'next/router';
   import useTranslation from 'next-translate/useTranslation';
   import { AiOutlineArrowRight } from "react-icons/ai";

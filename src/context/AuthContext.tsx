@@ -68,7 +68,7 @@ export const AuthContextProvider = ({
   const logInGoogle = async () => {
     try {
       await signInWithPopup(auth, googleAuth);
-      router.push("/geradorTitle");
+      router.push("/home");
     } catch (error: any) {
       console.log(error.message);
     }

@@ -108,7 +108,7 @@ const SignupPage = () => {
     setErrorPassword("none");
     try {
       await signInWithPopup(auth, googleAuth);
-      // router.push("/geradorTitle");
+      // router.push("/home");
     } catch (error) {
       console.log(error.message);
       setIsLoading(false);

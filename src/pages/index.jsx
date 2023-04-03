@@ -59,7 +59,7 @@ const LoginPage = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setCookie("uid", user.uid);
-          router.push("/geradorTitle");
+          router.push("/home");
         } else {
           router.push("/");
         }
@@ -80,7 +80,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       await logIn(data.email, data.password);
-      router.push("/geradorTitle");
+      router.push("/home");
       setError("none");
     } catch (error) {
       console.log(error.message);
@@ -98,7 +98,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       await signInWithPopup(auth, googleAuth);
-      router.push("/geradorTitle");
+      router.push("/home");
       setError("none");
     } catch (error) {
       console.log(error.message);
