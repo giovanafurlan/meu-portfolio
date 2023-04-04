@@ -22,15 +22,7 @@ const theme = extendTheme({
     Button: {
       variants: {
         button: {
-          bg: "#B4846C",
-          color: "white",
-          fontWeight: "normal",
-          borderRadius: "50px",
-          fontSize: "14px",
-          width: "min-content",
-        },
-        "button-orange": {
-          bg: "#E5B299",
+          bg: "#5C5470",
           color: "white",
           fontWeight: "normal",
           borderRadius: "50px",
@@ -39,8 +31,8 @@ const theme = extendTheme({
         },
         "button-outline": {
           bg: "transparent",
-          color: "#B4846C",
-          borderColor: "#B4846C",
+          color: "#5C5470",
+          borderColor: "#5C5470",
           fontWeight: "normal",
           borderRadius: "50px",
           fontSize: "14px",
@@ -79,13 +71,13 @@ const theme = extendTheme({
     "2xl": "1800px",
   },
   colors: {
-    primary: "#7E7474",
-    secondary: "#C4B6B6",
-    tertiary: "#FFDD93",
-    bgClear: "#FCDEC0",
-    bgDark: "#7D5A50",
+    primary: "#5C5470",
+    secondary: "#352F44",
+    tertiary: "#2A2438",
+    bgClear: "#DBD8E3",
+    bgDark: "#352F44",
     bgClearMedium: "#E5B299",
-    bgDarkMedium: "#7D5A50",
+    bgDarkMedium: "#EDEDED",
   },
 });
 

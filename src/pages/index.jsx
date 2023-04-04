@@ -12,6 +12,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
+  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -115,116 +116,120 @@ const LoginPage = () => {
   }, [user])
 
   return (
-    <Container
-      p="10">
-      <Heading
-        mb="4"
-        textAlign={"center"}>
-        Log In
-      </Heading>
-      <FormProvider {...methods}>
-        <form
-          action=""
-          onSubmit={handleSubmit(onSubmit)}>
-          <Box
-            display={error}
-            justifyContent="center"
-            color="red.400">
-            {errorMessage}
-          </Box>
-          <Flex
-            flexDir={"column"}
-            gap="6">
-            <FormControl>
-              <FormLabel
-                htmlFor="email">
-                Email
-              </FormLabel>
-              <Input
-                id='email'
-                type="email"
-                borderRadius={"10px"}
-                {...register("email", { required: "Email is required" })} />
-              {errors.email
-                &&
-                <Text color="red">
-                  {errors.email.message}
-                </Text>}
-            </FormControl>
-            <FormControl>
-              <FormLabel
-                htmlFor="password">
-                Password
-              </FormLabel>
-              <InputGroup>
+    <>
+      <Image
+        src={'/images/logo.webp'}
+        p='4' />
+      <Container
+        mt='-20px'
+        maxW='lg'>
+        <Heading
+          mb="4"
+          textAlign={"center"}>
+          Welcome
+        </Heading>
+        <FormProvider {...methods}>
+          <form
+            action=""
+            onSubmit={handleSubmit(onSubmit)}>
+            <Box
+              display={error}
+              justifyContent="center"
+              color="red.400">
+              {errorMessage}
+            </Box>
+            <Flex
+              flexDir={"column"}
+              gap="6">
+              <FormControl>
+                <FormLabel
+                  htmlFor="email">
+                  Email
+                </FormLabel>
                 <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
+                  id='email'
+                  type="email"
                   borderRadius={"10px"}
-                  {...register("password", {
-                    required: "Password is required",
-                  })}
-                />
-                <InputRightElement>
-                  <Button
-                    aria-label="Mostrar/Esconder"
-                    fontSize={"16"}
-                    bg="none"
-                    p="0"
-                    color="#5B1AB2"
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }>
-                    {showPassword
-                      ?
-                      <BsFillEyeSlashFill />
-                      :
-                      <BsFillEyeFill />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-              {errors.password
-                && (
-                  <FormErrorMessage>
-                    {errors.password.message}
-                  </FormErrorMessage>
-                )}
-            </FormControl>
-            <Button
-              onClick={() => router.push('/resetPassword')}
-              bg='none'
-              p='0'
-              mt='-5'
-              justifyContent={'end'}
-              _hover={{
-                bg: 'none',
-                color: 'secondary'
-              }}
-              fontSize='14'>
-              <Text>
-                Esqueci minha senha
-              </Text>
-            </Button>
-            <Button
-              type="submit"
-              variant={"button"}
-              w="full">
-              {isLoading ? (
-                <CircularProgress
-                  color="tertiary"
-                  size="7"
-                  isIndeterminate />
-              ) : (
-                <Text
-                  fontWeight={"normal"}
-                  fontSize="14px">
-                  Submit
+                  {...register("email", { required: "Email is required" })} />
+                {errors.email
+                  &&
+                  <Text color="red">
+                    {errors.email.message}
+                  </Text>}
+              </FormControl>
+              <FormControl>
+                <FormLabel
+                  htmlFor="password">
+                  Password
+                </FormLabel>
+                <InputGroup>
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    borderRadius={"10px"}
+                    {...register("password", {
+                      required: "Password is required",
+                    })}
+                  />
+                  <InputRightElement>
+                    <Button
+                      aria-label="Mostrar/Esconder"
+                      fontSize={"16"}
+                      bg="none"
+                      p="0"
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }>
+                      {showPassword
+                        ?
+                        <BsFillEyeSlashFill />
+                        :
+                        <BsFillEyeFill />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+                {errors.password
+                  && (
+                    <FormErrorMessage>
+                      {errors.password.message}
+                    </FormErrorMessage>
+                  )}
+              </FormControl>
+              <Button
+                onClick={() => router.push('/resetPassword')}
+                bg='none'
+                p='0'
+                mt='-5'
+                justifyContent={'end'}
+                _hover={{
+                  bg: 'none',
+                  color: 'secondary'
+                }}
+                fontSize='14'>
+                <Text>
+                  Esqueci minha senha
                 </Text>
-              )}
-            </Button>
-          </Flex>
-        </form>
-        <Button
+              </Button>
+              <Button
+                type="submit"
+                variant={"button"}
+                w="full">
+                {isLoading ? (
+                  <CircularProgress
+                    color="tertiary"
+                    size="7"
+                    isIndeterminate />
+                ) : (
+                  <Text
+                    fontWeight={"normal"}
+                    fontSize="14px">
+                    Submit
+                  </Text>
+                )}
+              </Button>
+            </Flex>
+          </form>
+          {/* <Button
           onClick={logInGoogle}
           w="full"
           borderRadius={"30px"}
@@ -249,10 +254,11 @@ const LoginPage = () => {
               </Flex>
             )}
           </Flex>
-        </Button>
-      </FormProvider>
-    </Container>
-  );
-};
+        </Button> */}
+        </FormProvider>
+      </Container>
+    </>
+  )
+}
 
 export default LoginPage;

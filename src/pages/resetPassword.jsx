@@ -10,6 +10,7 @@ import {
     FormControl,
     FormLabel,
     Heading,
+    Image,
     Input,
     Text
 } from '@chakra-ui/react'
@@ -67,56 +68,61 @@ export default function ResetPassword() {
     }, [user, auth]);
 
     return (
-        <Container
-            p="10">
-            <Heading
-                mb="4"
-                textAlign={"center"}>
-                Reset Password
-            </Heading>
-            <FormProvider {...methods}>
-                <form
-                    action=""
-                    onSubmit={handleSubmit(onSubmit)}>
-                    <Flex
-                        flexDir={"column"}
-                        gap="6">
-                        <FormControl>
-                            <FormLabel
-                                htmlFor="email">
-                                Email
-                            </FormLabel>
-                            <Input
-                                id='email'
-                                type="email"
-                                borderRadius={"10px"}
-                                {...register("email", { required: "Email is required" })} />
-                            {errors.email
-                                &&
-                                <Text color="red">
-                                    {errors.email.message}
-                                </Text>}
-                        </FormControl>
-                        <Button
-                            type="submit"
-                            variant={"button"}
-                            w="full">
-                            {isLoading ? (
-                                <CircularProgress
-                                    color="tertiary"
-                                    size="7"
-                                    isIndeterminate />
-                            ) : (
-                                <Text
-                                    fontWeight={"normal"}
-                                    fontSize="14px">
-                                    Submit
-                                </Text>
-                            )}
-                        </Button>
-                    </Flex>
-                </form>
-            </FormProvider>
-        </Container>
+        <>
+            <Image
+                src={'/images/logo.webp'}
+                p='4' />
+            <Container
+                maxW='lg'>
+                <Heading
+                    mb="4"
+                    textAlign={"center"}>
+                    Reset Password
+                </Heading>
+                <FormProvider {...methods}>
+                    <form
+                        action=""
+                        onSubmit={handleSubmit(onSubmit)}>
+                        <Flex
+                            flexDir={"column"}
+                            gap="6">
+                            <FormControl>
+                                <FormLabel
+                                    htmlFor="email">
+                                    Email
+                                </FormLabel>
+                                <Input
+                                    id='email'
+                                    type="email"
+                                    borderRadius={"10px"}
+                                    {...register("email", { required: "Email is required" })} />
+                                {errors.email
+                                    &&
+                                    <Text color="red">
+                                        {errors.email.message}
+                                    </Text>}
+                            </FormControl>
+                            <Button
+                                type="submit"
+                                variant={"button"}
+                                w="full">
+                                {isLoading ? (
+                                    <CircularProgress
+                                        color="tertiary"
+                                        size="7"
+                                        isIndeterminate />
+                                ) : (
+                                    <Text
+                                        fontWeight={"normal"}
+                                        fontSize="14px">
+                                        Submit
+                                    </Text>
+                                )}
+                            </Button>
+                        </Flex>
+                    </form>
+                </FormProvider>
+            </Container>
+        </>
     )
 }

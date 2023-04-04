@@ -36,6 +36,7 @@ import {
   FiYoutube,
   FiLinkedin
 } from 'react-icons/fi';
+import { MdOutlineStyle } from 'react-icons/md';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
@@ -90,8 +91,8 @@ export default function SideBar({ children }) {
             lg: '4',
             sm: '20'
           }}>
-            <ProtectedRoute>
-          {children}
+          <ProtectedRoute>
+            {children}
           </ProtectedRoute>
         </Container>
       </Box>
@@ -113,6 +114,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     { name: t('projetos'), icon: FiGrid, link: '/projetos' },
     { name: 'Blog', icon: FiBookmark, link: '/blog' },
     { name: t('contato'), icon: FiMessageSquare, link: '/contato' },
+    { name: 'Stylebook', icon: MdOutlineStyle, link: '/stylebook' },
   ];
 
   const linkItemsTools = [
@@ -153,6 +155,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         alignItems="center"
         mx="6"
         my='4'
+        mb='10'
         justifyContent="space-between">
         <Image
           src={'/images/logo.webp'}
@@ -165,7 +168,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
           }}
           onClick={onClose} />
       </Flex>
-      <br />
       {linkItems.map((link) => (
         <NavItem
           key={link.name}
@@ -341,13 +343,13 @@ const NavItem = ({ link, icon, children, ...rest }) => {
         align="center"
         p="2"
         mx="4"
-        my='2'
+        my='1'
         borderRadius="lg"
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'secondary',
-          color: 'black',
+          bg: 'primary',
+          color: 'white',
         }}
         maxW='56'
         {...rest}>
@@ -356,7 +358,7 @@ const NavItem = ({ link, icon, children, ...rest }) => {
             mr="4"
             fontSize="16"
             _groupHover={{
-              color: 'primary',
+              color: 'bgClear',
             }}
             as={icon}
           />

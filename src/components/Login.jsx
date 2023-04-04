@@ -120,6 +120,9 @@ const Navbar = ({ children }) => {
                     <MenuItem
                       borderRadius="lg"
                       onClick={handleLogout}
+                      _hover={{
+                        bg:'bgClear'
+                      }}
                       color='black'
                       w={"-webkit-fill-available"}>
                       {t("sair")}
