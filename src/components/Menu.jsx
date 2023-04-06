@@ -34,9 +34,11 @@ import {
   FiLink,
   FiGithub,
   FiYoutube,
-  FiLinkedin
+  FiLinkedin,
+  FiAlignCenter
 } from 'react-icons/fi';
 import { MdOutlineStyle } from 'react-icons/md';
+import { BsBodyText } from 'react-icons/bs';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
@@ -48,6 +50,8 @@ export default function SideBar({ children }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = (useColorModeValue('gray.100', 'gray.900'));
+  const bg2 = (useColorModeValue('white', 'none'));
+  const border = (useColorModeValue('white', '#2d3748'));
 
   return (
     <Box
@@ -79,6 +83,13 @@ export default function SideBar({ children }) {
           md: 'none'
         }}
         onOpen={onOpen} />
+          <Box
+          h='16'
+          bg={bg2}
+          borderBottom={'1px'}
+          borderColor={border}
+          w='full'>
+          </Box>
       <Box
         ml={{
           base: 0,
@@ -89,7 +100,7 @@ export default function SideBar({ children }) {
           maxW={'5xl'}
           py={{
             lg: '4',
-            sm: '20'
+            sm: '2'
           }}>
           <ProtectedRoute>
             {children}
@@ -118,7 +129,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
   ];
 
   const linkItemsTools = [
-    { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' }
+    { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' },
+    { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
   ];
 
   const color = useColorModeValue('white', '#171923');

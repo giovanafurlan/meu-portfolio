@@ -78,7 +78,9 @@ const Navbar = ({ children }) => {
               ?
               <Box
                 pos="absolute"
-                right="5" top="5">
+                zIndex={1}
+                right="2" 
+                top="3">
                 {/* <Button
                   onClick={handleLogout}
                   variant="button">

@@ -1,10 +1,10 @@
 {
   "locales": [
-    "en",
     "pt-br",
+    "en",
     "es"
   ],
-  "defaultLocale": "en",
+  "defaultLocale": "pt-br",
   "localeDetection": false,
   "pages": {
     "*": [

@@ -11,7 +11,8 @@ export default function Posts({ blog, tags }) {
   const { t } = useTranslation("common");
 
   const url = "/blog";
-  const title = 'Blog'
+  const title = 'Blog';
+  
   return (
     <>
       <BasicMeta url={url} title={title} />
