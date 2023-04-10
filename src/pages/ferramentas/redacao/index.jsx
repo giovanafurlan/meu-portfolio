@@ -136,8 +136,8 @@ export default function GeradorTexto() {
     {
       isRequired: true,
       id: 'theme',
-      title: t('theme'),
-      tooltip: 'theme',
+      title: t('tema'),
+      tooltip: t('tema'),
       value: themeEssay,
       onChange: (e) => setThemeEssay(e.target.value)
     }
@@ -185,7 +185,8 @@ export default function GeradorTexto() {
             <Flex
               gap='2'
               align={'center'}>
-              <BiPlusCircle /> Create new
+              <BiPlusCircle /> 
+              {t('criarNovo')}
             </Flex>
           </Button>
           {/* <Button
@@ -214,9 +215,9 @@ export default function GeradorTexto() {
             <Table variant='striped'>
               <Thead>
                 <Tr>
-                  <Th>Name</Th>
-                  <Th>Created at</Th>
-                  <Th>Access</Th>
+                  <Th>{t('nome')}</Th>
+                  <Th>{t('criadoEm')}</Th>
+                  <Th>{t('acesse')}</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -304,7 +305,7 @@ export default function GeradorTexto() {
           w='full'>
           <Button
             onClick={() => { handleSubmit() }}
-            variant="button-orange"
+            variant="button"
             _hover={{
               bg: "#FFB596",
             }} >

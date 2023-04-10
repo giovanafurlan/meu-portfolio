@@ -75,7 +75,7 @@ export default function Language() {
     )
 }
 
-function Lang({ lng, img, children }) {
+function Lang({ lng, children }) {
 
     const bg = useColorModeValue('gray.200', 'gray.700');
 
@@ -85,14 +85,15 @@ function Lang({ lng, img, children }) {
             href=""
             locale={lng}>
             <Tag
-                size='md'
+                size='lg'
                 bg={bg}
                 borderRadius='full'
                 box-shadow='0px 4px 15px rgba(0, 0, 0, 0.07)'
                 _hover={{
                     boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.3)'
                 }}
-                pl='0'>
+                pl='0'
+                cursor={'pointer'}>
                 <TagLabel
                     ml='4'
                     fontSize={'13px'}>

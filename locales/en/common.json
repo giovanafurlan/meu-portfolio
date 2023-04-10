@@ -4,6 +4,8 @@
   "__comment__": "Botões",
     "botaoCor": "Alternation",
     "menu": "Language",
+    "bemVindo": "Welcome",
+    "sair": "Exit",
 
   "__comment1__": "Menu",
     "home": "Home",
@@ -55,5 +57,14 @@
     "coleURL": "Paste the URL you want to shorten",
     "envia": "Send",
     "carregando": "Loading...",
-    "exEncurtadorURL": "Example - http://www.example.com.br"
+    "exEncurtadorURL": "Example - http://www.example.com.br",
+
+    "__comment4.2__": "Redação",
+    "redacao": "Ensayo",
+    "tema": "Theme",
+    "titulo": "Title",
+    "criadoEm": "Created on",
+    "acesse": "Access",
+    "criarNovo": "Create new",
+    "gerar": "Generate"
 }
