@@ -24,7 +24,7 @@ import { FiExternalLink } from "react-icons/fi";
 import { BsArrowLeftSquare } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
+// import "quill/dist/quill.snow.css";
 import { getText } from "../../../services/getApis";
 import {
   listContent,

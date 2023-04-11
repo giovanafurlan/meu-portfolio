@@ -12,7 +12,7 @@ import {
     Textarea
 } from "@chakra-ui/react";
 import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
+// import "quill/dist/quill.snow.css";
 import useTranslation from "next-translate/useTranslation";
 import {
     collection,
