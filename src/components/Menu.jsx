@@ -93,13 +93,13 @@ export default function SideBar({ children }) {
       <Box
         ml={{
           base: 0,
-          md: 60
+          md: 48
         }}
-        p="4">
+        py="4">
         <Container
           maxW={'5xl'}
           py={{
-            lg: '4',
+            lg: '0',
             sm: '2'
           }}>
           <ProtectedRoute>
@@ -130,7 +130,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   const linkItemsTools = [
     { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' },
-    { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
+    // { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
   ];
 
   const color = useColorModeValue('white', '#171923');

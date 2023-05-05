@@ -22,7 +22,7 @@ export default function PostItem({ post }) {
       band: "/images/bandeira-brasil.webp",
       name: "Português"
     }
-  ];
+  ]
 
   return (
     <>
@@ -35,25 +35,28 @@ export default function PostItem({ post }) {
             locale={post.language}>
             <a>
               <Box
-                monW={{
-                  lg: '80',
+                maxW={{
+                  lg: '60',
                   sm: 'auto'
                 }}
-                minH='350px'
+                minH='80'
                 p='2'
                 bg={useColorModeValue('white', 'gray.800')}
-                borderRadius='lg'                    
-                boxShadow='0px 4px 15px rgba(0, 0, 0, 0.3)'>
+                borderRadius='lg'
+                boxShadow='0px 4px 15px rgba(0, 0, 0, 0.3)'
+                _hover={{
+                  bg: useColorModeValue('gray.300', 'gray.600')
+                }}>
                 <Image
                   src={post.image}
                   alt={post.title}
                   borderRadius='9px'
-                  w='60'
+                  w='48'
                   loading='lazy' />
                 <Flex
-                flexDir={'column'}
-                gap='1'
-                mt='2'
+                  flexDir={'column'}
+                  gap='1'
+                  mt='2'
                   textAlign={'initial'}>
                   <Heading
                     as='h3'
@@ -70,8 +73,8 @@ export default function PostItem({ post }) {
               </Box>
             </a>
           </Link>
-        );
+        )
       })}
     </>
-  );
+  )
 }

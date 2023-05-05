@@ -12,7 +12,8 @@ import {
     Heading,
     Image,
     Input,
-    Text
+    Text,
+    useColorModeValue
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import {
@@ -25,8 +26,10 @@ import {
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { setCookie } from 'cookies-next';
+import LoginLayout from '../components/LoginLayout';
 
 export default function ResetPassword() {
+    const bg = useColorModeValue("white", "gray.900");
 
     const auth = getAuth();
 
@@ -68,61 +71,56 @@ export default function ResetPassword() {
     }, [user, auth]);
 
     return (
-        <>
-            <Image
-                src={'/images/logo.webp'}
-                p='4' />
-            <Container
-                maxW='lg'>
-                <Heading
-                    mb="4"
-                    textAlign={"center"}>
-                    Reset Password
-                </Heading>
-                <FormProvider {...methods}>
-                    <form
-                        action=""
-                        onSubmit={handleSubmit(onSubmit)}>
-                        <Flex
-                            flexDir={"column"}
-                            gap="6">
-                            <FormControl>
-                                <FormLabel
-                                    htmlFor="email">
-                                    Email
-                                </FormLabel>
-                                <Input
-                                    id='email'
-                                    type="email"
-                                    borderRadius={"10px"}
-                                    {...register("email", { required: "Email is required" })} />
-                                {errors.email
-                                    &&
-                                    <Text color="red">
-                                        {errors.email.message}
-                                    </Text>}
-                            </FormControl>
-                            <Button
-                                type="submit"
-                                variant={"button"}
-                                w="full">
-                                {isLoading ? (
-                                    <CircularProgress
-                                        color="tertiary"
-                                        size="7"
-                                        isIndeterminate />
-                                ) : (
-                                    <Text
-                                        fontWeight={"normal"}
-                                        fontSize="14px">
-                                        Submit
-                                    </Text>
-                                )}
-                            </Button>
-                        </Flex>
-                    </form>
-                </FormProvider>
-            </Container>
-        </>
+        <LoginLayout>
+            <Heading
+                mb="4"
+                textAlign={"center"}>
+                Reset Password
+            </Heading>
+            <FormProvider {...methods}>
+                <form
+                    action=""
+                    onSubmit={handleSubmit(onSubmit)}>
+                    <Flex
+                        flexDir={"column"}
+                        gap="6">
+                        <FormControl>
+                            <FormLabel
+                                htmlFor="email">
+                                Email
+                            </FormLabel>
+                            <Input
+                                bg={bg}
+                                id='email'
+                                type="email"
+                                borderRadius={"10px"}
+                                {...register("email", { required: "Email is required" })} />
+                            {errors.email
+                                &&
+                                <Text color="red">
+                                    {errors.email.message}
+                                </Text>}
+                        </FormControl>
+                        <Button
+                            type="submit"
+                            variant={"button"}
+                            w="full">
+                            {isLoading ? (
+                                <CircularProgress
+                                    color="tertiary"
+                                    size="7"
+                                    isIndeterminate />
+                            ) : (
+                                <Text
+                                    fontWeight={"normal"}
+                                    fontSize="14px">
+                                    Submit
+                                </Text>
+                            )}
+                        </Button>
+                    </Flex>
+                </form>
+            </FormProvider>
+        </LoginLayout>
     )
 }

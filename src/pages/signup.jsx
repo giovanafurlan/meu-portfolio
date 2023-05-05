@@ -41,6 +41,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuth } from "../context/AuthContext";
 import { setCookie } from "cookies-next";
+import LoginLayout from "../components/LoginLayout";
 
 const SignupPage = () => {
   const bg = useColorModeValue("white", "gray.900");
@@ -116,116 +117,110 @@ const SignupPage = () => {
       setError("flex");
       setErrorMessage(error.message);
     }
-  };
+  }
 
   return (
-    <>
-      <Image
-        src={'/images/logo.webp'}
-        p='4' />
-      <Container
-        mt='-20px'
-        maxW='lg'>
-        <Heading
-          mb="4"
-          textAlign={"center"}>
-          Sign Up
-        </Heading>
-        <FormProvider {...methods}>
-          <form
-            action=""
-            onSubmit={handleSubmit(onSubmit)}>
+    <LoginLayout>
+      <Heading
+        mb="4"
+        textAlign={"center"}>
+        Sign Up
+      </Heading>
+      <FormProvider {...methods}>
+        <form
+          action=""
+          onSubmit={handleSubmit(onSubmit)}>
+          <Box
+            display={error}
+            justifyContent="center"
+            color="red.400">
+            {errorMessage}
+          </Box>
+          <Flex
+            flexDir={"column"}
+            gap="6">
+            <FormControl>
+              <FormLabel
+                htmlFor="name">
+                Name
+              </FormLabel>
+              <Input
+                id='name'
+                type="name"
+                borderRadius={"10px"}
+                bg={bg}
+                autoComplete='on'
+                value={name}
+                onChange={(e) => setName(e.target.value)} />
+            </FormControl>
+            <FormControl>
+              <FormLabel
+                htmlFor="email">
+                Email
+              </FormLabel>
+              <Input
+                id='email'
+                type="email"
+                borderRadius={"10px"}
+                bg={bg}
+                autoComplete='on'
+                {...register("email", { required: "Email is required" })}
+              />
+              {errors.email
+                &&
+                <Text>
+                  {errors.email.message}
+                </Text>}
+            </FormControl>
             <Box
-              display={error}
+              display={errorPassword}
               justifyContent="center"
-              color="red.400">
-              {errorMessage}
+              color="red.400"
+              mb="-4">
+              Senhas não correspondem
             </Box>
-            <Flex
-              flexDir={"column"}
-              gap="6">
-              <FormControl>
-                <FormLabel
-                  htmlFor="name">
-                  Name
-                </FormLabel>
+            <FormControl>
+              <FormLabel
+                htmlFor="password">
+                Password
+              </FormLabel>
+              <InputGroup>
                 <Input
-                  id='name'
-                  type="name"
+                  id='password'
+                  type={showPassword ? "text" : "password"}
                   borderRadius={"10px"}
                   bg={bg}
                   autoComplete='on'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)} />
-              </FormControl>
-              <FormControl>
-                <FormLabel
-                  htmlFor="email">
-                  Email
-                </FormLabel>
-                <Input
-                  id='email'
-                  type="email"
-                  borderRadius={"10px"}
-                  bg={bg}
-                  autoComplete='on'
-                  {...register("email", { required: "Email is required" })}
-                />
-                {errors.email
-                  &&
-                  <Text>
-                    {errors.email.message}
-                  </Text>}
-              </FormControl>
-              <Box
-                display={errorPassword}
-                justifyContent="center"
-                color="red.400"
-                mb="-4">
-                Senhas não correspondem
-              </Box>
-              <FormControl>
-                <FormLabel
-                  htmlFor="password">
-                  Password
-                </FormLabel>
-                <InputGroup>
-                  <Input
-                    id='password'
-                    type={showPassword ? "text" : "password"}
-                    borderRadius={"10px"}
-                    bg={bg}
-                    autoComplete='on'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    {...register("password", {
-                      required: "Password is required",
-                    })} />
-                  <InputRightElement>
-                    <Button
-                      aria-label="Mostrar/Esconder"
-                      fontSize={"16"}
-                      bg="none"
-                      p="0"
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }>
-                      {showPassword
-                        ?
-                        <BsFillEyeSlashFill />
-                        :
-                        <BsFillEyeFill />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-                {errors.password
-                  && (
-                    <FormErrorMessage>
-                      {errors.password.message}
-                    </FormErrorMessage>
-                  )}
-              </FormControl>
-              {/* <FormControl>
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  {...register("password", {
+                    required: "Password is required",
+                  })} />
+                <InputRightElement>
+                  <Button
+                    aria-label="Mostrar/Esconder"
+                    fontSize={"16"}
+                    bg="none"
+                    p="0"
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }>
+                    {showPassword
+                      ?
+                      <BsFillEyeSlashFill />
+                      :
+                      <BsFillEyeFill />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              {errors.password
+                && (
+                  <FormErrorMessage>
+                    {errors.password.message}
+                  </FormErrorMessage>
+                )}
+            </FormControl>
+            {/* <FormControl>
               <FormLabel
                 htmlFor="confirmPassword">
                 Confirm Password
@@ -267,26 +262,26 @@ const SignupPage = () => {
                   </FormErrorMessage>
                 )}
             </FormControl> */}
-              <Button
-                type="submit"
-                variant={"button"}
-                w="full">
-                {isLoading ? (
-                  <CircularProgress
-                    color="tertiary"
-                    size="7"
-                    isIndeterminate />
-                ) : (
-                  <Text
-                    fontWeight={"normal"}
-                    fontSize="14px">
-                    Submit
-                  </Text>
-                )}
-              </Button>
-            </Flex>
-          </form>
-          {/* <Button
+            <Button
+              type="submit"
+              variant={"button"}
+              w="full">
+              {isLoading ? (
+                <CircularProgress
+                  color="tertiary"
+                  size="7"
+                  isIndeterminate />
+              ) : (
+                <Text
+                  fontWeight={"normal"}
+                  fontSize="14px">
+                  Submit
+                </Text>
+              )}
+            </Button>
+          </Flex>
+        </form>
+        {/* <Button
           onClick={logInGoogle}
           w="full"
           borderRadius={"30px"}
@@ -312,9 +307,8 @@ const SignupPage = () => {
             )}
           </Flex>
         </Button> */}
-        </FormProvider>
-      </Container>
-    </>
+      </FormProvider>
+    </LoginLayout>
   )
 }
 

@@ -154,10 +154,9 @@ function CardRepo(
       href={link}
       target='_blank'>
       <Box
-        color='black'
         border='1px'
         borderRadius={'lg'}
-        borderColor='white'
+        borderColor={useColorModeValue('white', 'black')}
         p='4'
         h='300px'
         boxShadow={'2xl'}

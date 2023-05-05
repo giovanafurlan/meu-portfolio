@@ -1,7 +1,8 @@
 import {
   Flex,
   Box,
-  Heading
+  Heading,
+  useColorModeValue
 } from '@chakra-ui/react';
 import BasicMeta from "./meta/BasicMeta";
 import JsonLdMeta from "./meta/JsonLdMeta";
@@ -60,7 +61,7 @@ h6 {
 }
 
 h1 {
-  font-size: 3.125rem;
+  font-size: 2.125rem;
   line-height: 3.188rem;
 }
 
@@ -187,32 +188,40 @@ export default function PostLayout({
         description={intro}
       />
       <Menu>
-        <Flex
-          flexDir={'column'}
-          gap='6'
-          textAlign='center'>
-          <Heading
-            as={'h1'}
-            fontSize={'4xl'}
-            fontFamily='monospace'
-            textTransform='uppercase'
-            fontWeight={'hairline'}>
-            {title}
-          </Heading>
+        <Box
+          py='6'>
           <Flex
-            gap='2'
-            margin={'0 auto'}>
-            {tags?.map((it, i) => (
-              <Box key={i}>
-                <TagButton tag={getTag(it)} />
-              </Box>
-            ))}
+            flexDir={'column'}
+            gap='3'
+            textAlign='center'
+            mb='12'>
+            <Heading
+              as={'h1'}
+              fontSize={'5xl'}
+              fontFamily='monospace'
+              textTransform='uppercase'
+              fontWeight={'hairline'}
+              bg={useColorModeValue('gray.300', 'gray.600')}
+              px='2'
+              m='0 auto'
+              borderRadius={'lg'}>
+              {title}
+            </Heading>
+            <Flex
+              gap='2'
+              margin={'0 auto'}>
+              {tags?.map((it, i) => (
+                <Box key={i}>
+                  <TagButton tag={getTag(it)} />
+                </Box>
+              ))}
+            </Flex>
+            <Date date={date} />
           </Flex>
-          <Date date={date} />
-        </Flex>
-        <Format>
-          {children}
-        </Format>
+          <Format>
+            {children}
+          </Format>
+        </Box>
       </Menu>
     </>
   );

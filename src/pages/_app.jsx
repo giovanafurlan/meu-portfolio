@@ -6,6 +6,7 @@ import Head from "next/head";
 import Navbar from "../components/Login";
 import { AuthContextProvider } from "../context/AuthContext";
 import { Global, css } from '@emotion/react';
+import "@fontsource/aldrich";
 
 const config = {
   initialColorMode: "dark",
@@ -15,8 +16,8 @@ const config = {
 const theme = extendTheme({
   config,
   fonts: {
-    heading: `'Lato', sans-serif`,
-    body: `'Lato', sans-serif`,
+    heading: `'Aldrich', sans-serif`,
+    body: `'Aldrich', sans-serif`,
   },
   components: {
     Button: {

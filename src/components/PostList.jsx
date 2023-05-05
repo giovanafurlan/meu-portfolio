@@ -31,7 +31,8 @@ export default function PostList({
         flexDir={{
           lg: 'row',
           sm: 'column'
-        }}>
+        }}
+        justifyContent={'space-between'}>
         <Flex
           maxW={'full'}
           height={'max-content'}
@@ -57,7 +58,7 @@ export default function PostList({
                 lg: 'repeat(3, 1fr)',
                 sm: 'repeat(1, 1fr)'
               }}
-              gap={6}>
+              gap={'3'}>
               {blog?.slice(0, next).map((it, i) => (
                 <GridItem key={i}>
                   <PostItem post={it} />
@@ -84,7 +85,6 @@ export default function PostList({
         <Flex
           flexDir={'column'}
           gap='4'
-          mr='10'
           mt='2.5'
           mb={{
             lg: 0,
@@ -95,7 +95,7 @@ export default function PostList({
             sm: 0
           }}>
           <Text
-            fontSize={'2xl'}
+            fontSize={'4xl'}
             fontFamily='monospace'
             textTransform='uppercase'
             fontWeight={'hairline'}>

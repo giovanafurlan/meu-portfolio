@@ -8,7 +8,7 @@ export default function TagButton({ tag }) {
       as={`/blog/tags/${tag.slug}`}>
       <a>
         <Text
-          fontSize={'16'}>
+          fontSize={'sm'}>
           #{tag.name}
         </Text>
       </a>

@@ -8,7 +8,7 @@ export default function Date({ date }) {
       <Text
         as={'span'}
         color='gray'
-        fontSize={'xs'}>
+        fontSize={'sm'}>
         {format(date, "d LLLL, yyyy")}
       </Text>
     </time>

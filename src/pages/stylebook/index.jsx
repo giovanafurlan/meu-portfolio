@@ -159,7 +159,7 @@ export default function Stylebook() {
 
                 <Fonte nome={t('btnSecundario')}>
                     <Button
-                        variant={'button-orange'}
+                        variant={'button-outline'}
                         _hover={{
                             bg: '#FFB596'
                         }}>

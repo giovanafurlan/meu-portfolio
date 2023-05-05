@@ -23,8 +23,6 @@ import { BiPlusCircle } from "react-icons/bi";
 import { FiExternalLink } from "react-icons/fi";
 import { BsArrowLeftSquare } from "react-icons/bs";
 import { useRouter } from "next/router";
-import { useQuill } from "react-quilljs";
-// import "quill/dist/quill.snow.css";
 import { getText } from "../../../services/getApis";
 import {
   listContent,
@@ -35,6 +33,13 @@ import Menu from '../../../components/Menu';
 import Field from "../../../components/Field";
 import styled from "styled-components";
 import { setCookie } from "cookies-next";
+import dynamic from "next/dynamic";
+import AnimatedText from "../../../components/AnimatedText";
+import { useMemo } from "react";
+const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+});
 
 export const Estilo = styled.div`
   .ql-toolbar.ql-snow, 
@@ -46,30 +51,22 @@ export const Estilo = styled.div`
     color: #8a8686;
     stroke: #8a8686;
   }
-
-  .ql-container.ql-snow {
-    border-radius: 0 0 20px 20px;
-    border-color: #8a8686;
-  }
 `;
 
 export default function GeradorTexto() {
 
   const { t } = useTranslation("common");
 
-  const theme = "snow";
-
-  const { quill, quillRef } = useQuill({ theme });
-
   const toast = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('flex');
-  const [visibility, setVisibility] = useState('hidden');
-  const [visibility2, setVisibility2] = useState('hidden');
+  const [visibility, setVisibility] = useState("hidden");
+  const [visibility2, setVisibility2] = useState("hidden");
 
   const [themeEssay, setThemeEssay] = useState();
+  const [text, setText] = useState();
 
   const [lista, setLista] = useState([]);
 
@@ -86,7 +83,7 @@ export default function GeradorTexto() {
 
     setVisibility('visible');
 
-    getText(locale,themeEssay)
+    getText(locale, themeEssay)
       .then((res) => {
         setIsLoading(false);
         setVisibility2('visible');
@@ -98,7 +95,7 @@ export default function GeradorTexto() {
         data.choices.forEach(element => {
           const el = element.text;
 
-          quill.setText(el);
+          setText(el);
 
           toast({
             title: 'Generation save',
@@ -131,6 +128,26 @@ export default function GeradorTexto() {
       })
       .finally();
   }
+
+  function TextAnimate(text) {
+    const [index, setIndex] = useState(0);
+    const words = useMemo(() => text.split(" "), [text]);
+
+    const placeholder = words.slice(0, index).join(" ");
+
+    useEffect(() => {
+      if (index >= words.length) return;
+
+      const timeout = setTimeout(() => setIndex((i) => i + 1), 70);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }, [setIndex, index, words]);
+
+    return placeholder;
+  }
+
 
   const fields = [
     {
@@ -176,79 +193,86 @@ export default function GeradorTexto() {
         gap='4'
         flexDir={'column'}>
         <Flex
-          w='full'
-          justifyContent={'end'}
-          gap='4'>
-          <Button
-            onClick={create}
-            variant={'button-orange'}>
-            <Flex
-              gap='2'
-              align={'center'}>
-              <BiPlusCircle /> 
-              {t('criarNovo')}
-            </Flex>
-          </Button>
-          {/* <Button
-              onClick={list}
-              variant={'button'}>
-              <Flex
-                gap='2'
-                align={'center'}>
-                <TfiLayoutListThumb /> List
-              </Flex>
-            </Button> */}
-        </Flex>
-        <Flex
           flexDir={'column'}
           gap='4'>
-          {/* {lista
-              ?
-              <Text
-                textAlign={'center'}
-                mt='10'
-                fontSize={'lg'}>
-                No data found
-              </Text>
-              : */}
-          <TableContainer>
-            <Table variant='striped'>
-              <Thead>
-                <Tr>
-                  <Th>{t('nome')}</Th>
-                  <Th>{t('criadoEm')}</Th>
-                  <Th>{t('acesse')}</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {lista.map((item, idx) => (
-                  <Tr
-                    key={idx}
-                    id={item.id}>
-                    <Td>
-                      {item.companyName}
-                    </Td>
-                    <Td>
-                      {item.createdAt}
-                    </Td>
-                    <Td>
-                      <Link
+          {lista.length <= 0 ? (
+            <Flex
+              flexDir={'column'}
+              maxW={"5xl"}
+              m="0 auto"
+              align={"center"}
+              gap="6"
+              fontSize={'3xl'}
+              textTransform={'uppercase'}
+              fontFamily={'monospace'}>
+              <AnimatedText text={'Crie redações em alguns segundos'} />
+              <Button
+                onClick={create}
+                variant={'button-outline'}>
+                <Flex
+                  gap='2'
+                  align={'center'}>
+                  <BiPlusCircle />
+                  {t('criarNovo')}
+                </Flex>
+              </Button>
+            </Flex>
+          ) : (
+            <>
+              <Flex
+                w='full'
+                justifyContent={'end'}
+                gap='4'>
+                <Button
+                  onClick={create}
+                  variant={'button-outline'}>
+                  <Flex
+                    gap='2'
+                    align={'center'}>
+                    <BiPlusCircle />
+                    {t('criarNovo')}
+                  </Flex>
+                </Button>
+              </Flex>
+              <TableContainer>
+                <Table variant='striped'>
+                  <Thead>
+                    <Tr>
+                      <Th>{t('nome')}</Th>
+                      <Th>{t('criadoEm')}</Th>
+                      <Th>{t('acesse')}</Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    {lista.map((item, idx) => (
+                      <Tr
                         key={idx}
-                        id={item.id}
-                        href={'/geradores/geradorTexto/' + item.id}
-                        onClick={idAcess}>
-                        <Button
-                          variant={'button'}>
-                          <FiExternalLink />
-                        </Button>
-                      </Link>
-                    </Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </TableContainer>
-          {/* } */}
+                        id={item.id}>
+                        <Td>
+                          {item.companyName}
+                        </Td>
+                        <Td>
+                          {item.createdAt}
+                        </Td>
+                        <Td>
+                          <Link
+                            key={idx}
+                            id={item.id}
+                            href={'/geradores/geradorTexto/' + item.id}
+                            onClick={idAcess}>
+                            <Button
+                              variant={'button'}>
+                              <FiExternalLink />
+                            </Button>
+                          </Link>
+                        </Td>
+                      </Tr>
+                    ))}
+                  </Tbody>
+                </Table>
+              </TableContainer>
+            </>
+          )}
         </Flex>
       </Flex>
 
@@ -260,37 +284,6 @@ export default function GeradorTexto() {
           cursor={'pointer'}
           fontSize={'24px'}
           onClick={back} />
-        {/* <FormControl
-            isRequired>
-            <FormLabel>
-              {t('numPalavras')}
-            </FormLabel>
-            <RadioGroup
-              colorScheme={'purple'}
-              onChange={setNumPalavras}>
-              <Grid
-                templateColumns={'repeat(4,1fr)'}
-                gap='4'
-                w='min-content'>
-                <Radio
-                  value='500'>
-                  500
-                </Radio>
-                <Radio
-                  value='1000'>
-                  1000
-                </Radio>
-                <Radio
-                  value='1500'>
-                  1500
-                </Radio>
-                <Radio
-                  value='2000'>
-                  2000
-                </Radio>
-              </Grid>
-            </RadioGroup>
-          </FormControl> */}
         {fields.map((item, idx) => (
           <Field
             key={idx}
@@ -313,25 +306,24 @@ export default function GeradorTexto() {
           </Button>
         </Box>
         <Box>
-          {isLoading
-            ?
+          {isLoading ? (
             <Flex
-              gap='4'
-              align={'center'}
-              mb='4'>
+              gap="4"
+              align={"center"}
+              mb="4">
               <CircularProgress
                 isIndeterminate />
               <Text>
-                {t('aguarde')}
+                {t("aguarde")}
               </Text>
             </Flex>
-            :
+          ) : (
             <></>
-          }
+          )}
           <Estilo>
-            <Box
-              ref={quillRef}
-              h={"96"} />
+            <QuillNoSSRWrapper
+              theme="snow"
+              value={TextAnimate(text || "")} />
           </Estilo>
         </Box>
       </Flex>
