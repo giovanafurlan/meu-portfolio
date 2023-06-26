@@ -58,9 +58,6 @@ export const AuthContextProvider = ({
     await signOut(auth);
   };
 
-  ///
-  // const [user2, setUser2] = useAuthState(auth);
-
   const router = useRouter();
 
   const googleAuth = new GoogleAuthProvider();

@@ -1,7 +1,6 @@
-import { collection, getDocs, getFirestore, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import { getCookie } from "cookies-next";
-
-const db = getFirestore();
+import { db } from "../config/firebase";
 
 const userId = getCookie("uid");
 

@@ -11,7 +11,7 @@ export default function handler(req, res) {
   } else if (locale == "es") {
     prompt = `Escribe un ensayo de 4 párrafos sobre el ${theme}`;
   } else {
-    prompt = `Escreva um ensaio de 4 parágrafos sobre o ${theme}`;
+    prompt = `Escreva uma redação de 4 parágrafos sobre o ${theme}`;
   }
 
   var data = JSON.stringify({
@@ -29,8 +29,7 @@ export default function handler(req, res) {
     url: "https://api.openai.com/v1/completions",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      "OpenAI-Organization": process.env.OPENAI_API_KEY_ORG,
+      "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
     },
     data: data,
   };

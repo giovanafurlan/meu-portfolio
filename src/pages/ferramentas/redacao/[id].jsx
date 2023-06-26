@@ -11,17 +11,14 @@ import {
     Heading,
     Textarea
 } from "@chakra-ui/react";
-import { useQuill } from "react-quilljs";
-// import "quill/dist/quill.snow.css";
-import useTranslation from "next-translate/useTranslation";
+import { getCookie } from 'cookies-next'
 import {
     collection,
-    getDocs,
-    getFirestore,
+    getDocs
 } from "firebase/firestore";
 import Menu from '../../../components/Menu';
 import DownloadTxt from '../../../components/DownloadTxt';
-import { getCookie } from 'cookies-next'
+import { db } from "../../../config/firebase";
 import styled from "styled-components";
 
 export const Estilo = styled.div`
@@ -41,24 +38,17 @@ export const Estilo = styled.div`
   }
 `;
 
-export default function DetailsTexto() {
-
-    const { t } = useTranslation("common");
-
-    const theme = "snow";
-
-    const { quill, quillRef } = useQuill({ theme });
+export default function DetailsRedacao() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [visibility, setVisibility] = useState('hidden');
 
-    //
     const [conteudo, setConteudo] = useState();
     const [companyName, setCompanyName] = useState();
 
     const idText = getCookie('id-text');
 
-    const db = getFirestore();
+    // const db = getFirestore();
 
     const contentText = async () => {
         setIsLoading(true);
@@ -75,12 +65,8 @@ export default function DetailsTexto() {
                     setIsLoading(false);
                     setVisibility('visible');
 
-                    console.log(item)
-
-                    setCompanyName(item.companyName);
+                    setCompanyName(item.themeEssay);
                     setConteudo(item.result);
-
-                    // quill.setText(item.result);
                 })
             }
         })
@@ -94,15 +80,7 @@ export default function DetailsTexto() {
     }, []);
 
     return (
-        <Menu
-            nomePagina={t('geradorTexto')}>
-            {/* <Button
-                    onClick={contentText}
-                    w='full'
-                    variant={'button'}
-                    mb='6'>
-                    Get Content
-                </Button> */}
+        <Menu>
             <Grid
                 templateColumns={{
                     lg: 'repeat(2,1fr)',
@@ -135,28 +113,10 @@ export default function DetailsTexto() {
                                 </Flex>
                                 <Flex
                                     flexDir={'column'}>
-                                    <Estilo>
                                         <Textarea
                                             value={conteudo}
                                             h={"xl"}
                                             w='full' />
-                                    </Estilo>
-                                    {/* {conteudo?.map((item) => (
-                                            <Flex
-                                                key={item}
-                                                align='center'
-                                                gap='2'>
-                                                <Textarea
-                                                    borderRadius={'10px'}
-                                                    borderColor={border}
-                                                    bg={bg}
-                                                    key={item}
-                                                    defaultValue={item}
-                                                    readOnly />
-                                                <CopyClipboard
-                                                    copyText={item} />
-                                            </Flex>
-                                        ))} */}
                                 </Flex>
                             </>
                         }

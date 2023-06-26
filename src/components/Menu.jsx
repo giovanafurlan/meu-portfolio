@@ -18,7 +18,6 @@ import {
   Text,
   Container,
   Tag,
-  Avatar,
   TagLabel,
   TagRightIcon,
 } from '@chakra-ui/react';
@@ -38,13 +37,11 @@ import {
   FiAlignCenter
 } from 'react-icons/fi';
 import { MdOutlineStyle } from 'react-icons/md';
-import { BsBodyText } from 'react-icons/bs';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import DarkLight from './DarkLight';
 import Language from './Language';
-import ProtectedRoute from './ProtectedRoute';
 
 export default function SideBar({ children }) {
 
@@ -83,13 +80,13 @@ export default function SideBar({ children }) {
           md: 'none'
         }}
         onOpen={onOpen} />
-          <Box
-          h='16'
-          bg={bg2}
-          borderBottom={'1px'}
-          borderColor={border}
-          w='full'>
-          </Box>
+      <Box
+        h='16'
+        bg={bg2}
+        borderBottom={'1px'}
+        borderColor={border}
+        w='full'>
+      </Box>
       <Box
         ml={{
           base: 0,
@@ -102,9 +99,7 @@ export default function SideBar({ children }) {
             lg: '0',
             sm: '2'
           }}>
-          <ProtectedRoute>
-            {children}
-          </ProtectedRoute>
+          {children}
         </Container>
       </Box>
     </Box>
@@ -130,7 +125,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   const linkItemsTools = [
     { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' },
-    // { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
+    { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
   ];
 
   const color = useColorModeValue('white', '#171923');
@@ -190,15 +185,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
       ))}
 
       <Accordion
-        allowToggle>
+        allowToggle
+        defaultIndex={[0]}>
         <AccordionItem
           border={'none'}>
           <AccordionButton
             p='0'
             borderRadius="lg"
             _hover={{
-              bg: 'gray.200',
-              color: 'black',
+              bg: 'primary',
+              color: 'white',
             }}
             w='52'
             mx="4"

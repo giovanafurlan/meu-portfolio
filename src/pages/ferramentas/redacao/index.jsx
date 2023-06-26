@@ -1,6 +1,7 @@
 import {
   useEffect,
-  useState
+  useState,
+  useMemo
 } from "react";
 import {
   Box,
@@ -12,6 +13,7 @@ import {
   Tbody,
   Td,
   Text,
+  Textarea,
   Th,
   Thead,
   Tr,
@@ -23,37 +25,19 @@ import { BiPlusCircle } from "react-icons/bi";
 import { FiExternalLink } from "react-icons/fi";
 import { BsArrowLeftSquare } from "react-icons/bs";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+import { getCookie, setCookie } from "cookies-next";
 import { getText } from "../../../services/getApis";
 import {
   listContent,
   listText
 } from "../../../services/listApis";
-import { useAuth } from "../../../context/AuthContext";
+import AnimatedText from "../../../components/AnimatedText";
 import Menu from '../../../components/Menu';
 import Field from "../../../components/Field";
-import styled from "styled-components";
-import { setCookie } from "cookies-next";
-import dynamic from "next/dynamic";
-import AnimatedText from "../../../components/AnimatedText";
-import { useMemo } from "react";
-const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-  ssr: false,
-  loading: () => <p>Loading ...</p>,
-});
+import TextAnimate from "../../../components/TextAnimate";
 
-export const Estilo = styled.div`
-  .ql-toolbar.ql-snow, 
-  .ql-snow .ql-stroke, 
-  .ql-snow .ql-fill,
-  .ql-snow .ql-picker   {
-    border-radius: 20px 20px 0 0;
-    border-color: #8a8686;
-    color: #8a8686;
-    stroke: #8a8686;
-  }
-`;
-
-export default function GeradorTexto() {
+export default function Redacao() {
 
   const { t } = useTranslation("common");
 
@@ -63,34 +47,29 @@ export default function GeradorTexto() {
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('flex');
   const [visibility, setVisibility] = useState("hidden");
-  const [visibility2, setVisibility2] = useState("hidden");
 
   const [themeEssay, setThemeEssay] = useState();
   const [text, setText] = useState();
 
   const [lista, setLista] = useState([]);
 
-  const { user } = useAuth();
-  const userId = user.uid;
+  const userId = getCookie("uid");
 
   const route = useRouter();
+  const locale = route.locale;
 
   async function handleSubmit() {
 
-    const locale = route.locale;
-
     setIsLoading(true);
-
     setVisibility('visible');
 
     getText(locale, themeEssay)
       .then((res) => {
+
         setIsLoading(false);
-        setVisibility2('visible');
+        setVisibility('visible');
 
         const data = res;
-
-        console.log(data);
 
         data.choices.forEach(element => {
           const el = element.text;
@@ -129,26 +108,6 @@ export default function GeradorTexto() {
       .finally();
   }
 
-  function TextAnimate(text) {
-    const [index, setIndex] = useState(0);
-    const words = useMemo(() => text.split(" "), [text]);
-
-    const placeholder = words.slice(0, index).join(" ");
-
-    useEffect(() => {
-      if (index >= words.length) return;
-
-      const timeout = setTimeout(() => setIndex((i) => i + 1), 70);
-
-      return () => {
-        clearTimeout(timeout);
-      };
-    }, [setIndex, index, words]);
-
-    return placeholder;
-  }
-
-
   const fields = [
     {
       isRequired: true,
@@ -172,7 +131,6 @@ export default function GeradorTexto() {
 
   async function run() {
     const data = await listContent('text');
-    console.log(data);
     setLista(data);
   }
 
@@ -238,7 +196,7 @@ export default function GeradorTexto() {
                 <Table variant='striped'>
                   <Thead>
                     <Tr>
-                      <Th>{t('nome')}</Th>
+                      <Th>{t('tema')}</Th>
                       <Th>{t('criadoEm')}</Th>
                       <Th>{t('acesse')}</Th>
                     </Tr>
@@ -249,7 +207,7 @@ export default function GeradorTexto() {
                         key={idx}
                         id={item.id}>
                         <Td>
-                          {item.companyName}
+                          {item.themeEssay}
                         </Td>
                         <Td>
                           {item.createdAt}
@@ -258,7 +216,7 @@ export default function GeradorTexto() {
                           <Link
                             key={idx}
                             id={item.id}
-                            href={'/geradores/geradorTexto/' + item.id}
+                            href={'/ferramentas/redacao/' + item.id}
                             onClick={idAcess}>
                             <Button
                               variant={'button'}>
@@ -318,13 +276,10 @@ export default function GeradorTexto() {
               </Text>
             </Flex>
           ) : (
-            <></>
+            <Box visibility={visibility}>
+              <TextAnimate text={text} />
+            </Box>
           )}
-          <Estilo>
-            <QuillNoSSRWrapper
-              theme="snow"
-              value={TextAnimate(text || "")} />
-          </Estilo>
         </Box>
       </Flex>
     </Menu>

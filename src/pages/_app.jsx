@@ -3,10 +3,11 @@ import {
   extendTheme,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import Navbar from "../components/Login";
-import { AuthContextProvider } from "../context/AuthContext";
 import { Global, css } from '@emotion/react';
+import { ClerkProvider } from "@clerk/nextjs";
+import { ptBR } from "@clerk/localizations";
 import "@fontsource/aldrich";
+import Header from '../components/Header';
 
 const config = {
   initialColorMode: "dark",
@@ -92,17 +93,16 @@ const GlobalStyles = css`
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Global styles={GlobalStyles} />
-      <AuthContextProvider>
-        <Navbar>
-      <Head>
-        <meta name="description" content="Portfolio Giovana Nelo Furlan - Frontend Developer " />
-        <meta name='viewport' content='minimum-scale=1, maximum-scale=5, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
-        <title>Portfolio Giovana Nelo Furlan</title>
-      </Head>
-      <Component {...pageProps} />
-      </Navbar>
-      </AuthContextProvider>
+      <ClerkProvider localization={ptBR} {...pageProps}>
+        <Header />
+        <Global styles={GlobalStyles} />
+        <Head>
+          <meta name="description" content="Portfolio Giovana Nelo Furlan - Frontend Developer " />
+          <meta name='viewport' content='minimum-scale=1, maximum-scale=5, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
+          <title>Portfolio Giovana Nelo Furlan</title>
+        </Head>
+        <Component {...pageProps} />
+      </ClerkProvider>
     </ChakraProvider>
   );
 }
