@@ -14,7 +14,7 @@ const userColletion = collection(db, serviceCollection);
 const insertUser = async (user) => {
   return addDoc(userColletion, user)
     .then((response) => {
-      return { id: response.id };
+      return { id: response.user.id };
     })
     .catch((error) => {
       return error;
@@ -22,7 +22,7 @@ const insertUser = async (user) => {
 };
 
 const updateUser = async (user) => {
-  const docRef = doc(db, serviceCollection, user.id);
+  const docRef = doc(db, serviceCollection, user.user.id);
 
   console.log(docRef);
 

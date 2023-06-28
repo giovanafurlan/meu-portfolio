@@ -98,6 +98,10 @@ export default function SideBar({ children }) {
           py={{
             lg: '0',
             sm: '2'
+          }}
+          px={{
+            lg: '10',
+            sm: '6'
           }}>
           {children}
         </Container>
@@ -151,7 +155,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           width: '6px',
         },
         '&::-webkit-scrollbar-thumb': {
-          background: '#d6b8ff',
+          background: '#5C5470',
           borderRadius: '24px',
         },
       }}
@@ -220,7 +224,10 @@ const SidebarContent = ({ onClose, ...rest }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel
-            pb={'80'}>
+            pb={{
+              lg: '80',
+              sm: '32'
+            }}>
             {linkItemsTools.map((link) => (
               <NavItem
                 key={link.name}
@@ -233,13 +240,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </AccordionItem>
       </Accordion>
       <Flex
-        pos='fixed'
+        pos={{
+          lg: 'fixed'
+        }}
         flexDir={'column'}
         gap='4'
         align={'center'}
         bottom={{
           lg: '0',
-          sm: '20'
+          sm: '0'
         }}
         w='56'
         py='4'

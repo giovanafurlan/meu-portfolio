@@ -14,11 +14,12 @@ export default function Header() {
       zIndex={1}
       right="2"
       top="2"
-      bg="white"
+      bg="primary"
+      color="white"
       p='2'
       borderRadius={"lg"}
       _hover={{
-        bg:"gray.200"
+        bg:"secondary"
       }}>
       <SignedIn>
         {/* Mount the UserButton component */}
