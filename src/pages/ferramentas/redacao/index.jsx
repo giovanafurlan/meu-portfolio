@@ -262,6 +262,10 @@ export default function Redacao() {
 
           setText(el);
 
+          if (quill) {
+            quill.clipboard.dangerouslyPasteHTML(el);
+          }
+
           toast({
             title: 'Generation save',
             status: 'success',
@@ -462,12 +466,13 @@ export default function Redacao() {
               </Text>
             </Flex>
           ) : (
-            <Estilo>
+            <></>
+          )}
+          <Estilo>
               <Box>
                 <Box ref={quillRef} h={"96"} />
               </Box>
             </Estilo>
-          )}
         </Box>
       </Flex>
     </Menu>
