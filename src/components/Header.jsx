@@ -25,7 +25,12 @@ export default function Header() {
         {/* Mount the UserButton component */}
         <UserButton
           showName={true}
-          afterSignOutUrl="/" />
+          afterSignOutUrl="/" 
+          appearance={{
+            variables: {
+              colorPrimary: "black",
+            }
+          }}/>
       </SignedIn>
       <SignedOut>
         {/* Signed out users get sign in button */}

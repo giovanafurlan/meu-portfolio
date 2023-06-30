@@ -25,7 +25,8 @@ import { BiPlusCircle } from "react-icons/bi";
 import { FiExternalLink } from "react-icons/fi";
 import { BsArrowLeftSquare } from "react-icons/bs";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
+import { useQuill } from "react-quilljs";
+import "quill/dist/quill.snow.css";
 import { getCookie, setCookie } from "cookies-next";
 import { getText } from "../../../services/getApis";
 import {
@@ -34,14 +35,199 @@ import {
 } from "../../../services/listApis";
 import AnimatedText from "../../../components/AnimatedText";
 import Menu from '../../../components/Menu';
-import Field from "../../../components/Field";
-import TextAnimate from "../../../components/TextAnimate";
+import Field from "../../../components/Field"; import styled from "styled-components";
+
+export const Estilo = styled.div`
+  .resultado {
+    margin: 4vw 1vw 4vw 4vw;
+  }
+
+  .resultado .barra-de-resultado {
+    width: 100%;
+    height: 1rem;
+    background: #d1d1d1;
+    border-radius: 1rem;
+    position: relative;
+  }
+
+  .resultado .barra-de-resultado .pontuacao {
+    width: 6%;
+    height: 100%;
+    border-radius: 1rem;
+    position: relative;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    background: #02c722;
+  }
+
+  .resultado .barra-de-resultado .pontuacao.red {
+    background: red;
+  }
+
+  .resultado .barra-de-resultado .pontuacao.orange {
+    background: orange;
+  }
+
+  .resultado .barra-de-resultado .pontuacao.green {
+    background: #02c722;
+  }
+
+  .resultado .barra-de-resultado .pontuacao .circle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 5.5rem;
+    height: 5.5rem;
+    background: #d1d1d1;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    -webkit-transform: translate3d(10%, -37.5%, 0);
+    transform: translate3d(10%, -37.5%, 0);
+    color: #fff;
+  }
+
+  .resultado .barra-de-resultado .pontuacao .circle.red {
+    background: red;
+  }
+
+  .resultado .barra-de-resultado .pontuacao .circle.orange {
+    background: orange;
+  }
+
+  .resultado .barra-de-resultado .pontuacao .circle.green {
+    background: #02c722;
+  }
+
+  .resultado .barra-de-resultado .pontuacao .circle span {
+    font-size: 14px;
+  }
+
+  .resultado .barra-de-resultado .pontuacao .circle strong {
+    font-size: 1.5rem;
+  }
+
+  .metricas .check-de-metricas {
+    list-style: none;
+  }
+
+  .metricas .check-de-metricas li .error,
+  .metricas .check-de-metricas li .warning {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    width: 100%;
+    font-size: 14px;
+    display: none;
+    border-radius: 0.25rem;
+  }
+
+  .metricas .check-de-metricas li .error {
+    color: red;
+  }
+
+  .metricas .check-de-metricas li .warning {
+    color: orange;
+  }
+
+  .metricas .check-de-metricas li .check {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-radius: 100%;
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+    border: 2px solid #a3a0a0;
+  }
+
+  .metricas .check-de-metricas li .check.red {
+    border: 2px solid red;
+  }
+
+  .metricas .check-de-metricas li .check.red svg path {
+    fill: red;
+  }
+
+  .metricas .check-de-metricas li .check.red + .error {
+    display: block;
+  }
+
+  .metricas .check-de-metricas li .check.orange {
+    border: 2px solid #ffbf00;
+  }
+
+  .metricas .check-de-metricas li .check.orange svg path {
+    fill: #ffbf00;
+  }
+
+  .metricas .check-de-metricas li .check.orange ~ .warning {
+    display: block;
+  }
+
+  .metricas .check-de-metricas li .check.green {
+    border: 2px solid green;
+  }
+
+  .metricas .check-de-metricas li .check.green svg path {
+    fill: green;
+  }
+
+  .ql-toolbar.ql-snow,
+  .ql-snow .ql-stroke,
+  .ql-snow .ql-fill,
+  .ql-snow .ql-picker {
+    border-radius: 20px 20px 0 0;
+    border-color: #8a8686;
+    color: #8a8686;
+    stroke: #8a8686;
+  }
+
+  .ql-container.ql-snow {
+    border-radius: 0 0 20px 20px;
+    border-color: #8a8686;
+  }
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    .resultado {
+      margin: 10vw;
+    }
+    .resultado .barra-de-resultado .pontuacao .circle {
+      width: 4rem;
+      height: 4rem;
+    }
+    .metricas .check-de-metricas li .check {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+`;
 
 export default function Redacao() {
 
   const { t } = useTranslation("common");
 
   const toast = useToast();
+
+  const theme = "snow";
+  const { quill, quillRef } = useQuill({ theme });
 
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState('none');
@@ -276,9 +462,11 @@ export default function Redacao() {
               </Text>
             </Flex>
           ) : (
-            <Box visibility={visibility}>
-              <TextAnimate text={text} />
-            </Box>
+            <Estilo>
+              <Box>
+                <Box ref={quillRef} h={"96"} />
+              </Box>
+            </Estilo>
           )}
         </Box>
       </Flex>
