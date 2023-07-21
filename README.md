@@ -28,6 +28,8 @@ Visit my website at [portfolio-giovana-furlan.vercel.app](https://portfolio-giov
 
 `i18n`: Language
 
+`clerk`: Auth
+
 `vercel`: Host
 
 ## Setup
