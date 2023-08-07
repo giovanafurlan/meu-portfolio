@@ -36,6 +36,7 @@ import {
 import AnimatedText from "../../../components/AnimatedText";
 import Menu from '../../../components/Menu';
 import Field from "../../../components/Field"; import styled from "styled-components";
+import { IoReload } from "react-icons/io5";
 
 export const Estilo = styled.div`
   .resultado {
@@ -241,8 +242,8 @@ export default function Redacao() {
 
   const userId = getCookie("uid");
 
-  const route = useRouter();
-  const locale = route.locale;
+  const router = useRouter();
+  const locale = router.locale;
 
   async function handleSubmit() {
 
@@ -318,6 +319,10 @@ export default function Redacao() {
     setDisplay('none');
     setDisplay2('flex');
   }
+  
+  const handleRefresh = () => {
+    router.reload();
+  }
 
   async function run() {
     const data = await listContent('text');
@@ -345,24 +350,33 @@ export default function Redacao() {
           gap='4'>
           {lista.length <= 0 ? (
             <Flex
-              flexDir={'column'}
-              maxW={"5xl"}
-              m="0 auto"
-              align={"center"}
-              gap="6"
-              fontSize={'3xl'}
-              textTransform={'uppercase'}
-              fontFamily={'monospace'}>
-              <AnimatedText text={'Crie redações em alguns segundos'} />
+              w="full"
+              justifyContent={"space-between"}>
+              <Flex
+                flexDir={'column'}
+                maxW={"5xl"}
+                m="0 auto"
+                align={"center"}
+                gap="6"
+                fontSize={'3xl'}
+                textTransform={'uppercase'}
+                fontFamily={'monospace'}>
+                <AnimatedText text={'Crie redações em alguns segundos'} />
+                <Button
+                  onClick={create}
+                  variant={'button-outline'}>
+                  <Flex
+                    gap='2'
+                    align={'center'}>
+                    <BiPlusCircle />
+                    {t('criarNovo')}
+                  </Flex>
+                </Button>
+              </Flex>
               <Button
-                onClick={create}
+                onClick={handleRefresh}
                 variant={'button-outline'}>
-                <Flex
-                  gap='2'
-                  align={'center'}>
-                  <BiPlusCircle />
-                  {t('criarNovo')}
-                </Flex>
+                <IoReload/>
               </Button>
             </Flex>
           ) : (
@@ -469,10 +483,10 @@ export default function Redacao() {
             <></>
           )}
           <Estilo>
-              <Box>
-                <Box ref={quillRef} h={"96"} />
-              </Box>
-            </Estilo>
+            <Box>
+              <Box ref={quillRef} h={"96"} />
+            </Box>
+          </Estilo>
         </Box>
       </Flex>
     </Menu>

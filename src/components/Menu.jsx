@@ -189,8 +189,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
       ))}
 
       <Accordion
-        allowToggle
-        defaultIndex={[0]}>
+        defaultIndex={[0]}
+        reduceMotion>
         <AccordionItem
           border={'none'}>
           <AccordionButton
@@ -281,15 +281,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </Tag>
         </Flex>
 
-        <Flex
-          justifyContent={'center'}
-          display={{
-            lg: 'flex',
-            sm: 'none'
-          }}>
-          <DarkLight />
-          <Language />
-        </Flex>
         <Flex
           justifyContent={'center'}>
           <NavMedia
@@ -418,12 +409,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-      <Flex
-        gap='15px'
-        justifyContent={'end'}>
-        <DarkLight />
-        <Language />
-      </Flex>
     </Box>
   );
 };

@@ -16,7 +16,25 @@ export default function Experiencias() {
 
   const { t } = useTranslation("common");
 
-  const experienciaSuporte = [
+  const experiencia = [
+    {
+      cor: 'purple.400',
+      empresa: 'Webpeak',
+      imagem: '/images/webpeak.png',
+      cargo: `${t("desenvolvedora")} Full Stack` ,
+      funcao: t('introExperiencia3'),
+      dtInicio: '01/2023',
+      dtTermino: t('atualmente')
+    },
+    {
+      cor: 'purple.400',
+      empresa: 'Webpeak',
+      imagem: '/images/webpeak.png',
+      cargo: t('estagiaria'),
+      funcao: t('introExperiencia2'),
+      dtInicio: '01/2022',
+      dtTermino: '12/2022'
+    },
     {
       cor: 'red.400',
       empresa: 'Tradesquash',
@@ -25,18 +43,6 @@ export default function Experiencias() {
       funcao: t('introExperiencia1'),
       dtInicio: '03/2021',
       dtTermino: '12/2021'
-    }
-  ]
-  
-  const experienciaProgramacao = [
-    {
-      cor: 'purple.400',
-      empresa: 'Webpeak',
-      imagem: '/images/webpeak.png',
-      cargo: t('estagiaria'),
-      funcao: t('introExperiencia2'),
-      dtInicio: '01/2022',
-      dtTermino: t('atualmente')
     }
   ]
 
@@ -67,18 +73,7 @@ export default function Experiencias() {
           gap={{
             sm: '10'
           }}>
-          {experienciaSuporte.map((dado, idx) => (
-            <Card
-              key={idx}
-              cor={dado.cor}
-              empresa={dado.empresa}
-              funcao={dado.funcao}
-              cargo={dado.cargo}
-              imagem={dado.imagem}
-              dtInicio={dado.dtInicio}
-              dtTermino={dado.dtTermino} />
-          ))}
-          {experienciaProgramacao.map((dado, idx) => (
+          {experiencia.map((dado, idx) => (
             <Card
               key={idx}
               cor={dado.cor}

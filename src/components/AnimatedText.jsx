@@ -3,12 +3,7 @@ import {
     useMemo,
     useState
 } from "react";
-import {
-    Box,
-    Heading,
-    Text,
-    useColorModeValue
-} from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 const AnimatedText = ({ text, id }) => {
     const [index, setIndex] = useState(0);
