@@ -8,6 +8,7 @@ import {
   Button,
   CircularProgress,
   Flex,
+  Heading,
   Table,
   TableContainer,
   Tbody,
@@ -17,6 +18,7 @@ import {
   Th,
   Thead,
   Tr,
+  useColorModeValue,
   useToast
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -225,6 +227,10 @@ export default function Redacao() {
 
   const { t } = useTranslation("common");
 
+  const bg2 = useColorModeValue('black', 'white');
+  const color = useColorModeValue('white', 'black');
+  const hover = useColorModeValue('gray.600', 'gray.300');
+
   const toast = useToast();
 
   const theme = "snow";
@@ -319,7 +325,7 @@ export default function Redacao() {
     setDisplay('none');
     setDisplay2('flex');
   }
-  
+
   const handleRefresh = () => {
     router.reload();
   }
@@ -376,7 +382,7 @@ export default function Redacao() {
               <Button
                 onClick={handleRefresh}
                 variant={'button-outline'}>
-                <IoReload/>
+                <IoReload />
               </Button>
             </Flex>
           ) : (
@@ -387,7 +393,16 @@ export default function Redacao() {
                 gap='4'>
                 <Button
                   onClick={create}
-                  variant={'button-outline'}>
+                  fontSize='14px'
+                  w={{
+                    lg: 'min-content',
+                    sm: 'full'
+                  }}
+                  color={color}
+                  bg={bg2}
+                  _hover={{
+                    bg: hover
+                  }}>
                   <Flex
                     gap='2'
                     align={'center'}>
@@ -396,43 +411,21 @@ export default function Redacao() {
                   </Flex>
                 </Button>
               </Flex>
-              <TableContainer>
-                <Table variant='striped'>
-                  <Thead>
-                    <Tr>
-                      <Th>{t('tema')}</Th>
-                      <Th>{t('criadoEm')}</Th>
-                      <Th>{t('acesse')}</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {lista.map((item, idx) => (
-                      <Tr
-                        key={idx}
-                        id={item.id}>
-                        <Td>
-                          {item.themeEssay}
-                        </Td>
-                        <Td>
-                          {item.createdAt}
-                        </Td>
-                        <Td>
-                          <Link
-                            key={idx}
-                            id={item.id}
-                            href={'/ferramentas/redacao/' + item.id}
-                            onClick={idAcess}>
-                            <Button
-                              variant={'button'}>
-                              <FiExternalLink />
-                            </Button>
-                          </Link>
-                        </Td>
-                      </Tr>
-                    ))}
-                  </Tbody>
-                </Table>
-              </TableContainer>
+              {lista.map((item, idx) => (
+                <Flex
+                  flexDir={"column"}
+                  gap={6}
+                  borderRadius={"lg"}
+                  p="4"
+                  bg={useColorModeValue("gray.200","gray.700")}>
+                  <Heading fontSize={"lg"} fontWeight={"bold"}>
+                    {item.themeEssay} - {item.createdAt}
+                  </Heading>
+                  <Text>
+                    {item.result?.slice(0, 100)}...
+                  </Text>
+                </Flex>
+              ))}
             </>
           )}
         </Flex>
@@ -442,10 +435,13 @@ export default function Redacao() {
         flexDir={'column'}
         gap='6'
         display={display}>
-        <BsArrowLeftSquare
-          cursor={'pointer'}
-          fontSize={'24px'}
-          onClick={back} />
+        <Text
+          cursor={"pointer"}
+          borderBottom={"1px"}
+          w="fit-content"
+          onClick={back}>
+          Voltar
+        </Text>
         {fields.map((item, idx) => (
           <Field
             key={idx}
@@ -460,10 +456,16 @@ export default function Redacao() {
           w='full'>
           <Button
             onClick={() => { handleSubmit() }}
-            variant="button"
+            fontSize='14px'
+            w={{
+              lg: 'min-content',
+              sm: 'full'
+            }}
+            color={color}
+            bg={bg2}
             _hover={{
-              bg: "#FFB596",
-            }} >
+              bg: hover
+            }}>
             {t('gerar')}
           </Button>
         </Box>

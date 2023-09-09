@@ -6,12 +6,10 @@ export default function TagButton({ tag }) {
     <Link
       href={"/blog/tags/[[...slug]]"}
       as={`/blog/tags/${tag.slug}`}>
-      <a>
-        <Text
-          fontSize={'sm'}>
-          #{tag.name}
-        </Text>
-      </a>
+      <Text
+        fontSize={'sm'}>
+        #{tag.name}
+      </Text>
     </Link>
   );
 }

@@ -33,45 +33,43 @@ export default function PostItem({ post }) {
             key={locale}
             href={"/blog/" + post.slug}
             locale={post.language}>
-            <a>
-              <Box
-                maxW={{
-                  lg: '60',
-                  sm: 'auto'
-                }}
-                minH='80'
-                p='2'
-                bg={useColorModeValue('white', 'gray.800')}
-                borderRadius='lg'
-                boxShadow='0px 4px 15px rgba(0, 0, 0, 0.3)'
-                _hover={{
-                  bg: useColorModeValue('gray.300', 'gray.600')
-                }}>
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  borderRadius='9px'
-                  w='48'
-                  loading='lazy' />
-                <Flex
-                  flexDir={'column'}
-                  gap='1'
-                  mt='2'
-                  textAlign={'initial'}>
-                  <Heading
-                    as='h3'
-                    fontWeight='normal'
-                    fontSize={'md'}>
-                    {post.title}
-                  </Heading>
-                  <Text
-                    fontSize={'xs'}>
-                    {post.intro}
-                  </Text>
-                  <Date date={parseISO(post.date)} />
-                </Flex>
-              </Box>
-            </a>
+            <Box
+              maxW={{
+                lg: '60',
+                sm: 'auto'
+              }}
+              minH='80'
+              p='2'
+              bg={useColorModeValue('white', 'gray.800')}
+              borderRadius='lg'
+              boxShadow='0px 4px 15px rgba(0, 0, 0, 0.3)'
+              _hover={{
+                bg: useColorModeValue('gray.300', 'gray.600')
+              }}>
+              <Image
+                src={post.image}
+                alt={post.title}
+                borderRadius='9px'
+                w='48'
+                loading='lazy' />
+              <Flex
+                flexDir={'column'}
+                gap='1'
+                mt='2'
+                textAlign={'initial'}>
+                <Heading
+                  as='h3'
+                  fontWeight='normal'
+                  fontSize={'md'}>
+                  {post.title}
+                </Heading>
+                <Text
+                  fontSize={'xs'}>
+                  {post.intro}
+                </Text>
+                <Date date={parseISO(post.date)} />
+              </Flex>
+            </Box>
           </Link>
         )
       })}

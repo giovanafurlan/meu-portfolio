@@ -12,23 +12,23 @@ import Language from './Language';
 export default function Header() {
   return (
     <Flex
-      pos={{
-        lg: "absolute",
-        sm: "absolute"
-      }}
+      pos="fixed"
       zIndex={2}
-      right="2"
+      left={{
+        lg: "2",
+        sm: "20"
+      }}
       top={{
         lg: "2",
-        sm: "4"
+        sm: "6"
       }}
-      p='2'
-      w="fit-content"
+      pt="6"
+      ml='20'
       borderRadius={"lg"}
       align={"center"}
       gap="4">
-      <DarkLight />
-      <Language />
+      {/* <DarkLight />
+      <Language /> */}
       <SignedIn>
         {/* Mount the UserButton component */}
         <UserButton

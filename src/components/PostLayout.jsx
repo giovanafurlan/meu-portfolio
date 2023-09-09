@@ -21,11 +21,11 @@ const Format = style.div`
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 li {
-  font-size: 18px;
+  font-size: 16px;
   text-align: start !important;
 }
 
@@ -61,22 +61,22 @@ h6 {
 }
 
 h1 {
-  font-size: 2.125rem;
+  font-size: 1.50rem;
   line-height: 3.188rem;
 }
 
 h2 {
-  font-size: 2.75rem;
+  font-size: 1.30rem;
   line-height: 3.125rem;
 }
 
 h3 {
-  font-size: 1.875rem;
+  font-size: 1.15rem;
   line-height: 2.25rem;
 }
 
 h4 {
-  font-size: 1.313rem;
+  font-size: 1.10rem;
   line-height: 1.938rem;
 }
 

@@ -23,6 +23,7 @@ export default function InputShortener({ setInputValue }) {
   const bg2 = useColorModeValue('black', 'white');
   const color = useColorModeValue('white', 'black');
   const hover = useColorModeValue('gray.600', 'gray.300');
+  const border = useColorModeValue('black', 'white');
 
   return (
     <div className="inputContainer">
@@ -52,9 +53,8 @@ export default function InputShortener({ setInputValue }) {
           }}
           gap='4'>
           <Input
-            borderRadius={'30px'}
-            borderColor='black'
-            bg='whiteAlpha.300'
+            borderRadius={'10px'}
+            borderColor={border}
             placeholder={t("exEncurtadorURL")}
             value={value}
             onChange={e => setValue(e.target.value)} />

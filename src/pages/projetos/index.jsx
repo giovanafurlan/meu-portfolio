@@ -116,6 +116,10 @@ export default function Projetos() {
               modifier: 1,
               slideShadows: true,
             }}
+            style={{
+              "--swiper-pagination-color": "#052be8",
+              "--swiper-pagination-bullet-inactive-color": "#999999",
+            }}
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
             className="mySwiper">

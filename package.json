@@ -17,7 +17,7 @@
     "@clerk/nextjs": "^4.21.10",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@fontsource/aldrich": "^4.5.7",
+    "@fontsource/roboto": "^5.0.8",
     "@mapbox/rehype-prism": "^0.6.0",
     "@next/bundle-analyzer": "^12.3.0",
     "@svgr/webpack": "^6.3.1",

@@ -6,7 +6,7 @@ import Head from "next/head";
 import { Global, css } from '@emotion/react';
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
-import "@fontsource/aldrich";
+import "@fontsource/roboto";
 import Header from '../components/Header';
 
 const config = {
@@ -17,8 +17,8 @@ const config = {
 const theme = extendTheme({
   config,
   fonts: {
-    heading: `'Aldrich', sans-serif`,
-    body: `'Aldrich', sans-serif`,
+    heading: `'Roboto', sans-serif`,
+    body: `'Roboto', sans-serif`,
   },
   components: {
     Button: {

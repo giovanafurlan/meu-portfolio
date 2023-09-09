@@ -1,8 +1,7 @@
 {
   "locales": [
     "pt-br",
-    "en",
-    "es"
+    "en"
   ],
   "defaultLocale": "pt-br",
   "localeDetection": false,

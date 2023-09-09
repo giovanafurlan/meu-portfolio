@@ -20,9 +20,9 @@ const Menu = dynamic(() => import("../../components/Menu"));
 
 export default function Contato() {
 
-  const toast = useToast();
-
   const { t } = useTranslation("common");
+
+  const toast = useToast();
 
   const [toSend, setToSend] = useState({
     from_name: '',
@@ -40,6 +40,13 @@ export default function Contato() {
       'F9VLtnIP3HQtE31RM'
     )
       .then((response) => {
+        toast({
+          title: t('mensagem'),
+          status: 'success',
+          duration: 9000,
+          position: 'top',
+          isClosable: true,
+        });
         console.log('SUCCESS!', response.status, response.text);
       })
       .catch((err) => {
@@ -157,15 +164,15 @@ export default function Contato() {
               />
             </FormControl>
             <Button
-              onClick={() =>
-                toast({
-                  title: t('mensagem'),
-                  status: 'success',
-                  duration: 9000,
-                  position: 'top',
-                  isClosable: true,
-                })
-              }
+              // onSubmit={() =>
+              //   toast({
+              //     title: t('mensagem'),
+              //     status: 'success',
+              //     duration: 9000,
+              //     position: 'top',
+              //     isClosable: true,
+              //   })
+              // }
               type='submit'
               fontSize='14px'
               color={color}

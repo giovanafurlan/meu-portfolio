@@ -25,7 +25,6 @@ import {
   FiHome,
   FiMenu,
   FiGrid,
-  FiShoppingCart,
   FiFolder,
   FiArchive,
   FiBookmark,
@@ -37,16 +36,18 @@ import {
   FiAlignCenter
 } from 'react-icons/fi';
 import { MdOutlineStyle } from 'react-icons/md';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
 import DarkLight from './DarkLight';
 import Language from './Language';
+import { useRouter } from 'next/router';
 
 export default function SideBar({ children }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const bg = (useColorModeValue('gray.100', 'gray.900'));
+
+  const bg = (useColorModeValue('white', 'gray.900'));
   const bg2 = (useColorModeValue('white', 'none'));
   const border = (useColorModeValue('white', '#2d3748'));
 
@@ -81,7 +82,7 @@ export default function SideBar({ children }) {
         }}
         onOpen={onOpen} />
       <Box
-        h='16'
+        // h='16'
         bg={bg2}
         borderBottom={'1px'}
         borderColor={border}
@@ -96,7 +97,7 @@ export default function SideBar({ children }) {
         <Container
           maxW={'5xl'}
           py={{
-            lg: '0',
+            lg: '12',
             sm: '2'
           }}
           px={{
@@ -112,19 +113,21 @@ export default function SideBar({ children }) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const { t } = useTranslation("common");
+
   const bg = (useColorModeValue('white', 'gray.900'));
   const border = (useColorModeValue('gray.200', 'gray.700'));
-
-  const { t } = useTranslation("common");
+  const color = useColorModeValue('white', '#171923');
 
   const linkItems = [
     { name: 'Home', icon: FiHome, link: '/home' },
     { name: t('conhecimentos'), icon: FiFolder, link: '/conhecimentos' },
+    { name: t('certificados'), icon: FiFolder, link: '/certificados' },
     { name: t('experiencias'), icon: FiArchive, link: '/experiencias' },
     { name: t('projetos'), icon: FiGrid, link: '/projetos' },
     { name: 'Blog', icon: FiBookmark, link: '/blog' },
     { name: t('contato'), icon: FiMessageSquare, link: '/contato' },
-    { name: 'Stylebook', icon: MdOutlineStyle, link: '/stylebook' },
+    // { name: 'Stylebook', icon: MdOutlineStyle, link: '/stylebook' },
   ];
 
   const linkItemsTools = [
@@ -132,51 +135,52 @@ const SidebarContent = ({ onClose, ...rest }) => {
     { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
   ];
 
-  const color = useColorModeValue('white', '#171923');
-
   return (
     <Box
       bg={bg}
-      overflowY='auto'
-      overflowX={'hidden'}
-      borderRight="1px"
-      borderRightColor={border}
+      // overflowY='auto'
+      // overflowX={'hidden'}
+      // borderRight="1px"
+      // borderRightColor={border}
       w={{
         base: 'full',
         md: 60
       }}
+      mt="6"
+      ml="18"
       pos="fixed"
       h="full"
-      css={{
-        '&::-webkit-scrollbar': {
-          width: '8px',
-        },
-        '&::-webkit-scrollbar-track': {
-          width: '6px',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          background: '#5C5470',
-          borderRadius: '24px',
-        },
-      }}
+      // css={{
+      //   '&::-webkit-scrollbar': {
+      //     width: '8px',
+      //   },
+      //   '&::-webkit-scrollbar-track': {
+      //     width: '6px',
+      //   },
+      //   '&::-webkit-scrollbar-thumb': {
+      //     background: '#5C5470',
+      //     borderRadius: '24px',
+      //   },
+      // }}
       {...rest}>
-
       <Flex
         h="20"
         alignItems="center"
-        mx="6"
-        my='4'
-        mb='10'
+        // mx="6"
+        // my='4'
+        // mb='10'
         justifyContent="space-between">
-        <Image
+        {/* <Image
           src={'/images/logo.webp'}
           alt='Logo'
-          ml='4' />
+          ml='4' /> */}
         <CloseButton
           display={{
             base: 'flex',
             md: 'none'
           }}
+          pos={"absolute"}
+          right={10}
           onClick={onClose} />
       </Flex>
       {linkItems.map((link) => (
@@ -187,35 +191,34 @@ const SidebarContent = ({ onClose, ...rest }) => {
           {link.name}
         </NavItem>
       ))}
-
       <Accordion
         defaultIndex={[0]}
-        reduceMotion>
+        allowToggle>
         <AccordionItem
           border={'none'}>
           <AccordionButton
             p='0'
             borderRadius="lg"
             _hover={{
-              bg: 'primary',
-              color: 'white',
+              // bg: 'primary',
+              color: 'gray',
             }}
             w='52'
-            mx="4"
-            mt='2'
+            // mx="4"
+            // mt='2'
             pr='10'>
             <Flex
+              pl={4}
               align="center"
-              p="2"
               cursor="pointer">
-              <Icon
+              {/* <Icon
                 mr="4"
                 fontSize="16"
                 _groupHover={{
                   color: 'primary',
                 }}
                 as={FiShoppingCart}
-              />
+              /> */}
               <Text
                 fontSize={'14.5px'}>
                 {t('ferramentas')}
@@ -253,11 +256,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
         w='56'
         py='4'
         bg={color}>
+        <Flex gap={2}>
 
+        </Flex>
         <Flex
           align={'center'}
           gap='2'
-          pr='4'>
+          pr='2'>
           <Tag
             size='lg'
             colorScheme={''}
@@ -282,15 +287,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
 
         <Flex
-          justifyContent={'center'}>
+          justifyContent={'center'}
+          align={"center"}
+          gap="2">
+          <DarkLight />
+          <Language />
+          <Text fontWeight={"bold"}>|</Text>
           <NavMedia
             icone={FiGithub}
             label='Github'
             url={'https://github.com/giovanafurlan'} />
-          <NavMedia
-            icone={FiYoutube}
-            label='Youtube'
-            url={'https://www.linkedin.com/in/giovana-furlan/'} />
           <NavMedia
             icone={FiLinkedin}
             label='Linkedin'
@@ -312,7 +318,7 @@ const SocialMedia = ({ icon, ...rest }) => {
       {...rest}>
       {icon && (
         <Image
-          mr="4"
+          mr="2"
           fontSize="18"
           as={icon}
         />
@@ -338,30 +344,41 @@ const NavMedia = ({ url, label, icone }) => {
 }
 
 const NavItem = ({ link, icon, children, ...rest }) => {
+
+  const router = useRouter();
+
   return (
-    <Link
-      href={link}
-      style={{
-        textDecoration: 'none'
-      }}
-      _focus={{
-        boxShadow: 'none'
-      }}>
-      <Flex
-        align="center"
-        p="2"
-        mx="4"
-        my='1'
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: 'primary',
-          color: 'white',
+    <Box w="fit-content">
+      <style jsx global>{`
+      .active div p {
+        font-weight: 800;
+        color: gray;
+      }
+    `}</style>
+      <Link
+        className={router.pathname == link ? "active" : ""}
+        href={link}
+        style={{
+          textDecoration: 'none'
         }}
-        maxW='56'
-        {...rest}>
-        {icon && (
+        _focus={{
+          boxShadow: 'none'
+        }}>
+        <Flex
+          align="center"
+          pl="4"
+          // mx="4"
+          my='3'
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+          _hover={{
+            // bg: 'primary',
+            color: 'gray',
+          }}
+          maxW='56'
+          {...rest}>
+          {/* {icon && (
           <Icon
             mr="4"
             fontSize="16"
@@ -370,13 +387,14 @@ const NavItem = ({ link, icon, children, ...rest }) => {
             }}
             as={icon}
           />
-        )}
-        <Text
-          fontSize={'14.5px'}>
-          {children}
-        </Text>
-      </Flex>
-    </Link>
+        )} */}
+          <Text
+            fontSize={'16px'}>
+            {children}
+          </Text>
+        </Flex>
+      </Link>
+    </Box>
   )
 }
 

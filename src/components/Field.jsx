@@ -30,14 +30,14 @@ export default function Field({
                     mt='1.5'>
                     {title}
                 </FormLabel>
-                <Tooltip
+                {/* <Tooltip
                     label={tooltip}
                     placement={'right'}
                     hasArrow>
                     <Text>
                         ⓘ
                     </Text>
-                </Tooltip>
+                </Tooltip> */}
             </Flex>
             <Input
                 borderRadius={'10px'}

@@ -5,7 +5,7 @@ export default function TagLink({ tag }) {
     <Link
       href={"/blog/tags/[[...slug]]"}
       as={`/blog/tags/${tag.slug}`}>
-      <a>{tag.name}</a>
+      {tag.name}
     </Link>
   );
 }

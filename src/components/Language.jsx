@@ -24,16 +24,17 @@ export default function Language() {
             lang: "en",
             name: "English"
         },
-        {
-            lang: "es",
-            name: "Español"
-        }
+        // {
+        //     lang: "es",
+        //     name: "Español"
+        // }
     ];
 
     const color = useColorModeValue('black', 'white');
 
     return (
         <Menu
+            placement='top'
             border={'none'}
             ml='4'
             mb='6'>
