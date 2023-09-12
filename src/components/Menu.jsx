@@ -256,9 +256,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
         w='56'
         py='4'
         bg={color}>
-        <Flex gap={2}>
-
-        </Flex>
         <Flex
           align={'center'}
           gap='2'
