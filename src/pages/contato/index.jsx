@@ -175,10 +175,15 @@ export default function Contato() {
               // }
               type='submit'
               fontSize='14px'
-              color={color}
-              bg={bg2}
+              w={{
+                  lg: 'min-content',
+                  sm: 'full'
+              }}
+              color={bg2}
+              bg={"none"}
               _hover={{
-                bg: hover
+                  bg: hover,
+                  color: color
               }}>
               {t('enviar')}
             </Button>

@@ -20,6 +20,7 @@ import Menu from '../../../components/Menu';
 import DownloadTxt from '../../../components/DownloadTxt';
 import { db } from "../../../config/firebase";
 import styled from "styled-components";
+import useTranslation from 'next-translate/useTranslation';
 
 export const Estilo = styled.div`
   .ql-toolbar.ql-snow, 
@@ -40,11 +41,13 @@ export const Estilo = styled.div`
 
 export default function DetailsRedacao() {
 
+    const { t } = useTranslation("common");
+
     const [isLoading, setIsLoading] = useState(false);
     const [visibility, setVisibility] = useState('hidden');
 
     const [conteudo, setConteudo] = useState();
-    const [companyName, setCompanyName] = useState();
+    const [theme, setTheme] = useState();
 
     const idText = getCookie('id-text');
 
@@ -65,7 +68,7 @@ export default function DetailsRedacao() {
                     setIsLoading(false);
                     setVisibility('visible');
 
-                    setCompanyName(item.themeEssay);
+                    setTheme(item.themeEssay);
                     setConteudo(item.result);
                 })
             }
@@ -106,17 +109,18 @@ export default function DetailsRedacao() {
                                     align={'center'}
                                     justifyContent='space-between'>
                                     <Heading
-                                        fontSize={'4xl'}>
-                                        {companyName}
+                                        fontSize={'xl'}
+                                        fontWeight={"normal"}>
+                                        {t("redacao")}: <strong>{theme}</strong>
                                     </Heading>
                                     <DownloadTxt content={conteudo} />
                                 </Flex>
                                 <Flex
                                     flexDir={'column'}>
-                                        <Textarea
-                                            value={conteudo}
-                                            h={"xl"}
-                                            w='full' />
+                                    <Textarea
+                                        value={conteudo}
+                                        h={"xl"}
+                                        w='full' />
                                 </Flex>
                             </>
                         }

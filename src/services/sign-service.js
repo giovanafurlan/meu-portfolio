@@ -2,7 +2,6 @@ import {
   collection,
   doc,
   updateDoc,
-  getFirestore,
   addDoc,
 } from "firebase/firestore";
 import {db} from "../config/firebase"
@@ -23,8 +22,6 @@ const insertUser = async (user) => {
 
 const updateUser = async (user) => {
   const docRef = doc(db, serviceCollection, user.user.id);
-
-  console.log(docRef);
 
   return updateDoc(docRef, user)
     .then((response) => {

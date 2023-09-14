@@ -211,16 +211,13 @@ export default function Conhecimentos() {
 
 const Div = ({ classe, children }) => {
 
-  const bg = useColorModeValue('white', 'gray.800');
-
   return (
     <GridItem
       py='4'
       px='2'
       mr="4"
-      borderRadius='lg'
+      borderRadius='2xl'
       h={'fit-content'}
-      backgroundColor={bg}
       boxShadow='lg'
       mb='4'>
       <pre>

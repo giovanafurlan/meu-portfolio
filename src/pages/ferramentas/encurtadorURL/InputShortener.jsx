@@ -62,13 +62,14 @@ export default function InputShortener({ setInputValue }) {
             onClick={handleClick}
             fontSize='14px'
             w={{
-              lg: 'min-content',
-              sm: 'full'
+                lg: 'min-content',
+                sm: 'full'
             }}
-            color={color}
-            bg={bg2}
+            color={bg2}
+            bg={"none"}
             _hover={{
-              bg: hover
+                bg: hover,
+                color: color
             }}>
             {t("envia")}
           </Button>

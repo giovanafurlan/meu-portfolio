@@ -105,9 +105,9 @@ const Card = ({
       maxW={'350px'}
       w={'full'}
       pt='4'
-      bg={useColorModeValue('white', 'gray.800')}
-      boxShadow={'2xl'}
-      rounded={'md'}
+      borderRadius='2xl'
+      h={'fit-content'}
+      boxShadow='lg'
       overflow={'hidden'}>
       <Flex justify={'center'}>
         <Avatar

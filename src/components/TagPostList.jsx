@@ -16,6 +16,10 @@ import useTranslation from 'next-translate/useTranslation';
 export default function TagPostList({ blog, tag }) {
 
   const { t } = useTranslation("common");
+  
+  const bg2 = useColorModeValue('black', 'white');
+  const color = useColorModeValue('white', 'black');
+  const hover = useColorModeValue('gray.600', 'gray.300');
 
   const imagePerRow = 3;
 
@@ -68,9 +72,15 @@ export default function TagPostList({ blog, tag }) {
               <Button
                 onClick={handleMoreImage}
                 fontSize='14px'
-                variant='button'
+                w={{
+                    lg: 'min-content',
+                    sm: 'full'
+                }}
+                color={bg2}
+                bg={"none"}
                 _hover={{
-                  bg: '#B69DF8'
+                    bg: hover,
+                    color: color
                 }}>
                 {t('carrega')}
               </Button>

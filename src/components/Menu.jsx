@@ -4,7 +4,6 @@ import {
   Box,
   CloseButton,
   Flex,
-  Icon,
   useColorModeValue,
   Drawer,
   DrawerContent,
@@ -31,11 +30,9 @@ import {
   FiMessageSquare,
   FiLink,
   FiGithub,
-  FiYoutube,
   FiLinkedin,
   FiAlignCenter
 } from 'react-icons/fi';
-import { MdOutlineStyle } from 'react-icons/md';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
@@ -98,7 +95,7 @@ export default function SideBar({ children }) {
           maxW={'5xl'}
           py={{
             lg: '12',
-            sm: '2'
+            sm: '20'
           }}
           px={{
             lg: '10',
@@ -138,7 +135,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
       bg={bg}
-      // overflowY='auto'
+      overflowY='auto'
       // overflowX={'hidden'}
       // borderRight="1px"
       // borderRightColor={border}
@@ -146,22 +143,28 @@ const SidebarContent = ({ onClose, ...rest }) => {
         base: 'full',
         md: 60
       }}
-      mt="6"
-      ml="18"
+      mt={{
+        lg: "6",
+        sm: 0
+      }}
+      ml={{
+        lg: "18",
+        sm: 0
+      }}
       pos="fixed"
       h="full"
-      // css={{
-      //   '&::-webkit-scrollbar': {
-      //     width: '8px',
-      //   },
-      //   '&::-webkit-scrollbar-track': {
-      //     width: '6px',
-      //   },
-      //   '&::-webkit-scrollbar-thumb': {
-      //     background: '#5C5470',
-      //     borderRadius: '24px',
-      //   },
-      // }}
+      css={{
+        '&::-webkit-scrollbar': {
+          width: '2px'
+        },
+        '&::-webkit-scrollbar-track': {
+          width: '6px'
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: useColorModeValue("black", "white"),
+          borderRadius: '24px',
+        },
+      }}
       {...rest}>
       <Flex
         h="20"

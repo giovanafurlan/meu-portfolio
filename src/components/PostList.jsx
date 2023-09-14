@@ -71,10 +71,15 @@ export default function PostList({
                 w='full'>
                 <Button
                   onClick={handleMoreImage}
-                  fontSize='14px'
-                  variant='button'
+                  w={{
+                      lg: 'min-content',
+                      sm: 'full'
+                  }}
+                  color={bg2}
+                  bg={"none"}
                   _hover={{
-                    bg: '#B69DF8'
+                      bg: hover,
+                      color: color
                   }}>
                   {t('carrega')}
                 </Button>

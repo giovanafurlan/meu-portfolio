@@ -6,6 +6,7 @@ import {
   Image,
   Heading,
   Button,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -19,11 +20,17 @@ import Greeting from '../../components/Greeting';
 
 export default function Home() {
 
-  const router = useRouter();
   const { t } = useTranslation("common");
-
+  
+  const bg2 = useColorModeValue('black', 'white');
+  const color = useColorModeValue('white', 'black');
+  const hover = useColorModeValue('gray.600', 'gray.300');
+  
   const [hora, setHora] = useState();
+  
+  const router = useRouter();
 
+  const { user } = useUser();
 
   var myDate = new Date();
   var currentHour = myDate.getHours();
@@ -33,8 +40,6 @@ export default function Home() {
     else if (currentHour >= 12 && currentHour <= 17) setHora(t("tarde"));
     else if (currentHour >= 17 && currentHour <= 24) setHora(t("noite"));
   }, []);
-
-  const { user } = useUser();
 
   async function run() {
 
@@ -75,15 +80,13 @@ export default function Home() {
         </Heading>
         <Greeting />
         <Box
-          borderLeft={'2px'}
           h={'auto'}
           my={4} >
           <Image
             src='/images/avatar.webp'
             alt='Perfil'
             w={300}
-            h={300}
-            borderColor={'gray.300'} />
+            h={300} />
         </Box>
         <Text
           fontSize={'2xl'}
@@ -105,8 +108,17 @@ export default function Home() {
           <Button
             title='Conhecimentos'
             onClick={() => router.push('/conhecimentos')}
-            bg='black'
             fontSize='14px'
+            w={{
+                lg: 'min-content',
+                sm: 'full'
+            }}
+            color={bg2}
+            bg={"none"}
+            _hover={{
+                bg: hover,
+                color: color
+            }}
             p={{
               lg: 'auto',
               sm: 2

@@ -195,16 +195,13 @@ export default function Conhecimentos() {
 
 const Div = ({ classe, children }) => {
 
-  const bg = useColorModeValue('white', 'gray.800');
-
   return (
     <GridItem
       py='4'
       px='2'
       borderRadius='lg'
+      boxShadow='2xl'
       maxW='96'
-      backgroundColor={bg}
-      boxShadow='lg'
       mb='4'>
       <pre>
         {classe}

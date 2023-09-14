@@ -17,6 +17,12 @@ import { useQRCode } from 'next-qrcode';
 
 export default function LinkResult({ inputValue }) {
 
+  const { t } = useTranslation("common");
+
+  const bg2 = useColorModeValue('black', 'white');
+  const color = useColorModeValue('white', 'black');
+  const hover = useColorModeValue('gray.600', 'gray.300');
+
   const [shortenLink, setShortenLink] = useState("");
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,17 +62,12 @@ export default function LinkResult({ inputValue }) {
     return () => clearTimeout(timer);
   }, [copied]);
 
-  const { t } = useTranslation("common");
-
   if (loading) {
     return <p className="noData">{t("carregando")}</p>
   }
   if (error) {
     return <p className="noData">{t("algoErrado")}</p>
   }
-
-  const bg = useColorModeValue('none', 'primary');
-  const color = useColorModeValue('primary', 'white');
 
   return (
     <>
@@ -90,12 +91,16 @@ export default function LinkResult({ inputValue }) {
                 <Button
                   className={copied ? "copied" : ""}
                   fontSize='14px'
-                  color={color}
-                  bg={bg}
-                  padding='0'
-                  borderWidth='2px'
-                  borderColor='primary'
-                  fontWeight='normal'>
+                  w={{
+                      lg: 'min-content',
+                      sm: 'full'
+                  }}
+                  color={bg2}
+                  bg={"none"}
+                  _hover={{
+                      bg: hover,
+                      color: color
+                  }}>
                   <FaRegCopy />
                 </Button>
               </CopyToClipboard>

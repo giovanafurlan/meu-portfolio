@@ -20,7 +20,7 @@ export default function Header() {
       }}
       top={{
         lg: "2",
-        sm: "6"
+        sm: "0"
       }}
       pt="6"
       ml='20'

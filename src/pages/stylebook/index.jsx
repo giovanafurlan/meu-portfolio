@@ -21,6 +21,10 @@ export default function Stylebook() {
 
     const { t } = useTranslation("common");
 
+    const bg2 = useColorModeValue('black', 'white');
+    const color = useColorModeValue('white', 'black');
+    const hover = useColorModeValue('gray.600', 'gray.300');
+
     const cores = [
         {
             nome: t('primaria'),
@@ -149,9 +153,15 @@ export default function Stylebook() {
 
                 <Fonte nome={t('btnPrimario')}>
                     <Button
-                        variant={'button'}
+                        w={{
+                            lg: 'min-content',
+                            sm: 'full'
+                        }}
+                        color={bg2}
+                        bg={"none"}
                         _hover={{
-                            bg: '#B69DF8'
+                            bg: hover,
+                            color: color
                         }}>
                         Giovana
                     </Button>
@@ -159,9 +169,15 @@ export default function Stylebook() {
 
                 <Fonte nome={t('btnSecundario')}>
                     <Button
-                        variant={'button-outline'}
+                        w={{
+                            lg: 'min-content',
+                            sm: 'full'
+                        }}
+                        color={bg2}
+                        bg={"none"}
                         _hover={{
-                            bg: '#FFB596'
+                            bg: hover,
+                            color: color
                         }}>
                         Giovana
                     </Button>

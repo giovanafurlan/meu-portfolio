@@ -1,7 +1,12 @@
-import { Button } from '@chakra-ui/react';
+import { Button, useColorModeValue } from '@chakra-ui/react';
 import React from 'react'
+import { AiOutlineDownload } from 'react-icons/ai';
 
 export default function DownloadTxt({ content }) {
+
+    const bg2 = useColorModeValue('black', 'white');
+    const color = useColorModeValue('white', 'black');
+    const hover = useColorModeValue('gray.600', 'gray.300');
 
     const downloadTxtFile = (content) => {
         const element = document.createElement("a");
@@ -16,9 +21,18 @@ export default function DownloadTxt({ content }) {
     return (
         <Button
             float={'right'}
-            onClick={() => downloadTxtFile(content)}
-            variant={'button'}>
-            Download
+            w={{
+                lg: 'min-content',
+                sm: 'full'
+            }}
+            color={bg2}
+            bg={"none"}
+            _hover={{
+                bg: hover,
+                color: color
+            }}
+            onClick={() => downloadTxtFile(content)}>
+            <AiOutlineDownload size={"20px"}/>
         </Button>
     )
 }

@@ -8,7 +8,6 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -58,7 +57,6 @@ body {
 
 export default function Projetos() {
 
-  const router = useRouter();
   const { t } = useTranslation("common");
 
   const [repo, setRepo] = useState([]);
@@ -158,13 +156,10 @@ function CardRepo(
       href={link}
       target='_blank'>
       <Box
-        border='1px'
-        borderRadius={'lg'}
-        borderColor={useColorModeValue('white', 'black')}
+        borderRadius='2xl'
+        boxShadow='2xl'
         p='4'
-        h='300px'
-        boxShadow={'2xl'}
-        bg={useColorModeValue('white', 'gray.800')}>
+        h='300px'>
         <Flex
           align={'center'}
           gap='2'

@@ -370,7 +370,16 @@ export default function Redacao() {
                 <AnimatedText text={'Crie redações em alguns segundos'} />
                 <Button
                   onClick={create}
-                  variant={'button-outline'}>
+                  w={{
+                    lg: 'min-content',
+                    sm: 'full'
+                  }}
+                  color={bg2}
+                  bg={"none"}
+                  _hover={{
+                    bg: hover,
+                    color: color
+                  }}>
                   <Flex
                     gap='2'
                     align={'center'}>
@@ -381,7 +390,16 @@ export default function Redacao() {
               </Flex>
               <Button
                 onClick={handleRefresh}
-                variant={'button-outline'}>
+                w={{
+                  lg: 'min-content',
+                  sm: 'full'
+                }}
+                color={bg2}
+                bg={"none"}
+                _hover={{
+                  bg: hover,
+                  color: color
+                }}>
                 <IoReload />
               </Button>
             </Flex>
@@ -398,10 +416,11 @@ export default function Redacao() {
                     lg: 'min-content',
                     sm: 'full'
                   }}
-                  color={color}
-                  bg={bg2}
+                  color={bg2}
+                  bg={"none"}
                   _hover={{
-                    bg: hover
+                    bg: hover,
+                    color: color
                   }}>
                   <Flex
                     gap='2'
@@ -412,19 +431,25 @@ export default function Redacao() {
                 </Button>
               </Flex>
               {lista.map((item, idx) => (
-                <Flex
-                  flexDir={"column"}
-                  gap={6}
-                  borderRadius={"lg"}
-                  p="4"
-                  bg={useColorModeValue("gray.200","gray.700")}>
-                  <Heading fontSize={"lg"} fontWeight={"bold"}>
-                    {item.themeEssay} - {item.createdAt}
-                  </Heading>
-                  <Text>
-                    {item.result?.slice(0, 100)}...
-                  </Text>
-                </Flex>
+                <Link
+                  id={item.id}
+                  href={`/ferramentas/redacao/${item.id}`}
+                  onClick={idAcess}>
+                  <Flex
+                    key={idx}
+                    flexDir={"column"}
+                    gap={6}
+                    borderRadius='lg'
+                    boxShadow='2xl'
+                    p="4">
+                    <Heading fontSize={"lg"} fontWeight={"bold"}>
+                      {item.themeEssay} - {item.createdAt}
+                    </Heading>
+                    <Text>
+                      {item.result?.slice(0, 100)}...
+                    </Text>
+                  </Flex>
+                </Link>
               ))}
             </>
           )}
@@ -461,10 +486,11 @@ export default function Redacao() {
               lg: 'min-content',
               sm: 'full'
             }}
-            color={color}
-            bg={bg2}
+            color={bg2}
+            bg={"none"}
             _hover={{
-              bg: hover
+              bg: hover,
+              color: color
             }}>
             {t('gerar')}
           </Button>
