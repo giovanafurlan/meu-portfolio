@@ -5,10 +5,8 @@ import PostList from "../../components/PostList";
 import config from "../../lib/config";
 import { listPostContent } from "../../lib/blog";
 import { listTags } from "../../lib/tags";
-import useTranslation from "next-translate/useTranslation";
 
 export default function Posts({ blog, tags }) {
-  const { t } = useTranslation("common");
 
   const url = "/blog";
   const title = 'Blog';

@@ -7,6 +7,7 @@ import {
   Text,
   Grid,
   GridItem,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import Menu from '../components/Menu';
 import { useState } from "react";
