@@ -93,6 +93,10 @@ export default function SideBar({ children }) {
         py="4">
         <Container
           maxW={'5xl'}
+          ml={{
+            "2xl": 0,
+            lg: 12
+          }}
           py={{
             lg: '12',
             sm: '20'
@@ -141,7 +145,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       // borderRightColor={border}
       w={{
         base: 'full',
-        md: 60
+        md: 56
       }}
       mt={{
         lg: "6",
