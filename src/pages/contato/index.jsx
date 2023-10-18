@@ -175,10 +175,7 @@ export default function Contato() {
               // }
               type='submit'
               fontSize='14px'
-              w={{
-                  lg: 'min-content',
-                  sm: 'full'
-              }}
+              w="full"
               color={bg2}
               bg={"none"}
               _hover={{

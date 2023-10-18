@@ -1,21 +1,23 @@
 import React from 'react'
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import {
   SignedIn,
   SignedOut,
   SignInButton,
-  UserButton
+  UserButton,
+  useUser
 } from "@clerk/nextjs";
-import DarkLight from './DarkLight';
-import Language from './Language';
 
 export default function Header() {
+
+  const { isLoaded, isSignedIn, user } = useUser();
+
   return (
     <Flex
       pos="fixed"
       zIndex={2}
       left={{
-        lg: "2",
+        lg: "14",
         sm: "20"
       }}
       top={{
@@ -23,7 +25,6 @@ export default function Header() {
         sm: "0"
       }}
       pt="6"
-      ml='20'
       borderRadius={"lg"}
       align={"center"}
       gap="4">
@@ -39,6 +40,9 @@ export default function Header() {
               colorPrimary: "black",
             }
           }} />
+        <Text>
+          {user?.firstName}
+        </Text>
       </SignedIn>
       <SignedOut>
         {/* Signed out users get sign in button */}

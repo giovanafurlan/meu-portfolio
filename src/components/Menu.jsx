@@ -133,7 +133,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   const linkItemsTools = [
     { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' },
-    { name: t('redacao'), icon: FiAlignCenter, link: '/ferramentas/redacao' },
+    { name: t('imagemTexto'), icon: FiAlignCenter, link: '/ferramentas/imagemTexto' },
   ];
 
   return (
@@ -260,7 +260,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
           lg: '0',
           sm: '0'
         }}
-        w='56'
+        m="0 auto"
+        w="52"
         py='4'
         bg={color}>
         <Flex

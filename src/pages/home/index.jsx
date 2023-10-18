@@ -59,10 +59,10 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    setCookie("uid", user?.id);
-    run();
-  }, []);
+  // useEffect(() => {
+  //   setCookie("uid", user?.id);
+  //   run();
+  // }, []);
 
   return (
     <Menu>
