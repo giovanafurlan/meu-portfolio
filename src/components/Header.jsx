@@ -10,7 +10,7 @@ import {
 
 export default function Header() {
 
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { user } = useUser();
 
   return (
     <Flex
