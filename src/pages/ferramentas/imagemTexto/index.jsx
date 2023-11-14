@@ -11,10 +11,9 @@ import {
   Text,
   useColorModeValue
 } from "@chakra-ui/react";
-import { getImage } from "../../../services/getApis";
+import { getImage, getTranslation } from "../../../services/getApis";
 import Menu from "../../../components/Menu";
 import useTranslation from "next-translate/useTranslation";
-import axios from "axios";
 import { useRouter } from "next/router";
 
 const ImageText = () => {
@@ -41,30 +40,30 @@ const ImageText = () => {
     setIsLoading(true);
 
     await getImage(imageURL)
-      .then((res) => {
-        const data = res;
+      .then(async (res) => {
+        const data = res?.replace("Caption: ", "");
         console.log("data", data);
 
-        let body = {
-          q: data,
-          source: "en",
-          target: locale === "pt-br" ? "pt" : locale
-        }
-        axios.post(`https://libretranslate.de/translate`, body)
-          .then((response) => {
-            console.log("response", response);
+        await getTranslation(locale, data).then((res2) => {
+          const data = res2;
+          console.log("data", data);
 
+          setIsLoading(false);
+          setVisibility("visible");
+
+          setAlt(res2.data.translatedText);
+        })
+          .catch((err) => {
             setIsLoading(false);
-            setVisibility("visible");
 
-            setAlt(response.data.translatedText);
-          })
+            console.log("getTranslation err", err);
+          });
 
       })
       .catch((err) => {
         setIsLoading(false);
 
-        console.log(err);
+        console.log("getImage err", err);
       });
   }
 
@@ -118,7 +117,14 @@ const ImageText = () => {
               <Image src="/images/wait.gif" w="96" />
             </Box>
           ) : (
-            <Text visibility={visibility}>{alt}</Text>
+            <Flex visibility={visibility} gap="1" align={"center"}>
+              <Text fontWeight={"bold"}>
+                {t("resultado")}:
+              </Text>
+              <Text _firstLetter={{ textTransform: "uppercase" }}>
+                {alt}
+              </Text>
+            </Flex>
           )
         }
         {/* <Head>

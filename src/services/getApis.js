@@ -33,4 +33,21 @@ const getImage = async (imageUrl) => {
     });
 };
 
-export { getText, getImage };
+const getTranslation = async (locale, content) => {
+  return axios
+    .get("/api/translate", {
+      params: {
+        locale: locale,
+        content: content,
+      },
+    })
+    .then((e) => {
+      return e.data;
+    })
+    .catch((e) => {
+      console.log(e);
+      return;
+    });
+};
+
+export { getText, getImage, getTranslation };

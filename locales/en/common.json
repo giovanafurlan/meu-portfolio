@@ -69,5 +69,10 @@
   "criadoEm": "Created on",
   "acesse": "Access",
   "criarNovo": "Create new",
-  "gerar": "Generate"
+  "gerar": "Generate",
+
+  "__comment7.3_": "Image Text", 
+  "imagemTexto": "Image to text", 
+  "imagem": "Image", 
+  "resultado": "Result"
 }
