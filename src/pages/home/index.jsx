@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   Box,
   Flex,
@@ -13,56 +12,21 @@ import useTranslation from 'next-translate/useTranslation';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useUser } from "@clerk/nextjs";
 import { setCookie } from "cookies-next";
-import { insertUser } from "../../services/sign-service";
-import { listContent } from '../../services/listApis';
 import Menu from '../../components/Menu';
 import Greeting from '../../components/Greeting';
+import RandomFact from '../../components/RandomFact';
 
 export default function Home() {
 
   const { t } = useTranslation("common");
-  
+
   const bg2 = useColorModeValue('black', 'white');
   const color = useColorModeValue('white', 'black');
   const hover = useColorModeValue('gray.600', 'gray.300');
-  
-  const [hora, setHora] = useState();
-  
+
   const router = useRouter();
 
   const { user } = useUser();
-
-  var myDate = new Date();
-  var currentHour = myDate.getHours();
-
-  useEffect(() => {
-    if (currentHour <= 12) setHora(t("dia"));
-    else if (currentHour >= 12 && currentHour <= 17) setHora(t("tarde"));
-    else if (currentHour >= 17 && currentHour <= 24) setHora(t("noite"));
-  }, []);
-
-  async function run() {
-
-    const users = await listContent("user");
-    console.log(users);
-
-    if (users.length === 0) {
-      const userObject = {
-        id: user?.id,
-        email: user?.emailAddresses[0]?.emailAddress
-      }
-      let firestoreData = await insertUser({
-        user: userObject,
-        lastUpdate: new Date().toLocaleString("pt-br"),
-      });
-      console.log("firestoreData signUp", firestoreData);
-    }
-  };
-
-  // useEffect(() => {
-  //   setCookie("uid", user?.id);
-  //   run();
-  // }, []);
 
   return (
     <Menu>
@@ -79,6 +43,7 @@ export default function Home() {
           Home
         </Heading>
         <Greeting />
+        <RandomFact />
         <Box
           h={'auto'}
           my={4} >
@@ -110,14 +75,14 @@ export default function Home() {
             onClick={() => router.push('/conhecimentos')}
             fontSize='14px'
             w={{
-                lg: 'min-content',
-                sm: 'full'
+              lg: 'min-content',
+              sm: 'full'
             }}
             color={bg2}
             bg={"none"}
             _hover={{
-                bg: hover,
-                color: color
+              bg: hover,
+              color: color
             }}
             p={{
               lg: 'auto',

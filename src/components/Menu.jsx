@@ -132,7 +132,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   ];
 
   const linkItemsTools = [
-    { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' },
+    // { name: t('encurtadorURL'), icon: FiLink, link: '/ferramentas/encurtadorURL' },
     { name: t('imagemTexto'), icon: FiAlignCenter, link: '/ferramentas/imagemTexto' },
   ];
 

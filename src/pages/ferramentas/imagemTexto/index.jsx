@@ -44,20 +44,21 @@ const ImageText = () => {
         const data = res?.replace("Caption: ", "");
         console.log("data", data);
 
-        await getTranslation(locale, data).then((res2) => {
-          const data = res2;
-          console.log("data", data);
+        setIsLoading(false);
+        setVisibility("visible");
 
-          setIsLoading(false);
-          setVisibility("visible");
+        setAlt(data);
 
-          setAlt(res2.data.translatedText);
-        })
-          .catch((err) => {
-            setIsLoading(false);
+        // await getTranslation(locale, data).then((res2) => {
+        //   const data = res2;
+        //   console.log("data", data);
 
-            console.log("getTranslation err", err);
-          });
+        // })
+        //   .catch((err) => {
+        //     setIsLoading(false);
+
+        //     console.log("getTranslation err", err);
+        //   });
 
       })
       .catch((err) => {

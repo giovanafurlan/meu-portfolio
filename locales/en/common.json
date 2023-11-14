@@ -61,6 +61,7 @@
   "envia": "Send",
   "carregando": "Loading...",
   "exEncurtadorURL": "Example - http://www.example.com.br",
+  "algoErrado": "Something went wrong",
 
   "__comment7.2__": "Redação",
   "redacao": "Ensayo",
@@ -74,5 +75,7 @@
   "__comment7.3_": "Image Text", 
   "imagemTexto": "Image to text", 
   "imagem": "Image", 
-  "resultado": "Result"
+  "resultado": "Result",
+
+  "fatoAleatorio": "Random fact"
 }

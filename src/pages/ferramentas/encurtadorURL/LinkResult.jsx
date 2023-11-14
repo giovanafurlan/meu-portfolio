@@ -40,9 +40,10 @@ export default function LinkResult({ inputValue }) {
 
       setVisibility('visible');
       setqrcode(res.data.result.full_short_link);
-      
+
     } catch (err) {
       setError(err);
+      console.log("error", err);
     } finally {
       setLoading(false);
     }
@@ -63,10 +64,10 @@ export default function LinkResult({ inputValue }) {
   }, [copied]);
 
   if (loading) {
-    return <p className="noData">{t("carregando")}</p>
+    return <p className="noData" style={{ marginTop: "15px" }}>{t("carregando")}</p>
   }
   if (error) {
-    return <p className="noData">{t("algoErrado")}</p>
+    return <p className="noData" style={{ marginTop: "15px" }}>{t("algoErrado")}</p>
   }
 
   return (
@@ -92,38 +93,38 @@ export default function LinkResult({ inputValue }) {
                   className={copied ? "copied" : ""}
                   fontSize='14px'
                   w={{
-                      lg: 'min-content',
-                      sm: 'full'
+                    lg: 'min-content',
+                    sm: 'full'
                   }}
                   color={bg2}
                   bg={"none"}
                   _hover={{
-                      bg: hover,
-                      color: color
+                    bg: hover,
+                    color: color
                   }}>
                   <FaRegCopy />
                 </Button>
               </CopyToClipboard>
             </Flex>
-              <Box
-                id='qrCode'
-                visibility={visibility}>
-                <Canvas
-                  text={shortenLink}
-                  options={{
-                    type: 'image/jpeg',
-                    quality: 0.3,
-                    level: 'M',
-                    margin: 3,
-                    scale: 4,
-                    width: 150,
-                    color: {
-                      dark: '#000',
-                      light: '#fff',
-                    },
-                  }}
-                />
-              </Box>
+            <Box
+              id='qrCode'
+              visibility={visibility}>
+              <Canvas
+                text={shortenLink}
+                options={{
+                  type: 'image/jpeg',
+                  quality: 0.3,
+                  level: 'M',
+                  margin: 3,
+                  scale: 4,
+                  width: 150,
+                  color: {
+                    dark: '#000',
+                    light: '#fff',
+                  },
+                }}
+              />
+            </Box>
           </Flex>
         </div>
       )}

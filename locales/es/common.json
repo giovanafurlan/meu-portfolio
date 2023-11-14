@@ -61,6 +61,7 @@
   "envia": "Envia",
   "carregando": "Cargando...",
   "exEncurtadorURL": "Ejemplo - http://www.ejemplo.com.br",
+  "algoErrado": "Algo salió mal",
 
   "__comment7.2__": "Redação",
   "redacao": "Ensayo",
@@ -74,5 +75,7 @@
   "__comment7.3_": "Texto de imagen", 
   "imagemTexto": "Imagen a texto", 
   "imagem": "Imagen", 
-  "resultado": "Resultado"
+  "resultado": "Resultado",
+
+  "fatoAleatorio": "Hecho aleatorio"
 }

@@ -1,27 +1,19 @@
-var axios = require("axios");
-
-export default function handler(req, res) {
+export default function handler(req) {
   const locale = req.query.locale;
   const content = req.query.content;
 
-  var body = JSON.stringify({
-    q: content,
-    source: "en",
-    target: locale === "pt-br" ? "pt" : locale,
+  fetch("https://pt.libretranslate.com/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      q: content,
+      source: "auto",
+      target: locale,
+      format: "text",
+      api_key: "",
+    }),
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => {
+    console.log(res.json());
+    res.status(200).json(res);
   });
-
-  var config = {
-    method: "post",
-    url: "https://libretranslate.de/translate",
-    body: body,
-  };
-
-  axios(config)
-    .then(function (response) {
-      res.status(200).json(response.data);
-    //   console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 }
