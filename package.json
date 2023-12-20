@@ -25,6 +25,7 @@
     "@tiptap/react": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
     "@types/js-yaml": "^4.0.0",
+    "@vercel/speed-insights": "^1.0.2",
     "axios": "^1.1.2",
     "cookies-next": "^2.1.1",
     "date-fns": "^2.19.0",
