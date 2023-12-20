@@ -1,8 +1,10 @@
+import { Container } from "@chakra-ui/react";
 import { SignUp } from "@clerk/nextjs";
 
 export default function SignUpPage() {
-
     return (
-        <SignUp />
+        <Container mt="50px">
+            <SignUp />
+        </Container>
     )
 }

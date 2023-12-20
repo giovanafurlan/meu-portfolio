@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text } from '@chakra-ui/react';
+import { Button, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import {
   SignedIn,
   SignedOut,
@@ -11,6 +11,10 @@ import {
 export default function Header() {
 
   const { user } = useUser();
+
+  const bg2 = useColorModeValue('black', 'white');
+  const color = useColorModeValue('white', 'black');
+  const hover = useColorModeValue('gray.600', 'gray.300');
 
   return (
     <Flex
@@ -46,7 +50,18 @@ export default function Header() {
       </SignedIn>
       <SignedOut>
         {/* Signed out users get sign in button */}
-        <SignInButton />
+        <SignInButton>
+          <Button w={{
+            lg: 'min-content',
+            sm: 'full'
+          }}
+            color={bg2}
+            bg={"none"}
+            _hover={{
+              bg: hover,
+              color: color
+            }}>Sign in</Button>
+        </SignInButton>
       </SignedOut>
     </Flex>
   )

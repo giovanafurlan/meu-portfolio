@@ -32,6 +32,6 @@ export default function RandomFact() {
     }, []);
 
     return (
-        <Text>{t("fatoAleatorio")}: {randomFact}</Text>
+        <Text>{randomFact ? `${t("fatoAleatorio")}: ${randomFact}` : ""}</Text>
     )
 }

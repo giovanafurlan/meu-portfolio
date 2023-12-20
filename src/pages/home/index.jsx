@@ -89,7 +89,7 @@ export default function Home() {
               sm: 2
             }}>
             <AiOutlineArrowRight
-              color='white'
+              color={useColorModeValue("black", "white")}
               fontSize={'30px'} />
           </Button>
         </Flex>

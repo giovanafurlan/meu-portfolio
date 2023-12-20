@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import {
     Box,
+    Button,
+    Flex,
     Heading,
-    Text
+    Text,
+    useColorModeValue
 } from '@chakra-ui/react';
-import { useUser } from '@clerk/nextjs';
+import { SignInButton, useUser } from '@clerk/nextjs';
 import useTranslation from "next-translate/useTranslation";
 
 export default function Greeting() {
 
     const { t } = useTranslation("common");
+
+    const bg2 = useColorModeValue('black', 'white');
+    const color = useColorModeValue('white', 'black');
+    const hover = useColorModeValue('gray.600', 'gray.300');
 
     const currentHour = new Date().getHours();
     const [hora, setHora] = useState();
@@ -23,11 +30,22 @@ export default function Greeting() {
     const { isLoaded, isSignedIn, user } = useUser();
 
     if (!isLoaded || !isSignedIn) {
-        return <Text
+        return <Flex
             fontSize={'3xl'}
-            fontFamily='mono'>
+            fontFamily='mono'
+            gap="3">
+            <SignInButton>
+                <Text
+                    borderBottom={"1px"}
+                    color={bg2}
+                    bg={"none"}
+                    _hover={{
+                        bg: hover,
+                        color: color
+                    }}>Sign in</Text>
+            </SignInButton>
             {t("inscreva")}
-        </Text>
+        </Flex>
     }
 
     return (

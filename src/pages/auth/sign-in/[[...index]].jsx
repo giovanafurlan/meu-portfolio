@@ -1,7 +1,10 @@
+import { Container } from "@chakra-ui/react";
 import { SignIn } from "@clerk/nextjs";
 
 export default function SignInPage() {
     return (
-        <SignIn />
+        <Container mt="50px">
+            <SignIn />
+        </Container>
     )
 }

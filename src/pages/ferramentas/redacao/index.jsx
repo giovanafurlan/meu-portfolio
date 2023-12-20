@@ -1,7 +1,6 @@
 import {
   useEffect,
-  useState,
-  useMemo
+  useState
 } from "react";
 import {
   Box,
@@ -9,23 +8,14 @@ import {
   CircularProgress,
   Flex,
   Heading,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
   Text,
-  Textarea,
-  Th,
-  Thead,
-  Tr,
   useColorModeValue,
   useToast
 } from "@chakra-ui/react";
+import { IoReload } from "react-icons/io5";
+import { BiPlusCircle } from "react-icons/bi";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
-import { BiPlusCircle } from "react-icons/bi";
-import { FiExternalLink } from "react-icons/fi";
-import { BsArrowLeftSquare } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
@@ -38,7 +28,6 @@ import {
 import AnimatedText from "../../../components/AnimatedText";
 import Menu from '../../../components/Menu';
 import Field from "../../../components/Field"; import styled from "styled-components";
-import { IoReload } from "react-icons/io5";
 
 export const Estilo = styled.div`
   .resultado {
