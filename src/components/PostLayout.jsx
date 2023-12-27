@@ -197,11 +197,11 @@ export default function PostLayout({
             mb='12'>
             <Heading
               as={'h1'}
-              fontSize={'5xl'}
+              fontSize={'3xl'}
               fontFamily='monospace'
               textTransform='uppercase'
               fontWeight={'hairline'}
-              bg={useColorModeValue('gray.300', 'gray.600')}
+              // bg={useColorModeValue('gray.300', 'gray.600')}
               px='2'
               m='0 auto'
               borderRadius={'lg'}>

@@ -39,6 +39,7 @@ export default function Greeting() {
                     borderBottom={"1px"}
                     color={bg2}
                     bg={"none"}
+                    cursor="pointer"
                     _hover={{
                         bg: hover,
                         color: color
