@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default function RandomFact() {
 
-    const { t } = useTranslation("common");
+    const { t, lang } = useTranslation("common");
 
     const [randomFact, setRandomFact] = useState();
 
@@ -31,7 +31,9 @@ export default function RandomFact() {
         };
     }, []);
 
+    console.log("lang", lang);
+
     return (
-        <Text>{randomFact ? `${t("fatoAleatorio")}: ${randomFact}` : ""}</Text>
+        <Text display={lang === "en" ? "flex" : "none"}>{randomFact ? `${t("fatoAleatorio")}: ${randomFact}` : ""}</Text>
     )
 }

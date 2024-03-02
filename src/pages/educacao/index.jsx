@@ -22,14 +22,14 @@ export default function Educacao() {
   const { t } = useTranslation("common");
 
   const experiencia = [
-    {
-      instituicao: 'FIAP',
-      imagem: '/images/fiap.webp',
-      curso: t('desenvolvimentoFullStack'),
-      nivel: t("posGraduacao"),
-      dtInicio: '03/2024',
-      dtTermino: t("atualmente")
-    },
+    // {
+    //   instituicao: 'FIAP',
+    //   imagem: '/images/fiap.webp',
+    //   curso: t('desenvolvimentoFullStack'),
+    //   nivel: t("posGraduacao"),
+    //   dtInicio: '03/2024',
+    //   dtTermino: t("atualmente")
+    // },
     {
       instituicao: 'FIAP',
       imagem: '/images/fiap.webp',
