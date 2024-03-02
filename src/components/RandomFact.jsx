@@ -31,8 +31,6 @@ export default function RandomFact() {
         };
     }, []);
 
-    console.log("lang", lang);
-
     return (
         <Text display={lang === "en" ? "flex" : "none"}>{randomFact ? `${t("fatoAleatorio")}: ${randomFact}` : ""}</Text>
     )

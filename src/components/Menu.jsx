@@ -297,7 +297,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           align={"center"}
           gap="2">
           <DarkLight />
-          {/* <Language /> */}
+          <Language />
           <Text fontWeight={"bold"}>|</Text>
           <NavMedia
             icone={FiGithub}

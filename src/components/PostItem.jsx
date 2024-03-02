@@ -32,7 +32,7 @@ export default function PostItem({ post }) {
           <Link
             key={locale}
             href={"/blog/" + post.slug}
-            // locale={post.language}
+            locale={post.language}
             >
             <Box
               maxW={{
