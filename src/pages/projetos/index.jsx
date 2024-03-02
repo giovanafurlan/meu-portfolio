@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  CircularProgress,
   Flex,
   Heading,
   Link,
@@ -59,6 +60,7 @@ export default function Projetos() {
 
   const { t } = useTranslation("common");
 
+  const [isLoading, setIsLoading] = useState(false);
   const [repo, setRepo] = useState([]);
 
   var config = {
@@ -67,8 +69,11 @@ export default function Projetos() {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     axios(config)
       .then(function (response) {
+        setIsLoading(false);
+
         const data = response.data;
         console.log(data)
         setRepo(data);
@@ -101,42 +106,55 @@ export default function Projetos() {
         <Text>
           {t('introProjetos')}
         </Text>
-        <StyleSwiper>
-          <Swiper
-            effect={"coverflow"}
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={"auto"}
-            coverflowEffect={{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }}
-            style={{
-              "--swiper-pagination-color": "#052be8",
-              "--swiper-pagination-bullet-inactive-color": "#999999",
-            }}
-            pagination={true}
-            modules={[EffectCoverflow, Pagination]}
-            className="mySwiper">
-            <br /><br />
-            {repo.map((result, idx) => (
-              <Box
-                key={idx}>
-                <SwiperSlide>
-                  <CardRepo
-                    nome={result.name}
-                    user={result.owner.login}
-                    userImg={result.owner.avatar_url}
-                    descricao={result.description}
-                    link={result.clone_url} />
-                </SwiperSlide>
-              </Box>
-            ))}
-          </Swiper>
-        </StyleSwiper>
+        {isLoading ?
+          <Flex
+            gap="4"
+            align={"center"}
+            mb="4">
+            <CircularProgress
+              isIndeterminate />
+            <Text>
+              {t("aguarde")}
+            </Text>
+          </Flex>
+          :
+          <StyleSwiper>
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              style={{
+                "--swiper-pagination-color": "#052be8",
+                "--swiper-pagination-bullet-inactive-color": "#999999",
+              }}
+              pagination={true}
+              modules={[EffectCoverflow, Pagination]}
+              className="mySwiper">
+              <br /><br />
+              {repo.map((result, idx) => (
+                <Box
+                  key={idx}>
+                  <SwiperSlide>
+                    <CardRepo
+                      nome={result.name}
+                      user={result.owner.login}
+                      userImg={result.owner.avatar_url}
+                      descricao={result.description}
+                      link={result.clone_url} />
+                  </SwiperSlide>
+                </Box>
+              ))}
+            </Swiper>
+          </StyleSwiper>
+        }
       </Flex>
     </Menu >
   );

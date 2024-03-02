@@ -125,6 +125,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     { name: t('conhecimentos'), icon: FiFolder, link: '/conhecimentos' },
     { name: t('certificados'), icon: FiFolder, link: '/certificados' },
     { name: t('experiencias'), icon: FiArchive, link: '/experiencias' },
+    { name: t('educacao'), icon: FiArchive, link: '/educacao' },
     { name: t('projetos'), icon: FiGrid, link: '/projetos' },
     { name: 'Blog', icon: FiBookmark, link: '/blog' },
     { name: t('contato'), icon: FiMessageSquare, link: '/contato' },

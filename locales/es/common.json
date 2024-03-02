@@ -21,6 +21,7 @@
   "noite": "Buenas noches",
   "meChamo": "mi nombre es",
   "programadora": "Programador",
+  "desenvolvedora": "Desenvolvedor",
   "introducao": "Egresado de la @FIAP en Análisis y Desarrollo de Sistemas. Actualmente trabajo como programador en la empresa @Webpeak, que es una de las mejores herramientas de SEO del mercado. Apasionado por la tecnología, quiero ser protagonista de proyectos revolucionarios para mi futuro.",
   "introducao2": "Ven y conoce más sobre mí en mi portafolio",
 
@@ -62,6 +63,7 @@
   "carregando": "Cargando...",
   "exEncurtadorURL": "Ejemplo - http://www.ejemplo.com.br",
   "algoErrado": "Algo salió mal",
+  "aguarde": "Por favor espera",
 
   "__comment7.2__": "Redação",
   "redacao": "Ensayo",
@@ -76,6 +78,21 @@
   "imagemTexto": "Imagen a texto", 
   "imagem": "Imagen", 
   "resultado": "Resultado",
+
+  "__comment7.4__": "Educacao",
+  "educacao": "Educación",
+  "desenvolvimentoFullStack": "Desarrollo completo",
+  "posGraduacao": "Posgraduación",
+  "analiseDesenvolvimentoSistemas": "Análisis y desarrollo de Sistemas",
+  "ensinoSuperior": "Enseñanza superior",
+  "desenvolvimentoSoftware": "Desarrollo de software",
+  "cursoProfissionalizante": "curso profesional",
+  "adiministracao": "Administración",
+  "cursoTecnico": "Curso técnico",
+  "gramaticaRedacao": "gramática y escritura",
+  "cursoExtracurricular": "Curso extracurricular",
+  "ensinoIngles": "Enseñar inglés como segunda lengua.",
+  "cursoIdioma": "Curso de idioma",
 
   "fatoAleatorio": "Hecho aleatorio"
 }

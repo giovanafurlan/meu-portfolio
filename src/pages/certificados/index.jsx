@@ -17,6 +17,15 @@ import dynamic from 'next/dynamic';
 const Menu = dynamic(() => import("../../components/Menu"));
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
+const certificadosLinkedIn = [
+  {
+    conhecimento: 'LinkedIn Content and Creative Design',
+    img: '/images/linkedIn.webp',
+    cor: 'blue',
+    link: 'https://verify.skilljar.com/c/st7bxgacfbse'
+  }
+]
+
 const certificadosFIAP = [
   {
     conhecimento: 'Libras',
@@ -93,7 +102,6 @@ const certificadosAlura = [
     cor: 'blue',
     link: 'https://cursos.alura.com.br/degree/certificate/e50808fd-1c37-46c3-83bf-929658d6d397'
   }
-
   ,
   {
     conhecimento: 'Next.js: trabalhando com um CMS',
@@ -136,6 +144,12 @@ const certificadosAlura = [
     img: '/images/alura.webp',
     cor: 'blue',
     link: 'https://cursos.alura.com.br/certificate/e58e60fa-936c-480a-82a9-aab2c9aa234b'
+  },
+  {
+    conhecimento: 'Vue 3: entendendo componentes, diretivas e reatividade no framework',
+    img: '/images/alura.webp',
+    cor: 'blue',
+    link: 'https://cursos.alura.com.br/certificate/09def005-bd52-4f3e-b295-a09b4d18afe7'
   }
 ]
 
@@ -174,6 +188,21 @@ export default function Conhecimentos() {
             }}>
             <Div classe={'FIAP'}>
               {certificadosFIAP.map((result, idx) => (
+                <Link
+                  key={idx}
+                  href={result.link}
+                  _hover={{
+                    textDecor: 'none'
+                  }}>
+                  <P
+                    img={result.img}
+                    conhecimento={result.conhecimento}
+                    cor={result.cor} />
+                </Link>
+              ))}
+            </Div>
+            <Div classe={'LinkedIn'}>
+              {certificadosLinkedIn.map((result, idx) => (
                 <Link
                   key={idx}
                   href={result.link}

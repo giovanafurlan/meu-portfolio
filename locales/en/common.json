@@ -21,6 +21,7 @@
   "noite": "Good night",
   "meChamo": "my name is",
   "programadora": "Programmer",
+  "desenvolvedora": "Developer",
   "introducao": "Graduated at @FIAP in Systems Analysis and Development. I currently work as a programmer at the company@Webpeak which is one of the top SEO tools on the market. Passionate about technology, I want to be the protagonist of revolutionary projects for my future.",
   "introducao2": "Come know more about me in my portfolio",
 
@@ -62,6 +63,7 @@
   "carregando": "Loading...",
   "exEncurtadorURL": "Example - http://www.example.com.br",
   "algoErrado": "Something went wrong",
+  "aguarde": "Please wait",
 
   "__comment7.2__": "Redação",
   "redacao": "Ensayo",
@@ -76,6 +78,21 @@
   "imagemTexto": "Image to text", 
   "imagem": "Image", 
   "resultado": "Result",
+
+  "__comment7.4__": "Educacao",
+  "educacao": "Education",
+  "desenvolvimentoFullStack": "Full stack development",
+  "posGraduacao": "Postgraduate",
+  "analiseDesenvolvimentoSistemas": "Analysis and systems development",
+  "ensinoSuperior": "University education",
+  "desenvolvimentoSoftware": "Software development",
+  "cursoProfissionalizante": "Professional course",
+  "adiministracao": "Administration",
+  "cursoTecnico": "Technical course",
+  "gramaticaRedacao": "Grammar and writing",
+  "cursoExtracurricular": "Extra curricular course",
+  "ensinoIngles": "Teaching English as a second language",
+  "cursoIdioma": "Language course",
 
   "fatoAleatorio": "Random fact"
 }
