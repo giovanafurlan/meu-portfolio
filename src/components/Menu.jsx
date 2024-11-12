@@ -141,9 +141,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box
       bg={bg}
       overflowY='auto'
-      // overflowX={'hidden'}
-      // borderRight="1px"
-      // borderRightColor={border}
       w={{
         base: 'full',
         md: 56
@@ -174,14 +171,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       <Flex
         h="20"
         alignItems="center"
-        // mx="6"
-        // my='4'
-        // mb='10'
         justifyContent="space-between">
-        {/* <Image
-          src={'/images/logo.webp'}
-          alt='Logo'
-          ml='4' /> */}
         <CloseButton
           display={{
             base: 'flex',
@@ -208,27 +198,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
             p='0'
             borderRadius="lg"
             _hover={{
-              // bg: 'primary',
               color: 'gray',
             }}
             w='52'
-            // mx="4"
-            // mt='2'
             pr='10'>
             <Flex
               pl={4}
               align="center"
               cursor="pointer">
-              {/* <Icon
-                mr="4"
-                fontSize="16"
-                _groupHover={{
-                  color: 'primary',
-                }}
-                as={FiShoppingCart}
-              /> */}
               <Text
-                fontSize={'14.5px'}>
+                fontSize={'16px'}>
                 {t('ferramentas')}
               </Text>
             </Flex>
@@ -269,27 +248,27 @@ const SidebarContent = ({ onClose, ...rest }) => {
           align={'center'}
           gap='2'
           pr='2'>
-          <Tag
-            size='lg'
-            colorScheme={''}
-            borderRadius='full'
-            cursor='pointer'>
-            <TagLabel
-              fontSize={'sm'}>
-              <Link
-                aria-label={'Code'}
-                href={'https://github.com/giovanafurlan/meu-portfolio'}
-                target='_blank'
-                _hover={{ textDecor: 'none' }}
-                _focus={{
-                  outline: 'none'
-                }}>
+          <Link
+            aria-label={'Code'}
+            href={'https://github.com/giovanafurlan/meu-portfolio'}
+            target='_blank'
+            _hover={{ textDecor: 'none' }}
+            _focus={{
+              outline: 'none'
+            }}>
+            <Tag
+              size='lg'
+              colorScheme={''}
+              borderRadius='full'
+              cursor='pointer'>
+              <TagLabel
+                fontSize={'sm'}>
                 Code
-              </Link>
-            </TagLabel>
-            <TagRightIcon
-              as={ExternalLinkIcon} />
-          </Tag>
+              </TagLabel>
+              <TagRightIcon
+                as={ExternalLinkIcon} />
+            </Tag>
+          </Link>
         </Flex>
 
         <Flex

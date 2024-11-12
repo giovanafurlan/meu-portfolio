@@ -1,0 +1,48 @@
+---
+image: /uploads/github-actions.png
+slug: github-actions
+title: Automatizando Processos com GitHub Actions
+intro: Guia rápido para automatizar tarefas com GitHub Actions
+language: 'pt-br'
+date: 2024-11-08
+tags:
+- github
+- automacao
+---
+<p>Hoje, vamos explorar o uso do <strong>GitHub Actions</strong> para automatizar tarefas em projetos no GitHub. Com o GitHub Actions, é possível configurar desde simples automações, como envio de notificações, até processos mais complexos, como deploys automáticos e integração contínua.</p>
+
+<p>Para começar, acesse o repositório do projeto onde deseja implementar as automações. Em seguida, vá para a aba <strong>Actions</strong> e escolha um dos templates disponíveis ou crie um novo workflow.</p>
+
+<h2>🛠️ Como criar um Workflow</h2>
+
+<p>Após acessar a aba <em>Actions</em>, você pode definir as ações automáticas criando um arquivo YAML. Neste exemplo, vamos configurar um workflow básico para rodar testes a cada novo <em>push</em>:</p>
+
+<pre><code class="language-yaml">
+name: Teste Automático
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Instalar dependências
+        run: npm install
+      - name: Rodar testes
+        run: npm test
+</code></pre>
+
+<p>Esse arquivo YAML cria um workflow chamado "Teste Automático" que será executado em cada <em>push</em> ou <em>pull request</em> realizado no repositório. Ele baixa o código, instala as dependências e executa os testes.</p>
+
+<h2>📈 Benefícios de Automatizar com GitHub Actions</h2>
+
+<ul>
+    <li>🚀 Reduz o trabalho manual, permitindo que você se concentre em tarefas mais importantes</li>
+    <li>🔄 Facilita o processo de integração contínua e entrega contínua (CI/CD)</li>
+    <li>🔔 Permite configurar notificações automáticas para diferentes eventos</li>
+    <li>💻 Aumenta a confiabilidade do projeto com testes automatizados em cada mudança</li>
+</ul>
+
+<p>Gostou desta dica? Então continue acompanhando o blog para aprender mais sobre automação e outras ferramentas que facilitam o desenvolvimento!</p>

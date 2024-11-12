@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Flex, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import {
   SignedIn,
   SignedOut,
@@ -28,7 +28,7 @@ export default function Header() {
         lg: "2",
         sm: "0"
       }}
-      pt="6"
+      mt="6"
       borderRadius={"lg"}
       align={"center"}
       gap="4">
@@ -36,17 +36,24 @@ export default function Header() {
       <Language /> */}
       <SignedIn>
         {/* Mount the UserButton component */}
-        <UserButton
-          showName={false}
-          afterSignOutUrl="/"
-          appearance={{
-            variables: {
-              colorPrimary: "black",
-            }
-          }} />
-        <Text>
-          {user?.firstName}
-        </Text>
+        <Flex
+          bg={color}
+          align="center"
+          padding={2}
+          borderRadius="10px"
+          gap={2}>
+          <UserButton
+            showName={false}
+            afterSignOutUrl="/"
+            appearance={{
+              variables: {
+                colorPrimary: "black",
+              }
+            }} />
+          <Text>
+            {user?.firstName}
+          </Text>
+        </Flex>
       </SignedIn>
       <SignedOut>
         {/* Signed out users get sign in button */}
@@ -56,7 +63,7 @@ export default function Header() {
             sm: 'full'
           }}
             color={bg2}
-            bg={"none"}
+            bg={"blue"}
             _hover={{
               bg: hover,
               color: color

@@ -17,7 +17,7 @@ import useTranslation from 'next-translate/useTranslation';
 export default function TagPostList({ blog, tag }) {
 
   const { t } = useTranslation("common");
-  
+
   const bg2 = useColorModeValue('black', 'white');
   const color = useColorModeValue('white', 'black');
   const hover = useColorModeValue('gray.600', 'gray.300');
@@ -38,7 +38,6 @@ export default function TagPostList({ blog, tag }) {
         gap={'10'}>
         <Flex
           align={'center'}
-          margin='0 auto'
           gap='2'>
           <Heading
             as={'h1'}
@@ -58,7 +57,7 @@ export default function TagPostList({ blog, tag }) {
             lg: 'repeat(3, 1fr)',
             sm: 'repeat(1, 1fr)'
           }}
-          gap={6}>
+          gap={'3'}>
           {blog?.slice(0, next).map((it, i) => (
             <GridItem key={i}>
               <PostItem post={it} />
@@ -74,14 +73,14 @@ export default function TagPostList({ blog, tag }) {
                 onClick={handleMoreImage}
                 fontSize='14px'
                 w={{
-                    lg: 'min-content',
-                    sm: 'full'
+                  lg: 'min-content',
+                  sm: 'full'
                 }}
                 color={bg2}
                 bg={"none"}
                 _hover={{
-                    bg: hover,
-                    color: color
+                  bg: hover,
+                  color: color
                 }}>
                 {t('carrega')}
               </Button>

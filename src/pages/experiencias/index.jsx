@@ -5,6 +5,7 @@ import {
   Grid,
   Heading,
   Stack,
+  Tag,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -33,7 +34,7 @@ export default function Experiencias() {
       cargo: t('estagiaria'),
       funcao: t('introExperiencia2'),
       dtInicio: '01/2022',
-      dtTermino: '12/2022'
+      dtTermino: `${t("termino")} - 12/2022`
     },
     {
       cor: 'red.400',
@@ -42,7 +43,7 @@ export default function Experiencias() {
       cargo: t('analista'),
       funcao: t('introExperiencia1'),
       dtInicio: '03/2021',
-      dtTermino: '12/2021'
+      dtTermino: `${t("termino")} - 12/2021`
     }
   ]
 
@@ -133,8 +134,7 @@ const Card = ({
             fontFamily={'body'}>
             {empresa}
           </Heading>
-          <Text
-            color={'gray.500'}>
+          <Text>
             {cargo}
           </Text>
           <Text
@@ -147,32 +147,20 @@ const Card = ({
           direction={'row'}
           justify={'center'}
           spacing={6}>
-          <Stack
-            spacing={0}
-            align={'center'}>
-            <Text
-              fontWeight={600}>
-              {dtInicio}
-            </Text>
-            <Text
-              fontSize={'sm'}
-              color={'gray.500'}>
-              {t('inicio')}
-            </Text>
-          </Stack>
-          <Stack
-            spacing={0}
-            align={'center'}>
-            <Text
-              fontWeight={600}>
-              {dtTermino}
-            </Text>
-            <Text
-              fontSize={'sm'}
-              color={'gray.500'}>
-              {t('termino')}
-            </Text>
-          </Stack>
+<Tag
+                flex={1}
+                colorScheme='blue'
+                fontSize={'sm'}
+                cursor={"default"}>
+                {t("inicio")} - {dtInicio}
+              </Tag>
+              <Tag
+                flex={1}
+                colorScheme='pink'
+                fontSize={'sm'}
+                cursor={"default"}>
+                {dtTermino}
+              </Tag>
         </Stack>
       </Box>
     </Box>

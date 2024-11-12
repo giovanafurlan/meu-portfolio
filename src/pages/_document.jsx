@@ -11,14 +11,6 @@ export default function Document() {
           strategy="lazyOnload"
         />
       </Head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFE5CDFLM5"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments)}
-        gtag('js', new Date());
-
-        gtag('config', 'G-GFE5CDFLM5');
-      </script>
       <body>
         <Main />
         <NextScript />

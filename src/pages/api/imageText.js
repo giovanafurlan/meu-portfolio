@@ -10,16 +10,19 @@ const replicate = new Replicate({
 });
 
 export default async function handler(req) {
-  const image =
-    req.nextUrl.searchParams.get("imageUrl") || "https://dub.sh/confpic";
+  const formData = await req.formData();
+  const imageFile = formData.get("image");
+
+  const imageData = await imageFile.arrayBuffer();
 
   const output = await replicate.run(
     "salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746",
     {
       input: {
-        image,
+        image: new Blob([imageData], { type: imageFile.type }),
       },
     }
   );
+
   return NextResponse.json(output);
 }

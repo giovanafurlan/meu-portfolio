@@ -1,8 +1,7 @@
 import {
   Flex,
   Box,
-  Heading,
-  useColorModeValue
+  Heading
 } from '@chakra-ui/react';
 import BasicMeta from "./meta/BasicMeta";
 import JsonLdMeta from "./meta/JsonLdMeta";
@@ -17,7 +16,6 @@ import style from 'styled-components';
 const Format = style.div`
 * {
   all: revert;
-  text-align: center;
 }
 
 p {
@@ -27,10 +25,6 @@ p {
 li {
   font-size: 16px;
   text-align: start !important;
-}
-
-ul {
-  margin-left: 20%;
 }
 
 a {
@@ -82,19 +76,18 @@ h4 {
 
 .flex {
   display: flex;
-  justify-content: center;
 }
 
 .flex a img {
   margin-right: 10px;
 }
 
-.grid{
+.grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
 }
 
-.grid img{
+.grid img {
   width: 100px;
 }
 
@@ -126,7 +119,6 @@ figure {
 figcaption {
   margin-top: 5px;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 blockquote {
@@ -135,6 +127,24 @@ blockquote {
   border-left: 5px solid #e2e2e2;
   font-size: 18px;
   line-height: 22px;
+}
+
+/* Estilização para blocos de código */
+pre {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  overflow-x: auto;
+}
+
+code {
+  background-color: #f5f5f5;
+  color: #d63384;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: monospace;
 }
 
 @media(min-width: 320px) and (max-width: 1000px) {
@@ -150,7 +160,8 @@ blockquote {
     width: 80%;
   }
 }
-`
+`;
+
 export default function PostLayout({
   image,
   title,

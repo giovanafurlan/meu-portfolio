@@ -10,6 +10,7 @@ import {
   Heading,
   Image,
   Stack,
+  Tag,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -22,14 +23,14 @@ export default function Educacao() {
   const { t } = useTranslation("common");
 
   const experiencia = [
-    // {
-    //   instituicao: 'FIAP',
-    //   imagem: '/images/fiap.webp',
-    //   curso: t('desenvolvimentoFullStack'),
-    //   nivel: t("posGraduacao"),
-    //   dtInicio: '03/2024',
-    //   dtTermino: t("atualmente")
-    // },
+    {
+      instituicao: 'FIAP',
+      imagem: '/images/fiap.webp',
+      curso: 'IA',
+      nivel: t("posGraduacao"),
+      dtInicio: '03/2024',
+      dtTermino: t("atualmente")
+    },
     {
       instituicao: 'FIAP',
       imagem: '/images/fiap.webp',
@@ -149,49 +150,37 @@ const Card = ({
           <Stack
             flex={1}
             flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
+            ml={4}
             p={1}
             pt={2}>
-            <Heading fontSize={'xl'} fontFamily={'body'}>
+            <Heading fontSize={'lg'} fontFamily={'body'}>
               {instituicao}
             </Heading>
-            <Text fontWeight={600} color={'gray.400'} size="sm">
+            <Text fontSize="smaller">
               {nivel}
             </Text>
-            <Text fontWeight={600} color={'gray.500'} size="sm">
+            <Text fontSize="smaller">
               {curso}
             </Text>
             <Stack
               width={'100%'}
               direction={'row'}
-              padding={2}
               justifyContent={'space-between'}
               alignItems={'center'}>
-              <Button
+              <Tag
                 flex={1}
+                colorScheme='blue'
                 fontSize={'sm'}
-                rounded={'lg'}
-                boxShadow={"lg"}
-                bg={'none'}
-                _hover={{
-                  bg: "none"
-                }}
                 cursor={"default"}>
                 {t("inicio")} - {dtInicio}
-              </Button>
-              <Button
+              </Tag>
+              <Tag
                 flex={1}
+                colorScheme='pink'
                 fontSize={'sm'}
-                rounded={'lg'}
-                boxShadow={"lg"}
-                bg={'none'}
-                _hover={{
-                  bg: "none"
-                }}
                 cursor={"default"}>
                 {dtTermino === t("atualmente") ? dtTermino : `${t("termino")} - ${dtTermino}`}
-              </Button>
+              </Tag>
             </Stack>
           </Stack>
         </GridItem>

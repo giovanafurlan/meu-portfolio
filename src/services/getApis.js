@@ -17,18 +17,21 @@ const getText = async (locale, theme) => {
     });
 };
 
-const getImage = async (imageUrl) => {
+const getImage = async (file) => {
+  const formData = new FormData();
+  formData.append("image", file);
+
   return axios
-    .get("/api/imageText", {
-      params: {
-        imageUrl: imageUrl,
+    .post("/api/imageText", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
       },
     })
-    .then((e) => {
-      return e.data;
+    .then((res) => {
+      return res.data;
     })
-    .catch((e) => {
-      console.log(e);
+    .catch((err) => {
+      console.log(err);
       return;
     });
 };
