@@ -171,14 +171,16 @@ const Card = ({
                 flex={1}
                 colorScheme='blue'
                 fontSize={'sm'}
-                cursor={"default"}>
+                cursor={"default"}
+                justifyContent="center">
                 {t("inicio")} - {dtInicio}
               </Tag>
               <Tag
                 flex={1}
                 colorScheme='pink'
                 fontSize={'sm'}
-                cursor={"default"}>
+                cursor={"default"}
+                justifyContent="center">
                 {dtTermino === t("atualmente") ? dtTermino : `${t("termino")} - ${dtTermino}`}
               </Tag>
             </Stack>

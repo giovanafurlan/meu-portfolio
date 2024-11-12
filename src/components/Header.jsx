@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Flex, Text, useColorModeValue } from '@chakra-ui/react';
+import { Button, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import {
   SignedIn,
   SignedOut,
@@ -63,7 +63,7 @@ export default function Header() {
             sm: 'full'
           }}
             color={bg2}
-            bg={"blue"}
+            bg={color}
             _hover={{
               bg: hover,
               color: color

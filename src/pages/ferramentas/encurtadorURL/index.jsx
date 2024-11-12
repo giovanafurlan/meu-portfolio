@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import {
-  Container
-} from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 const Menu = dynamic(() => import("../../../components/Menu"));
 const LinkResult = dynamic(() => import("./LinkResult"));

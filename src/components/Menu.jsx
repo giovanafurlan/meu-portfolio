@@ -28,7 +28,6 @@ import {
   FiArchive,
   FiBookmark,
   FiMessageSquare,
-  FiLink,
   FiGithub,
   FiLinkedin,
   FiAlignCenter
@@ -189,7 +188,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           {link.name}
         </NavItem>
       ))}
-      <Accordion
+      {/* <Accordion
         defaultIndex={[0]}
         allowToggle>
         <AccordionItem
@@ -228,7 +227,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             ))}
           </AccordionPanel>
         </AccordionItem>
-      </Accordion>
+      </Accordion> */}
       <Flex
         pos={{
           lg: 'fixed'
@@ -363,16 +362,6 @@ const NavItem = ({ link, icon, children, ...rest }) => {
           }}
           maxW='56'
           {...rest}>
-          {/* {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: 'bgClear',
-            }}
-            as={icon}
-          />
-        )} */}
           <Text
             fontSize={'16px'}>
             {children}

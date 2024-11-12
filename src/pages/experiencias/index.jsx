@@ -22,7 +22,7 @@ export default function Experiencias() {
       cor: 'purple.400',
       empresa: 'Webpeak',
       imagem: '/images/webpeak.png',
-      cargo: `${t("desenvolvedora")} Full Stack` ,
+      cargo: `${t("desenvolvedora")} Full Stack`,
       funcao: t('introExperiencia3'),
       dtInicio: '01/2023',
       dtTermino: t('atualmente')
@@ -147,20 +147,22 @@ const Card = ({
           direction={'row'}
           justify={'center'}
           spacing={6}>
-<Tag
-                flex={1}
-                colorScheme='blue'
-                fontSize={'sm'}
-                cursor={"default"}>
-                {t("inicio")} - {dtInicio}
-              </Tag>
-              <Tag
-                flex={1}
-                colorScheme='pink'
-                fontSize={'sm'}
-                cursor={"default"}>
-                {dtTermino}
-              </Tag>
+          <Tag
+            flex={1}
+            colorScheme='blue'
+            fontSize={'sm'}
+            cursor={"default"}
+            justifyContent="center">
+            {t("inicio")} - {dtInicio}
+          </Tag>
+          <Tag
+            flex={1}
+            colorScheme='pink'
+            fontSize={'sm'}
+            cursor={"default"}
+            justifyContent="center">
+            {dtTermino}
+          </Tag>
         </Stack>
       </Box>
     </Box>

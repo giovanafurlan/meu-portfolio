@@ -220,7 +220,8 @@ const P = ({ img, conhecimento, cor, iconSN, children }) => {
       <Tag
         size='lg'
         colorScheme={cor}
-        borderRadius='full'>
+        borderRadius='full'
+        justifyContent="center">
         <Avatar
           src={img}
           size='xs'
